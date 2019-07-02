@@ -71,7 +71,7 @@ class MediumBody extends StatelessWidget {
                     child: Row(children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(left: 16, right: 16),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             html.window.open(
                                 "https://www.github.com/drilonrecica",
@@ -88,7 +88,7 @@ class MediumBody extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 16, right: 16),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             html.window.open(
                                 "https://stackoverflow.com/users/3392276",
@@ -105,7 +105,7 @@ class MediumBody extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 16, right: 16),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             html.window.open(
                                 "github@drilon.reqica.com", "Drilon's Email");
@@ -121,7 +121,7 @@ class MediumBody extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 16, right: 16),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             html.window.open("https://facebook.com/iamdrilon",
                                 "Drilon's Facebook");
@@ -137,7 +137,7 @@ class MediumBody extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 16, right: 16),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             html.window.open(
                                 "https://www.instagram.com/iamdrilonre/",
@@ -157,7 +157,7 @@ class MediumBody extends StatelessWidget {
             )
           ],
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
             html.window.open("http://drilonrecica.github.io/", "");
           },
@@ -176,7 +176,7 @@ class MediumBody extends StatelessWidget {
             ),
           ),
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
             html.window.open("https://flutter.dev/web", "");
           },

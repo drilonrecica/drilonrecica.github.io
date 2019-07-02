@@ -1,5 +1,5 @@
 name: drilonrecica
-description: An app built using Flutter for web
+description: Developer by Work - Nerd by Passion
 
 flutter:
   uses-material-design: true   
@@ -17,7 +17,6 @@ dependencies:
 dev_dependencies:
   build_runner: ^1.4.0
   build_web_compilers: ^2.0.0
-  pedantic: ^1.0.0
 
 dependency_overrides:
   flutter_web:

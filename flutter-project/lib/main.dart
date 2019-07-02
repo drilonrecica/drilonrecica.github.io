@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Drilon Reçica',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.black87,
       ),
       home: MyHomePage(title: 'Developer by Work-Nerd by Passion'),
     );
