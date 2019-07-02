@@ -111,7 +111,7 @@ class SmallBody extends StatelessWidget {
                           child: InkWell(
                             onTap: () {
                               html.window.open(
-                                  "github@drilon.reqica.com", "Drilon's Email");
+                                  "mailto:github@drilon.reqica.com", "Drilon's Email");
                             },
                             child: CircleBorderImage(
                               width: 48.0,
@@ -167,29 +167,10 @@ class SmallBody extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      html.window.open("http://drilonrecica.github.io/", "");
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 128),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          "Drilon Reçica",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
                       html.window.open("https://flutter.dev/web", "");
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: 8),
+                      padding: EdgeInsets.only(top: 160),
                       child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Text(

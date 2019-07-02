@@ -20,6 +20,25 @@ class MediumBody extends StatelessWidget {
         Container(
           color: Color.fromRGBO(0, 0, 0, 0.60),
         ),
+        InkWell(
+          onTap: () {
+            html.window.open("https://flutter.dev/web", "");
+          },
+          child: Padding(
+            padding: EdgeInsets.all(32),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                "Made with Flutter Web",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,7 +127,7 @@ class MediumBody extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             html.window.open(
-                                "github@drilon.reqica.com", "Drilon's Email");
+                                "mailto:github@drilon.reqica.com", "Drilon's Email");
                           },
                           child: CircleBorderImage(
                             width: 48.0,
@@ -156,44 +175,6 @@ class MediumBody extends StatelessWidget {
               ],
             )
           ],
-        ),
-        InkWell(
-          onTap: () {
-            html.window.open("http://drilonrecica.github.io/", "");
-          },
-          child: Padding(
-            padding: EdgeInsets.all(32),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                "Drilon Reçica",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              ),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            html.window.open("https://flutter.dev/web", "");
-          },
-          child: Padding(
-            padding: EdgeInsets.all(32),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "Made with Flutter Web",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Roboto",
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
         ),
       ],
     );

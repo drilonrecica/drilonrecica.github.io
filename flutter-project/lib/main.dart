@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Drilon Reçica',
       theme: ThemeData(
-        primarySwatch: Colors.black87,
+        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Developer by Work-Nerd by Passion'),
+      home: MyHomePage(title: 'Developer by Work - Nerd by Passion'),
     );
   }
 }
