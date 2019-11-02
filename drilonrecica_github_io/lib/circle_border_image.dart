@@ -5,6 +5,7 @@ class CircleBorderImage extends StatelessWidget {
   final double height;
   final double borderSize;
   final Color circleColor;
+  final Color innerColor;
   final Widget image;
 
   const CircleBorderImage(
@@ -12,6 +13,7 @@ class CircleBorderImage extends StatelessWidget {
       @required this.height,
       @required this.borderSize,
       @required this.circleColor,
+      @required this.innerColor,
       @required this.image,
       Key key})
       : super(key: key);
@@ -22,7 +24,7 @@ class CircleBorderImage extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: innerColor,
         shape: BoxShape.circle,
         border: Border.all(
           color: circleColor,
