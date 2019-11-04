@@ -1,8 +1,8 @@
+import 'package:drilonrecica_github_io/content_container.dart';
 import 'package:drilonrecica_github_io/responsive_layout.dart';
-import 'package:drilonrecica_github_io/main_large_child.dart';
-import 'package:drilonrecica_github_io/main_medium_child.dart';
-import 'package:drilonrecica_github_io/main_small_child.dart';
 import 'package:flutter/material.dart';
+
+import 'link_util.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,13 +28,72 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var flutterLinkTextDecoration = TextDecoration.none;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ResponsiveLayout(
-        largeChild: LargeBody(),
-        mediumChild: MediumBody(),
-        smallChild: SmallBody(),
+      body: Stack(
+        children: <Widget>[
+          Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Image.asset(
+                    "assets/images/prishtina.jpg",
+                    fit: BoxFit.cover,
+                  ),
+                )
+              ]),
+          Container(
+            color: Color.fromRGBO(0, 0, 0, 0.60),
+          ),
+          Padding(
+            padding: EdgeInsets.all(64.0),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: MouseRegion(
+                onEnter: (onHover) {
+                  setState(() {
+                    flutterLinkTextDecoration = TextDecoration.underline;
+                  });
+                },
+                onExit: (onHover) {
+                  setState(() {
+                    flutterLinkTextDecoration = TextDecoration.none;
+                  });
+                },
+                child: InkWell(
+                  onTap: () {
+                    UrlUtil.openLink("https://flutter.dev/web", "");
+                  },
+                  child: Text(
+                    "Made with Flutter Web",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold,
+                      decoration: flutterLinkTextDecoration,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ResponsiveLayout(
+            largeChild: ContentContainer(
+              screenSize: ScreenSize.large,
+            ),
+            mediumChild: ContentContainer(
+              screenSize: ScreenSize.medium,
+            ),
+            smallChild: ContentContainer(
+              screenSize: ScreenSize.small,
+            ),
+          ),
+        ],
       ),
     );
   }
