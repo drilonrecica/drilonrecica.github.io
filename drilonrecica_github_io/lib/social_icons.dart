@@ -1,8 +1,7 @@
-import 'package:drilonrecica_github_io/content_container.dart';
-import 'package:drilonrecica_github_io/social_data_util.dart';
-import 'package:drilonrecica_github_io/social_icon.dart';
+import 'content_container.dart';
+import 'util/social_data_util.dart';
+import 'social_icon.dart';
 import 'package:flutter/material.dart';
-
 import 'social_data.dart';
 
 class SocialIconsRow extends StatefulWidget {
@@ -19,6 +18,8 @@ class _SocialIconsRowState extends State<SocialIconsRow> {
   List<Widget> socialWidgetList = List<Widget>();
 
   _fillList() {
+    socialWidgetList.clear();
+
     var socialDataList =
         SocialDataUtil(widget.socialIconSize).getSocialDataList();
 
@@ -34,42 +35,37 @@ class _SocialIconsRowState extends State<SocialIconsRow> {
   }
 
   Widget _getCorrectRowWidgets(ScreenSize screenSize) {
+    _fillList();
+    var listLength = socialWidgetList.length;
+    var size;
+    var chunks = [];
     if (screenSize == ScreenSize.small) {
-      return Column(
-        children: <Widget>[
+      size = 3;
+    } else {
+      size = 6;
+    }
+    for (int i = 0; i < listLength; i += size) {
+      var end = (i + size < listLength) ? i + size : listLength;
+      chunks.add(socialWidgetList.sublist(i, end));
+    }
+
+    for (int i = 0; i < chunks.length; i++) {}
+
+    return Column(
+      children: <Widget>[
+        for (int i = 0; i < chunks.length; i++)
           Row(
             children: <Widget>[
-              socialWidgetList[0],
-              socialWidgetList[1],
-              socialWidgetList[2],
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              socialWidgetList[3],
-              socialWidgetList[4],
-              socialWidgetList[5],
+              // for (int j = 0; j < chunks[i].length; j++) socialWidgetList[j]
+              for (int j = 0; j < chunks[i].length; j++) chunks[i][j]
             ],
           )
-        ],
-      );
-    } else {
-      return Row(
-        children: <Widget>[
-          socialWidgetList[0],
-          socialWidgetList[1],
-          socialWidgetList[2],
-          socialWidgetList[3],
-          socialWidgetList[4],
-          socialWidgetList[5],
-        ],
-      );
-    }
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    _fillList();
     return Padding(
       padding: EdgeInsets.only(top: 32),
       child: _getCorrectRowWidgets(widget.screenSize),

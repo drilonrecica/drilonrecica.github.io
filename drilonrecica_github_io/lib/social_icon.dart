@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'circle_border_image.dart';
-import 'link_util.dart';
+import 'util/link_util.dart';
 
 class SocialIcon extends StatefulWidget {
   const SocialIcon(

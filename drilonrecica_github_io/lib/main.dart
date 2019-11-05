@@ -1,8 +1,8 @@
-import 'package:drilonrecica_github_io/content_container.dart';
-import 'package:drilonrecica_github_io/responsive_layout.dart';
+import 'content_container.dart';
+import 'responsive_layout.dart';
 import 'package:flutter/material.dart';
 
-import 'link_util.dart';
+import 'util/link_util.dart';
 
 void main() => runApp(MyApp());
 
