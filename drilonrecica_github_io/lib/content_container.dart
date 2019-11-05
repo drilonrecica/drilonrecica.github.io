@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'show_up.dart';
 import 'social_icons.dart';
 
 enum ScreenSize { small, medium, large }
@@ -35,7 +36,7 @@ class _ContentContainerState extends State<ContentContainer> {
       subTitleFontSize = 16.0;
     } else if (widget.screenSize == ScreenSize.medium) {
       subtitleText =
-      "Android App Developer, Tech Enthusiast, Electronics Hobbyist";
+          "Android App Developer, Tech Enthusiast, Electronics Hobbyist";
       circleAvatarMargin = 112.0;
       circleAvatarRadius = 80.0;
       socialIconSize = 56.0;
@@ -45,7 +46,7 @@ class _ContentContainerState extends State<ContentContainer> {
       subTitleFontSize = 24.0;
     } else {
       subtitleText =
-      "Android App Developer, Tech Enthusiast, Electronics Hobbyist";
+          "Android App Developer, Tech Enthusiast, Electronics Hobbyist";
       circleAvatarMargin = 128.0;
       circleAvatarRadius = 88.0;
       socialIconSize = 64.0;
@@ -70,44 +71,56 @@ class _ContentContainerState extends State<ContentContainer> {
               children: <Widget>[
                 Container(
                     margin: EdgeInsets.only(top: circleAvatarMargin),
-                    child: CircleAvatar(
-                        radius: circleAvatarRadius,
-                        backgroundImage: NetworkImage(
-                            "https://avatars0.githubusercontent.com/u/6892529"))),
+                    child: ShowUp(
+                      delay: 500,
+                                          child: CircleAvatar(
+                          radius: circleAvatarRadius,
+                          backgroundImage: NetworkImage(
+                              "https://avatars0.githubusercontent.com/u/6892529")),
+                    )),
                 Container(
                   margin: EdgeInsets.only(top: titleMargin),
-                  child: Text("I'm Drilon Reçica.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: titleFontSize,
-                          color: Colors.white,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.bold)),
+                  child: ShowUp(
+                    delay: 1000,
+                    child: Text("I'm Drilon Reçica.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: titleFontSize,
+                            color: Colors.white,
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: subTitleMargin),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: subTitleFontSize,
-                        fontFamily: "Roboto",
-                        color: Colors.grey,
+                  child: ShowUp(
+                    delay: 1500,
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: subTitleFontSize,
+                          fontFamily: "Roboto",
+                          color: Colors.grey,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: subtitleText,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: "Roboto",
+                                  color: Colors.white)),
+                        ],
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: subtitleText,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Roboto",
-                                color: Colors.white)),
-                      ],
                     ),
                   ),
                 ),
-                SocialIconsRow(
-                  socialIconSize: socialIconSize,
-                  screenSize: widget.screenSize,
+                ShowUp(
+                  delay: 2000,
+                                  child: SocialIconsRow(
+                    socialIconSize: socialIconSize,
+                    screenSize: widget.screenSize,
+                  ),
                 ),
               ],
             )

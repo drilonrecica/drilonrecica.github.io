@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ResponsiveLayout extends StatelessWidget {
+class ResponsiveLayout extends StatefulWidget {
   const ResponsiveLayout({
     Key key,
     @required this.largeChild,
@@ -14,13 +14,26 @@ class ResponsiveLayout extends StatelessWidget {
   final Widget smallChild;
 
   @override
+  _ResponsiveLayoutState createState() => _ResponsiveLayoutState();
+}
+
+class _ResponsiveLayoutState extends State<ResponsiveLayout> {
+  @override
   Widget build(BuildContext context) {
     if (MediaQuery.of(context).size.width > 1200) {
-      return largeChild;
+      return widget.largeChild;
     } else if (MediaQuery.of(context).size.width < 800) {
-      return smallChild;
+      if (widget.smallChild == null) {
+        return widget.largeChild;
+      } else {
+        return widget.smallChild;
+      }
     } else {
-      return mediumChild;
+      if (widget.mediumChild == null) {
+        return widget.largeChild;
+      } else {
+        return widget.mediumChild;
+      }
     }
   }
 }
