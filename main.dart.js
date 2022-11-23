@@ -34013,10 +34013,10 @@ u=this.a.c
 t=H.b([],[A.dD])
 t.push(new A.dD(u,C.n9,"https://www.github.com/drilonrecica",q))
 t.push(new A.dD(u,C.nc,"https://stackoverflow.com/users/3392276",q))
-t.push(new A.dD(u,C.ne,"mailto:github@drilon.recica.com",q))
+t.push(new A.dD(u,C.ne,"mailto:drilonrecica.dev@gmail.com",q))
 t.push(new A.dD(u,C.nd,"https://twitter.com/drilonre",q))
-t.push(new A.dD(u,C.nb,"https://facebook.com/iamdrilon",q))
-t.push(new A.dD(u,C.na,"https://www.instagram.com/iamdrilonre",q))
+t.push(new A.dD(u,C.nb,"https://facebook.com/drilon.recica.3",q))
+t.push(new A.dD(u,C.na,"https://www.instagram.com/recicadrilon",q))
 for(s=0;s<t.length;++s){r=t[s]
 p.push(new X.oO(r.a,r.b,r.c,r.d,null))}},
 zK:function(a){var u,t,s,r,q,p,o,n,m,l
