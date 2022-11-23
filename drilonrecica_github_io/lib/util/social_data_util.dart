@@ -19,7 +19,7 @@ class SocialDataUtil {
     _socialDataList.add(SocialData(
         socialIconSize: socialIconSize,
         icon: Icons.email,
-        socialUrl: "mailto:github@drilon.recica.com",
+        socialUrl: "mailto:drilonrecica.dev@gmail.com",
         socialName: "Drilon's Instagram"));
     _socialDataList.add(SocialData(
         socialIconSize: socialIconSize,
@@ -29,12 +29,12 @@ class SocialDataUtil {
     _socialDataList.add(SocialData(
         socialIconSize: socialIconSize,
         icon: FontAwesomeIcons.facebookF,
-        socialUrl: "https://facebook.com/iamdrilon",
+        socialUrl: "https://facebook.com/drilon.recica.3",
         socialName: "Drilon's Instagram"));
     _socialDataList.add(SocialData(
         socialIconSize: socialIconSize,
         icon: FontAwesomeIcons.instagram,
-        socialUrl: "https://www.instagram.com/iamdrilonre",
+        socialUrl: "https://www.instagram.com/recicadrilon",
         socialName: "Drilon's Instagram"));
   }
 
