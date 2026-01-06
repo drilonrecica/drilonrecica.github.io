@@ -1,25 +1,43 @@
-# FrontCover of drilonrecica.github.io
+# Astro Starter Kit: Minimal
 
-This is my Github.io Landing Page developed with Flutter Web v.1.10
+```sh
+npm create astro@latest -- --template minimal
+```
 
-If you want to take a look at the Flutter project and code, you can find it in the "drilonrecica_github_io" directory
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-The site is also responsive so it can be correctly displayed on different screen sizes.
+## 🚀 Project Structure
 
-Here are some screenshots of how the page looks (as of 02.11.2019):
+Inside of your Astro project, you'll see the following folders and files:
 
-![Screenshot](ScreenshotLarge.png)
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-![Screenshot](ScreenshotSmall.png)
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Copyright 2019 Drilon Reçica
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+Any static assets, like images, can be placed in the `public/` directory.
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
