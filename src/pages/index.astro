@@ -233,16 +233,62 @@ import { Stagger } from '../components/motion/Stagger';
 					<h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Expertise</h2>
 				</Reveal>
 				<Stagger client:visible>
-					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-						{[
-							'Backend Systems', 'Cloud Architecture', 'Frontend Dev', 'DevOps',
-							'Database Design', 'API Security', 'Performance', 'AI Integration'
-						].map((skill) => (
-							<div class="glass-card p-6 text-center hover:scale-105 transition-transform duration-300">
-								<span class="text-cyan-400 text-2xl mb-2 block">❖</span>
-								<h4 class="font-medium text-slate-200">{skill}</h4>
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						
+						{/* Item 1: Mobile Architecture */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-blue-500/10 text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
 							</div>
-						))}
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Mobile Architecture</h3>
+							<p class="text-sm text-slate-400">Scalable, modular codebases designed for longevity.</p>
+						</div>
+
+						{/* Item 2: Android & Flutter */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-green-500/10 text-green-400 mb-4 group-hover:bg-green-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Android & Flutter</h3>
+							<p class="text-sm text-slate-400">Native performance & cross-platform efficiency.</p>
+						</div>
+
+						{/* Item 3: Kotlin & Dart */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-orange-500/10 text-orange-400 mb-4 group-hover:bg-orange-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Kotlin & Dart</h3>
+							<p class="text-sm text-slate-400">Type-safe, modern languages for robust applications.</p>
+						</div>
+
+						{/* Item 4: Legacy Refactoring */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-red-500/10 text-red-400 mb-4 group-hover:bg-red-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Legacy Refactoring</h3>
+							<p class="text-sm text-slate-400">Transforming technical debt into modern assets.</p>
+						</div>
+
+						{/* Item 5: Backend Development */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-purple-500/10 text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Backend Development</h3>
+							<p class="text-sm text-slate-400">Building scalable APIs with NestJS & Cloud tools.</p>
+						</div>
+
+						{/* Item 6: Technical Leadership */}
+						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
+							<div class="p-4 rounded-full bg-yellow-500/10 text-yellow-400 mb-4 group-hover:bg-yellow-500/20 transition-colors">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">Technical Leadership</h3>
+							<p class="text-sm text-slate-400">Mentoring teams and driving technical strategy.</p>
+						</div>
+
 					</div>
 				</Stagger>
 			</div>
