@@ -294,6 +294,73 @@ import { Stagger } from '../components/motion/Stagger';
 			</div>
 		</section>
 
+
+		<!-- Tech Stack Micro-Section -->
+		<section id="tech-stack" class="py-16 border-b border-white/5">
+			<div class="container mx-auto px-4 max-w-5xl">
+				<Reveal client:visible>
+					<div class="text-center mb-10">
+						<h2 class="text-2xl font-bold mb-4">Tech Stack I Use</h2>
+						<p class="text-slate-400 text-sm">Tools and technologies I work with daily</p>
+					</div>
+				</Reveal>
+
+				<Stagger client:visible>
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+						
+						{/* Android */}
+						<div>
+							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
+								<span class="w-2 h-2 rounded-full bg-green-400"></span> Android
+							</h3>
+							<div class="flex flex-wrap gap-2">
+								{['Kotlin', 'Coroutines', 'Flow', 'MVVM', 'Compose', 'Retrofit', 'Room'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-green-400/30 transition-colors cursor-default">{tag}</span>
+								))}
+							</div>
+						</div>
+
+						{/* Flutter */}
+						<div>
+							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
+								<span class="w-2 h-2 rounded-full bg-cyan-400"></span> Flutter
+							</h3>
+							<div class="flex flex-wrap gap-2">
+								{['Dart', 'go_router', 'provider', 'dio', 'hive', 'easy_localization', 'revenuecat'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-cyan-400/30 transition-colors cursor-default">{tag}</span>
+								))}
+							</div>
+						</div>
+
+						{/* Backend */}
+						<div>
+							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
+								<span class="w-2 h-2 rounded-full bg-purple-400"></span> Backend
+							</h3>
+							<div class="flex flex-wrap gap-2">
+								{['Deno', 'TypeScript', 'Node.js', 'Go', 'PostgreSQL', 'Redis'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-purple-400/30 transition-colors cursor-default">{tag}</span>
+								))}
+							</div>
+						</div>
+
+						{/* CI/CD & Tools */}
+						<div>
+							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
+								<span class="w-2 h-2 rounded-full bg-orange-400"></span> DevOps
+							</h3>
+							<div class="flex flex-wrap gap-2">
+								{['GitHub Actions', 'GitLab CI', 'Docker', 'Figma', 'Linear'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-orange-400/30 transition-colors cursor-default">{tag}</span>
+								))}
+							</div>
+						</div>
+
+					</div>
+				</Stagger>
+			</div>
+		</section>
+
 		<!-- Projects -->
 		<section id="projects" class="py-24">
 			<div class="container mx-auto px-4 max-w-6xl">
