@@ -12,6 +12,11 @@
     background-attachment: fixed;
   }
 
+  /* Accessibility: Visible Focus States */
+  :focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950;
+  }
+
   h1,
   h2,
   h3,
@@ -74,5 +79,23 @@
   100% {
     transform: translateY(100vh);
     opacity: 0;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scan-line {
+    animation: none !important;
+    display: none;
   }
 }
