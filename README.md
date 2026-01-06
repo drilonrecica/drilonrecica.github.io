@@ -1,43 +1,85 @@
-# Astro Starter Kit: Minimal
+# Drilon Recica - Developer Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
+A high-performance, accessible, and futuristic portfolio website built for a Senior Android & Flutter Engineer.
+
+## Tech Stack
+
+This project uses a modern, lightweight, and performant stack:
+
+-   **Framework**: [Astro](https://astro.build/) (v5) - Zero-JS by default, islands architecture.
+-   **UI Library**: [React](https://react.dev/) - Used for interactive components (Navbar, Animations).
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4 Alpha) - Utility-first styling with a custom design system.
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/) - Complex orchestrations and entering transitions.
+-   **Deployment**: GitHub Actions + GitHub Pages.
+
+## Project Structure
+
+```bash
+/src
+  /components
+    /motion        # Framer Motion layout wrappers (Reveal, Stagger)
+    Navbar.tsx     # React hydrated interaction
+  /layouts
+    Layout.astro   # Main HTML shell, SEO, global styles
+  /pages
+    index.astro    # The single-page application entry point
+  /styles
+    global.css     # Tailwind directives, custom utilities (glass-card, scan-line)
+/public            # Static assets (CV, favicons, OG images)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Getting Started
 
-## 🚀 Project Structure
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/drilonrecica/drilonrecica.github.io.git
+    cd drilonrecica.github.io
+    ```
 
-Inside of your Astro project, you'll see the following folders and files:
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+3.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
+    The site will be available at `http://localhost:4321`.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Customization
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Updating Content
+All content is statically defined in `src/pages/index.astro`. You can update:
+-   **Hero Text**: Modify the `<h1>` and description.
+-   **Experience Cards**: Edit the card props and content directly in the HTML.
+-   **Expertise Grid**: Add or remove grid items.
+-   **Links**: Update `href` attributes for CV, LinkedIn, etc.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Updating Assets
+-   **CV**: Replace `public/Drilon_Recica_CV.pdf`.
+-   **OG Image**: Replace `public/og-image.png`.
+-   **Favicons**: Update files in `public/`.
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+The project is configured to deploy automatically to **GitHub Pages** via **GitHub Actions**.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Workflow
+The workflow is defined in `.github/workflows/deploy.yml`:
+1.  Triggers on push to `master`.
+2.  Sets up Node 20.
+3.  Installs dependencies (`npm ci`).
+4.  Builds the site (`npm run build`).
+5.  Uploads the `dist/` artifact to GitHub Pages.
 
-## 👀 Want to learn more?
+### Important
+Ensure your repository settings are correct:
+1.  Go to **Settings** > **Pages**.
+2.  Set **Source** to **GitHub Actions** (NOT "Deploy from a branch").
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Performance & Accessibility highlights
+-   **Lighthouse**: Target score of 100/100 across board.
+-   **Reduced Motion**: `global.css` automatically disables intensive animations if the user's OS requests reduced motion.
+-   **Responsive**: Fully fluid layout from 320px to 4k.
+-   **SEO**: Full Open Graph and Twitter Card support.
