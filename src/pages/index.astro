@@ -129,18 +129,98 @@ import { Stagger } from '../components/motion/Stagger';
 				</Reveal>
 				<Stagger client:visible>
 					<div class="space-y-8">
-						{/* Placeholder Experience Cards */}
-						{[1, 2, 3].map((item) => (
-							<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group">
-								<div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
-									<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Senior Engineer @ Tech Corp</h3>
-									<span class="text-slate-400 font-mono text-sm">2023 - Present</span>
+						
+						{/* Card 1: Deutsche Bahn */}
+						<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-blue-500">
+							<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+								<div>
+									<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Deutsche Bahn – Wohin Du Willst</h3>
+									<p class="text-slate-400 text-sm mt-1">Senior Android Developer</p>
 								</div>
-								<p class="text-slate-300">
-									Leading development of high-scale distributed systems and mentoring junior developers.
-								</p>
+								<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">Nov 2023 – Present</span>
 							</div>
-						))}
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Modernizing Germany's mobility infrastructure through accessible and scalable mobile solutions.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span><strong>Architecture Migration:</strong> Lead transition from legacy MVP/RxJava to MVVM/Coroutines/Flow, improving maintainability.</span>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span><strong>Accessibility First:</strong> Implemented comprehensive a11y standards for a massive public user base.</span>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span><strong>Modularization:</strong> Decoupled core features to accelerate build times and team velocity.</span>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{['Kotlin', 'Jetpack Compose', 'Coroutines', 'Accessibility'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-500/10 rounded">{tag}</span>
+								))}
+							</div>
+						</div>
+
+						{/* Card 2: Edeka & RMVGo */}
+						<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-yellow-500">
+							<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+								<div>
+									<h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Edeka + RMVGo</h3>
+									<p class="text-slate-400 text-sm mt-1">Senior Android & Flutter Engineer</p>
+								</div>
+								<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">Jun 2020 – Nov 2023</span>
+							</div>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Bridging physical and digital retail experiences and stabilizing critical transit apps.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-yellow-400">▹</span>
+									<span><strong>Edeka Scan & Go:</strong> Engineered seamless physical-to-digital shopping features.</span>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-yellow-400">▹</span>
+									<span><strong>RMVGo Stability:</strong> Stabilized legacy ticketing systems and integrated modern mobility services.</span>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{['Flutter', 'Android', 'RxJava', 'Retail Tech'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-yellow-300 bg-yellow-500/10 rounded">{tag}</span>
+								))}
+							</div>
+						</div>
+
+						{/* Card 3: DeenLabs / Qisara */}
+						<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-purple-500">
+							<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+								<div>
+									<h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">DeenLabs / Qisara</h3>
+									<p class="text-slate-400 text-sm mt-1">Tech Lead & Product Architect</p>
+								</div>
+								<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">2023 – 2024</span>
+							</div>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								End-to-end architecture and leadership for a 0-to-1 SaaS product.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-purple-400">▹</span>
+									<span><strong>Full Lifecycle:</strong> Directed product from concept to deployment.</span>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-purple-400">▹</span>
+									<span><strong>Tech Stack:</strong> Multi-platform Flutter (Web/Mobile) with scalable NestJS backend.</span>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{['Flutter Web', 'NestJS', 'Cloud Architecture', 'SaaS'].map(tag => (
+									<span class="px-2 py-1 text-xs font-mono text-purple-300 bg-purple-500/10 rounded">{tag}</span>
+								))}
+							</div>
+						</div>
+
 					</div>
 				</Stagger>
 			</div>
