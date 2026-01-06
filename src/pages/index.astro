@@ -67,15 +67,57 @@ import { Stagger } from '../components/motion/Stagger';
 		</section>
 
 		<!-- Credibility Bar -->
-		<section id="credibility" class="py-12 border-y border-white/5 bg-white/[0.02]">
-			<div class="container mx-auto px-4 text-center">
-				<p class="text-sm font-mono text-slate-500 mb-6 uppercase tracking-widest">Trusted By</p>
-				<div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-					{/* Placeholders for logos */}
-					{['Google', 'Microsoft', 'Amazon', 'Meta'].map(company => (
-						<div class="text-xl font-bold text-slate-400">{company}</div>
-					))}
-				</div>
+		<section id="credibility" class="py-10 border-y border-white/5 bg-white/[0.02]">
+			<div class="container mx-auto px-4 max-w-7xl">
+				<Stagger client:visible>
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+						
+						{/* Item 1 */}
+						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
+							<div class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+							</div>
+							<div>
+								<h3 class="font-bold text-slate-100">Android since 2012</h3>
+								<p class="text-sm text-slate-400">10k+ downloads on Play Store</p>
+							</div>
+						</div>
+
+						{/* Item 2 */}
+						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
+							<div class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+							</div>
+							<div>
+								<h3 class="font-bold text-slate-100">Legacy → Modern</h3>
+								<p class="text-sm text-slate-400">MVP/RxJava to MVVM/Flow</p>
+							</div>
+						</div>
+
+						{/* Item 3 */}
+						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
+							<div class="p-3 rounded-lg bg-purple-500/10 text-purple-400">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14c1.49-1.08 2-3.65 2-5 0-2.65-2.35-4.57-5-5-3.43-.56-7 4-7 4s-1.43-3.15-4-1C2.35 9.07 4.09 11.45 6 13c1.69 1.37-1 4-1 4H19v-3z"></path></svg>
+							</div>
+							<div>
+								<h3 class="font-bold text-slate-100">Accessibility-led</h3>
+								<p class="text-sm text-slate-400">Complete UI rework (DB)</p>
+							</div>
+						</div>
+
+						{/* Item 4 */}
+						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
+							<div class="p-3 rounded-lg bg-pink-500/10 text-pink-400">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+							</div>
+							<div>
+								<h3 class="font-bold text-slate-100">Tech Lead</h3>
+								<p class="text-sm text-slate-400">End-to-end product (Qisara)</p>
+							</div>
+						</div>
+
+					</div>
+				</Stagger>
 			</div>
 		</section>
 
