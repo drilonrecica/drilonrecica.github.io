@@ -1,66 +1,113 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Navbar } from '../components/Navbar';
-import { Reveal } from '../components/motion/Reveal';
-import { Stagger } from '../components/motion/Stagger';
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar";
+import { Reveal } from "../components/motion/Reveal";
+import { Stagger } from "../components/motion/Stagger";
+import { ProjectTitleLink } from "../components/ProjectTitleLink";
 ---
 
 <Layout title="Drilon Recica | Developer">
 	<Navbar client:load />
-	
+
 	<main class="flex flex-col">
-		
 		<!-- Hero Section -->
-		<section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+		<section
+			id="hero"
+			class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+		>
 			{/* Scan line & scanning grid background */}
 			<div class="absolute inset-0 bg-grid z-0"></div>
 			<div class="absolute inset-0 z-0 pointer-events-none">
-				<div class="h-[20vh] w-full bg-gradient-to-b from-blue-500/10 to-transparent scan-line absolute top-0 blur-3xl"></div>
+				<div
+					class="h-[20vh] w-full bg-gradient-to-b from-blue-500/10 to-transparent scan-line absolute top-0 blur-3xl"
+				>
+				</div>
 			</div>
 
-			<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+			<div
+				class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+			>
 				<Stagger client:load>
-					<div class="glass-card inline-block px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8">
-						<span class="text-blue-400 text-sm font-medium tracking-wide font-mono">AVAILABLE FOR HIRE</span>
+					<div
+						class="glass-card inline-block px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8"
+					>
+						<span
+							class="text-blue-400 text-sm font-medium tracking-wide font-mono"
+							>AVAILABLE FOR HIRE</span
+						>
 					</div>
 
-					<h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+					<h1
+						class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight"
+					>
 						Drilon <span class="gradient-accent">Reçica</span>
 					</h1>
-					
-					<div class="text-xl md:text-2xl text-slate-200 mb-6 font-medium">
-						Senior Android Developer · Flutter Engineer · Mobile Architecture
+
+					<div
+						class="text-xl md:text-2xl text-slate-200 mb-6 font-medium"
+					>
+						Senior Android Developer · Flutter Engineer · Mobile
+						Architecture
 					</div>
 
-					<p class="text-lg text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
-						Specializing in robust Android-first solutions and cross-platform modernization. 
-						I build scalable mobile architectures that stand the test of time.
+					<p
+						class="text-lg text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto"
+					>
+						Specializing in robust Android-first solutions and
+						cross-platform modernization. I build scalable mobile
+						architectures that stand the test of time.
 					</p>
 
 					<div class="flex flex-col sm:flex-row justify-center gap-4">
-						<a 
-							href="/Drilon_Recica_CV.pdf" 
+						<a
+							href="/Drilon_Recica_CV.pdf"
 							class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all hover:scale-105 shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2"
 						>
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+							<svg
+								class="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+								></path></svg
+							>
 							Download CV
 						</a>
-						<a 
-							href="https://github.com/drilonrecica" 
+						<a
+							href="https://github.com/drilonrecica"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="px-8 py-4 glass-card hover:bg-white/10 text-white rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
 						>
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+							<svg
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									fill-rule="evenodd"
+									d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+									clip-rule="evenodd"></path></svg
+							>
 							GitHub
 						</a>
-						<a 
-							href="https://www.linkedin.com/in/drilonrecica" 
-							target="_blank" 
+						<a
+							href="https://www.linkedin.com/in/drilonrecica"
+							target="_blank"
 							rel="noopener noreferrer"
 							class="px-8 py-4 glass-card hover:bg-white/10 text-white rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
 						>
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+							<svg
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+								></path></svg
+							>
 							LinkedIn
 						</a>
 					</div>
@@ -69,55 +116,134 @@ import { Stagger } from '../components/motion/Stagger';
 		</section>
 
 		<!-- Credibility Bar -->
-		<section id="credibility" class="py-10 border-y border-white/5 bg-white/[0.02]">
+		<section
+			id="credibility"
+			class="py-10 border-y border-white/5 bg-white/[0.02]"
+		>
 			<div class="container mx-auto px-4 max-w-7xl">
 				<Stagger client:visible>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-						
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+					>
 						{/* Item 1 */}
-						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
-							<div class="p-3 rounded-lg bg-blue-500/10 text-blue-400">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+						<div
+							class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+						>
+							<div
+								class="p-3 rounded-lg bg-blue-500/10 text-blue-400"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+									></path></svg
+								>
 							</div>
 							<div>
-								<h3 class="font-bold text-slate-100">Android Dev since 2012</h3>
-								<p class="text-sm text-slate-400">1M+ downloads on Play Store</p>
+								<h3 class="font-bold text-slate-100">
+									Android Dev since 2012
+								</h3>
+								<p class="text-sm text-slate-400">
+									1M+ downloads on Play Store
+								</p>
 							</div>
 						</div>
 
 						{/* Item 2 */}
-						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
-							<div class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+						<div
+							class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+						>
+							<div
+								class="p-3 rounded-lg bg-cyan-500/10 text-cyan-400"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+									></path></svg
+								>
 							</div>
 							<div>
-								<h3 class="font-bold text-slate-100">Legacy → Modern</h3>
-								<p class="text-sm text-slate-400">Java/XML to Kotlin/Compose</p>
+								<h3 class="font-bold text-slate-100">
+									Legacy → Modern
+								</h3>
+								<p class="text-sm text-slate-400">
+									Java/XML to Kotlin/Compose
+								</p>
 							</div>
 						</div>
 
 						{/* Item 3 */}
-						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
-							<div class="p-3 rounded-lg bg-purple-500/10 text-purple-400">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14c1.49-1.08 2-3.65 2-5 0-2.65-2.35-4.57-5-5-3.43-.56-7 4-7 4s-1.43-3.15-4-1C2.35 9.07 4.09 11.45 6 13c1.69 1.37-1 4-1 4H19v-3z"></path></svg>
+						<div
+							class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+						>
+							<div
+								class="p-3 rounded-lg bg-purple-500/10 text-purple-400"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 14c1.49-1.08 2-3.65 2-5 0-2.65-2.35-4.57-5-5-3.43-.56-7 4-7 4s-1.43-3.15-4-1C2.35 9.07 4.09 11.45 6 13c1.69 1.37-1 4-1 4H19v-3z"
+									></path></svg
+								>
 							</div>
 							<div>
-								<h3 class="font-bold text-slate-100">Accessibility-led</h3>
-								<p class="text-sm text-slate-400">Complete UI rework according to WCAG</p>
+								<h3 class="font-bold text-slate-100">
+									Accessibility-led
+								</h3>
+								<p class="text-sm text-slate-400">
+									Complete UI rework according to WCAG
+								</p>
 							</div>
 						</div>
 
 						{/* Item 4 */}
-						<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors">
-							<div class="p-3 rounded-lg bg-pink-500/10 text-pink-400">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+						<div
+							class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors"
+						>
+							<div
+								class="p-3 rounded-lg bg-pink-500/10 text-pink-400"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M13 10V3L4 14h7v7l9-11h-7z"
+									></path></svg
+								>
 							</div>
 							<div>
-								<h3 class="font-bold text-slate-100">Tech Lead</h3>
-								<p class="text-sm text-slate-400">Engineered End-to-end product (Qisara)</p>
+								<h3 class="font-bold text-slate-100">
+									Tech Lead
+								</h3>
+								<p class="text-sm text-slate-400">
+									Engineered End-to-end product (Qisara)
+								</p>
 							</div>
 						</div>
-
 					</div>
 				</Stagger>
 			</div>
@@ -129,160 +255,340 @@ import { Stagger } from '../components/motion/Stagger';
 		<section id="experience" class="py-24">
 			<div class="container mx-auto px-4 max-w-5xl">
 				<Reveal client:visible width="100%">
-					<h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Experience Highlights</h2>
+					<h2
+						class="text-3xl md:text-4xl font-bold mb-12 text-center"
+					>
+						Experience Highlights
+					</h2>
 				</Reveal>
 				<Stagger client:visible>
 					<div class="space-y-8">
-						
 						{/* Card 1: Deutsche Bahn */}
-					<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-blue-500">
-						<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-							<div>
-								<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Deutsche Bahn – Wohin Du Willst</h3>
-								<p class="text-slate-400 text-sm mt-1">Senior Android Developer</p>
+						<div
+							class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-blue-500"
+						>
+							<div
+								class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2"
+							>
+								<div>
+									<ProjectTitleLink
+										client:load
+										title="Deutsche Bahn – Wohin Du Willst"
+										projectUrl="https://play.google.com/store/apps/details?id=de.dbregio.wohinduwillst"
+										colorClass="text-blue-400"
+									/>
+									<p class="text-slate-400 text-sm mt-1">
+										Senior Android Developer
+									</p>
+								</div>
+								<span
+									class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded"
+									>Nov 2023 – Present</span
+								>
 							</div>
-							<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">Nov 2023 – Present</span>
-						</div>
-						<p class="text-slate-300 mb-4 leading-relaxed">
-							Modernizing Germany's mobility infrastructure through accessible and scalable mobile solutions.
-						</p>
-						<ul class="space-y-2 text-sm text-slate-400">
-							<li class="flex gap-2">
-								<span class="text-blue-400">▹</span>
-								<span><strong>Architecture Migration:</strong> Lead transition from legacy MVP/RxJava to MVVM/Coroutines/Flow.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-blue-400">▹</span>
-								<span><strong>Accessibility First:</strong> Implemented comprehensive a11y WCAG standards for a massive public user base.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-blue-400">▹</span>
-								<span><strong>Modularization:</strong> Decoupled core features to accelerate build times and team velocity.</span>
-							</li>
-						</ul>
-						<div class="flex flex-wrap gap-2 mt-6">
-							{['Kotlin', 'Jetpack Compose', 'Coroutines', 'Accessibility'].map(tag => (
-								<span class="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-500/10 rounded">{tag}</span>
-							))}
-						</div>
-					</div>
-
-					{/* Card 2: Qisara */}
-					<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-purple-500">
-						<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-							<div>
-								<h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">Qisara (DeenLabs)</h3>
-								<p class="text-slate-400 text-sm mt-1">Tech Lead & Product Architect</p>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Modernizing Germany's mobility infrastructure
+								through accessible and scalable mobile
+								solutions.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span
+										><strong>Architecture Migration:</strong
+										> Lead transition from legacy MVP/RxJava to
+										MVVM/Coroutines/Flow.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span
+										><strong>Accessibility First:</strong> Implemented
+										comprehensive a11y WCAG standards for a massive
+										public user base.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-blue-400">▹</span>
+									<span
+										><strong>Modularization:</strong> Decoupled
+										core features to accelerate build times and
+										team velocity.</span
+									>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{
+									[
+										"Kotlin",
+										"Jetpack Compose",
+										"Coroutines",
+										"Accessibility",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-blue-300 bg-blue-500/10 rounded">
+											{tag}
+										</span>
+									))
+								}
 							</div>
-							<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">2023 – 2024</span>
 						</div>
-						<p class="text-slate-300 mb-4 leading-relaxed">
-							End-to-end architecture and leadership for a 0-to-1 SaaS product.
-						</p>
-						<ul class="space-y-2 text-sm text-slate-400">
-							<li class="flex gap-2">
-								<span class="text-purple-400">▹</span>
-								<span><strong>Full Lifecycle:</strong> Directed product from concept to deployment.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-purple-400">▹</span>
-								<span><strong>Tech Stack:</strong> Multi-platform Flutter (Web/Mobile) with scalable Deno.js backend.</span>
-							</li>
-						</ul>
-						<div class="flex flex-wrap gap-2 mt-6">
-							{['Flutter', 'Deno.js', 'Cloud Architecture', 'SaaS', 'Golang', 'RevenueCat'].map(tag => (
-								<span class="px-2 py-1 text-xs font-mono text-purple-300 bg-purple-500/10 rounded">{tag}</span>
-							))}
-						</div>
-					</div>
 
-					{/* Card 3: Edeka */}
-					<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-yellow-500">
-						<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-							<div>
-								<h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Edeka – Scan & Go</h3>
-								<p class="text-slate-400 text-sm mt-1">Senior Flutter Engineer</p>
+						{/* Card 2: Qisara */}
+						<div
+							class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-purple-500"
+						>
+							<div
+								class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2"
+							>
+								<div>
+									<ProjectTitleLink
+										client:load
+										title="Qisara (DeenLabs)"
+										projectUrl="https://qisara.com/"
+										colorClass="text-purple-400"
+									/>
+									<p class="text-slate-400 text-sm mt-1">
+										Tech Lead & Product Architect
+									</p>
+								</div>
+								<span
+									class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded"
+									>2023 – 2024</span
+								>
 							</div>
-							<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">2021 – 2023</span>
-						</div>
-						<p class="text-slate-300 mb-4 leading-relaxed">
-							Bridging physical and digital retail experiences through innovative mobile solutions.
-						</p>
-						<ul class="space-y-2 text-sm text-slate-400">
-							<li class="flex gap-2">
-								<span class="text-yellow-400">▹</span>
-								<span><strong>Scan & Go:</strong> Engineered seamless physical-to-digital shopping features.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-yellow-400">▹</span>
-								<span><strong>Retail Innovation:</strong> Integrated barcode scanning, payment processing, and loyalty features.</span>
-							</li>
-						</ul>
-						<div class="flex flex-wrap gap-2 mt-6">
-							{['Android', 'Kotlin', 'Jetpack Compose', 'Retail Tech'].map(tag => (
-								<span class="px-2 py-1 text-xs font-mono text-yellow-300 bg-yellow-500/10 rounded">{tag}</span>
-							))}
-						</div>
-					</div>
-
-					{/* Card 4: RMVGo */}
-					<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-cyan-500">
-						<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-							<div>
-								<h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">RMVGo</h3>
-								<p class="text-slate-400 text-sm mt-1">Senior Android Developer</p>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								End-to-end architecture and leadership for a
+								0-to-1 SaaS product.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-purple-400">▹</span>
+									<span
+										><strong>Full Lifecycle:</strong> Directed
+										product from concept to deployment.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-purple-400">▹</span>
+									<span
+										><strong>Tech Stack:</strong> Multi-platform
+										Flutter (Web/Mobile) with scalable Deno.js
+										backend.</span
+									>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{
+									[
+										"Flutter",
+										"Deno.js",
+										"Cloud Architecture",
+										"SaaS",
+										"Golang",
+										"RevenueCat",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-purple-300 bg-purple-500/10 rounded">
+											{tag}
+										</span>
+									))
+								}
 							</div>
-							<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">2020 – 2021</span>
 						</div>
-						<p class="text-slate-300 mb-4 leading-relaxed">
-							Stabilizing and modernizing critical transit applications for the Rhein-Main region.
-						</p>
-						<ul class="space-y-2 text-sm text-slate-400">
-							<li class="flex gap-2">
-								<span class="text-cyan-400">▹</span>
-								<span><strong>Legacy Stabilization:</strong> Stabilized legacy ticketing systems and improved app reliability.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-cyan-400">▹</span>
-								<span><strong>Mobility Services:</strong> Integrated modern mobility services and payment solutions.</span>
-							</li>
-						</ul>
-						<div class="flex flex-wrap gap-2 mt-6">
-							{['Android', 'Kotlin', 'RxJava', 'Mobility'].map(tag => (
-								<span class="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-500/10 rounded">{tag}</span>
-							))}
-						</div>
-					</div>
 
-					{/* Card 5: easyCredit/Fymio & ErgoDirekt */}
-					<div class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-green-500">
-						<div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-							<div>
-								<h3 class="text-xl font-bold text-white group-hover:text-green-400 transition-colors">easyCredit/Fymio & ErgoDirekt</h3>
-								<p class="text-slate-400 text-sm mt-1">Android Developer</p>
+						{/* Card 3: Edeka */}
+						<div
+							class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-yellow-500"
+						>
+							<div
+								class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2"
+							>
+								<div>
+									<ProjectTitleLink
+										client:load
+										title="Edeka – Scan & Go"
+										projectUrl="https://play.google.com/store/apps/details?id=de.edeka.genuss"
+										colorClass="text-yellow-400"
+									/>
+									<p class="text-slate-400 text-sm mt-1">
+										Senior Flutter Engineer
+									</p>
+								</div>
+								<span
+									class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded"
+									>2021 – 2023</span
+								>
 							</div>
-							<span class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded">2018 – 2020</span>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Bridging physical and digital retail experiences
+								through innovative mobile solutions.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-yellow-400">▹</span>
+									<span
+										><strong>Scan & Go:</strong> Engineered seamless
+										physical-to-digital shopping features.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-yellow-400">▹</span>
+									<span
+										><strong>Retail Innovation:</strong> Integrated
+										barcode scanning, payment processing, and
+										loyalty features.</span
+									>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{
+									[
+										"Android",
+										"Kotlin",
+										"Jetpack Compose",
+										"Retail Tech",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-yellow-300 bg-yellow-500/10 rounded">
+											{tag}
+										</span>
+									))
+								}
+							</div>
 						</div>
-						<p class="text-slate-300 mb-4 leading-relaxed">
-							Building secure and user-friendly fintech and insurance mobile applications.
-						</p>
-						<ul class="space-y-2 text-sm text-slate-400">
-							<li class="flex gap-2">
-								<span class="text-green-400">▹</span>
-								<span><strong>FinTech Apps:</strong> Developed secure financial applications with complex business logic.</span>
-							</li>
-							<li class="flex gap-2">
-								<span class="text-green-400">▹</span>
-								<span><strong>Insurance Solutions:</strong> Built user-friendly insurance claim and policy management features.</span>
-							</li>
-						</ul>
-						<div class="flex flex-wrap gap-2 mt-6">
-							{['Android', 'Java', 'Kotlin', 'FinTech'].map(tag => (
-								<span class="px-2 py-1 text-xs font-mono text-green-300 bg-green-500/10 rounded">{tag}</span>
-							))}
-						</div>
-					</div>
 
+						{/* Card 4: RMVGo */}
+						<div
+							class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-cyan-500"
+						>
+							<div
+								class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2"
+							>
+								<div>
+									<ProjectTitleLink
+										client:load
+										title="RMVGo"
+										projectUrl="https://play.google.com/store/apps/details?id=com.cubic.rmvgo"
+										colorClass="text-cyan-400"
+									/>
+									<p class="text-slate-400 text-sm mt-1">
+										Senior Android Developer
+									</p>
+								</div>
+								<span
+									class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded"
+									>2020 – 2021</span
+								>
+							</div>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Stabilizing and modernizing critical transit
+								applications for the Rhein-Main region.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-cyan-400">▹</span>
+									<span
+										><strong>Legacy Stabilization:</strong> Stabilized
+										legacy ticketing systems and improved app
+										reliability.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-cyan-400">▹</span>
+									<span
+										><strong>Mobility Services:</strong> Integrated
+										modern mobility services and payment solutions.</span
+									>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{
+									[
+										"Android",
+										"Kotlin",
+										"RxJava",
+										"Mobility",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-cyan-300 bg-cyan-500/10 rounded">
+											{tag}
+										</span>
+									))
+								}
+							</div>
+						</div>
+
+						{/* Card 5: easyCredit/Fymio & ErgoDirekt */}
+						<div
+							class="glass-card p-6 md:p-8 hover:bg-white/5 transition-colors group border-l-4 border-l-green-500"
+						>
+							<div
+								class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2"
+							>
+								<div>
+									<div
+										class="flex items-center gap-2 flex-wrap"
+									>
+										<ProjectTitleLink
+											client:load
+											title="easyCredit/Fymio"
+											projectUrl="https://appadvice.com/app/fymio-die-smarte-finanzapp/1113006823"
+											colorClass="text-green-400"
+										/>
+										<span
+											class="text-white text-xl font-bold"
+											>&</span
+										>
+										<ProjectTitleLink
+											client:load
+											title="ErgoDirekt"
+											projectUrl="https://play.google.com/store/apps/details?id=de.ergo.app"
+											colorClass="text-green-400"
+										/>
+									</div>
+									<p class="text-slate-400 text-sm mt-1">
+										Android Developer
+									</p>
+								</div>
+								<span
+									class="text-slate-500 font-mono text-xs bg-white/5 px-2 py-1 rounded"
+									>2018 – 2020</span
+								>
+							</div>
+							<p class="text-slate-300 mb-4 leading-relaxed">
+								Building secure and user-friendly fintech and
+								insurance mobile applications.
+							</p>
+							<ul class="space-y-2 text-sm text-slate-400">
+								<li class="flex gap-2">
+									<span class="text-green-400">▹</span>
+									<span
+										><strong>FinTech Apps:</strong> Developed
+										secure financial applications with complex
+										business logic.</span
+									>
+								</li>
+								<li class="flex gap-2">
+									<span class="text-green-400">▹</span>
+									<span
+										><strong>Insurance Solutions:</strong> Built
+										user-friendly insurance claim and policy management
+										features.</span
+									>
+								</li>
+							</ul>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{
+									[
+										"Android",
+										"Java",
+										"Kotlin",
+										"FinTech",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-green-300 bg-green-500/10 rounded">
+											{tag}
+										</span>
+									))
+								}
+							</div>
+						</div>
 					</div>
 				</Stagger>
 			</div>
@@ -294,65 +600,186 @@ import { Stagger } from '../components/motion/Stagger';
 		<section id="expertise" class="py-24 bg-slate-900/30">
 			<div class="container mx-auto px-4 max-w-6xl">
 				<Reveal client:visible width="100%">
-					<h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Expertise</h2>
+					<h2
+						class="text-3xl md:text-4xl font-bold mb-12 text-center"
+					>
+						Expertise
+					</h2>
 				</Reveal>
 				<Stagger client:visible>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+					>
 						{/* Item 1: Mobile Architecture */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-blue-500/10 text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-blue-500/10 text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Mobile Architecture</h3>
-							<p class="text-sm text-slate-400">Scalable, modular codebases designed for longevity.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Mobile Architecture
+							</h3>
+							<p class="text-sm text-slate-400">
+								Scalable, modular codebases designed for
+								longevity.
+							</p>
 						</div>
 
 						{/* Item 2: Android & Flutter */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-green-500/10 text-green-400 mb-4 group-hover:bg-green-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-green-500/10 text-green-400 mb-4 group-hover:bg-green-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Android & Flutter</h3>
-							<p class="text-sm text-slate-400">Native performance & cross-platform efficiency.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Android & Flutter
+							</h3>
+							<p class="text-sm text-slate-400">
+								Native performance & cross-platform efficiency.
+							</p>
 						</div>
 
 						{/* Item 3: Kotlin & Dart */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-orange-500/10 text-orange-400 mb-4 group-hover:bg-orange-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-orange-500/10 text-orange-400 mb-4 group-hover:bg-orange-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Kotlin & Dart</h3>
-							<p class="text-sm text-slate-400">Type-safe, modern languages for robust applications.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Kotlin & Dart
+							</h3>
+							<p class="text-sm text-slate-400">
+								Type-safe, modern languages for robust
+								applications.
+							</p>
 						</div>
 
 						{/* Item 4: Legacy Refactoring */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-red-500/10 text-red-400 mb-4 group-hover:bg-red-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-red-500/10 text-red-400 mb-4 group-hover:bg-red-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Legacy Refactoring</h3>
-							<p class="text-sm text-slate-400">Transforming technical debt into modern assets.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Legacy Refactoring
+							</h3>
+							<p class="text-sm text-slate-400">
+								Transforming technical debt into modern assets.
+							</p>
 						</div>
 
 						{/* Item 5: Backend Development */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-purple-500/10 text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-purple-500/10 text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Backend Development</h3>
-							<p class="text-sm text-slate-400">Building scalable APIs with Go, Deno.js and Cloud tools.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Backend Development
+							</h3>
+							<p class="text-sm text-slate-400">
+								Building scalable APIs with Go, Deno.js and
+								Cloud tools.
+							</p>
 						</div>
 
 						{/* Item 6: Technical Leadership */}
-						<div class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group">
-							<div class="p-4 rounded-full bg-yellow-500/10 text-yellow-400 mb-4 group-hover:bg-yellow-500/20 transition-colors">
-								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+						<div
+							class="glass-card p-6 flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300 group"
+						>
+							<div
+								class="p-4 rounded-full bg-yellow-500/10 text-yellow-400 mb-4 group-hover:bg-yellow-500/20 transition-colors"
+							>
+								<svg
+									class="w-8 h-8"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+									></path></svg
+								>
 							</div>
-							<h3 class="text-lg font-bold text-slate-100 mb-2">Technical Leadership</h3>
-							<p class="text-sm text-slate-400">Mentoring teams and driving technical strategy.</p>
+							<h3 class="text-lg font-bold text-slate-100 mb-2">
+								Technical Leadership
+							</h3>
+							<p class="text-sm text-slate-400">
+								Mentoring teams and driving technical strategy.
+							</p>
 						</div>
-
 					</div>
 				</Stagger>
 			</div>
@@ -365,62 +792,130 @@ import { Stagger } from '../components/motion/Stagger';
 			<div class="container mx-auto px-4 max-w-5xl">
 				<Reveal client:visible width="100%">
 					<div class="text-center mb-10">
-						<h2 class="text-2xl font-bold mb-4">Tech Stack I Use</h2>
-						<p class="text-slate-400 text-sm">Tools and technologies I work with daily</p>
+						<h2 class="text-2xl font-bold mb-4">
+							Tech Stack I Use
+						</h2>
+						<p class="text-slate-400 text-sm">
+							Tools and technologies I work with daily
+						</p>
 					</div>
 				</Reveal>
 
 				<Stagger client:visible>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						
+					<div
+						class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+					>
 						{/* Android */}
 						<div>
-							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
-								<span class="w-2 h-2 rounded-full bg-green-400"></span> Android
+							<h3
+								class="text-slate-200 font-bold mb-4 flex items-center gap-2"
+							>
+								<span class="w-2 h-2 rounded-full bg-green-400"
+								></span> Android
 							</h3>
 							<div class="flex flex-wrap gap-2">
-								{['Kotlin', 'Coroutines', 'Flow', 'MVVM', 'Compose', 'Retrofit', 'Room', 'MVI', 'MVVM'].map(tag => (
-									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-green-400/30 transition-colors cursor-default">{tag}</span>
-								))}
+								{
+									[
+										"Kotlin",
+										"Coroutines",
+										"Flow",
+										"MVVM",
+										"Compose",
+										"Retrofit",
+										"Room",
+										"MVI",
+										"MVVM",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-green-400/30 transition-colors cursor-default">
+											{tag}
+										</span>
+									))
+								}
 							</div>
 						</div>
 
 						{/* Flutter */}
 						<div>
-							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
-								<span class="w-2 h-2 rounded-full bg-cyan-400"></span> Flutter
+							<h3
+								class="text-slate-200 font-bold mb-4 flex items-center gap-2"
+							>
+								<span class="w-2 h-2 rounded-full bg-cyan-400"
+								></span> Flutter
 							</h3>
 							<div class="flex flex-wrap gap-2">
-								{['Dart', 'go_router', 'provider', 'dio', 'hive', 'easy_localization', 'revenuecat', 'iOS', 'android'].map(tag => (
-									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-cyan-400/30 transition-colors cursor-default">{tag}</span>
-								))}
+								{
+									[
+										"Dart",
+										"go_router",
+										"provider",
+										"dio",
+										"hive",
+										"easy_localization",
+										"revenuecat",
+										"iOS",
+										"android",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-cyan-400/30 transition-colors cursor-default">
+											{tag}
+										</span>
+									))
+								}
 							</div>
 						</div>
 
 						{/* Backend */}
 						<div>
-							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
-								<span class="w-2 h-2 rounded-full bg-purple-400"></span> Backend
+							<h3
+								class="text-slate-200 font-bold mb-4 flex items-center gap-2"
+							>
+								<span class="w-2 h-2 rounded-full bg-purple-400"
+								></span> Backend
 							</h3>
 							<div class="flex flex-wrap gap-2">
-								{['Deno', 'TypeScript', 'Node.js', 'Go', 'PostgreSQL', 'Redis', 'SQLite', 'Supabase', 'Pocketbase'].map(tag => (
-									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-purple-400/30 transition-colors cursor-default">{tag}</span>
-								))}
+								{
+									[
+										"Deno",
+										"TypeScript",
+										"Node.js",
+										"Go",
+										"PostgreSQL",
+										"Redis",
+										"SQLite",
+										"Supabase",
+										"Pocketbase",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-purple-400/30 transition-colors cursor-default">
+											{tag}
+										</span>
+									))
+								}
 							</div>
 						</div>
 
 						{/* CI/CD & Tools */}
 						<div>
-							<h3 class="text-slate-200 font-bold mb-4 flex items-center gap-2">
-								<span class="w-2 h-2 rounded-full bg-orange-400"></span> DevOps
+							<h3
+								class="text-slate-200 font-bold mb-4 flex items-center gap-2"
+							>
+								<span class="w-2 h-2 rounded-full bg-orange-400"
+								></span> DevOps
 							</h3>
 							<div class="flex flex-wrap gap-2">
-								{['GitHub Actions', 'GitLab CI', 'Docker', 'Coolify', 'VPS'].map(tag => (
-									<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-orange-400/30 transition-colors cursor-default">{tag}</span>
-								))}
+								{
+									[
+										"GitHub Actions",
+										"GitLab CI",
+										"Docker",
+										"Coolify",
+										"VPS",
+									].map((tag) => (
+										<span class="px-2 py-1 text-xs font-mono text-slate-300 bg-white/5 rounded border border-white/5 hover:border-orange-400/30 transition-colors cursor-default">
+											{tag}
+										</span>
+									))
+								}
 							</div>
 						</div>
-
 					</div>
 				</Stagger>
 			</div>
@@ -452,91 +947,160 @@ import { Stagger } from '../components/motion/Stagger';
 		</section> -->
 
 		<!-- Connect / Footer -->
-		<section id="connect" class="py-24 bg-slate-950 border-t border-white/5">
+		<section
+			id="connect"
+			class="py-24 bg-slate-950 border-t border-white/5"
+		>
 			<div class="container mx-auto px-4 text-center max-w-4xl">
 				<Reveal client:visible width="100%">
-					<h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
+					<h2 class="text-3xl md:text-4xl font-bold mb-6">
+						Let's Connect
+					</h2>
 					<p class="text-slate-400 mb-12 text-lg max-w-2xl mx-auto">
-						I'm easily reachable and always open to discussing new projects, specific problems, or opportunities to be part of your vision.
+						I'm easily reachable and always open to discussing new
+						projects, specific problems, or opportunities to be part
+						of your vision.
 					</p>
 				</Reveal>
 
 				<Stagger client:visible>
 					<div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
-						
 						{/* GitHub */}
-						<a 
-							href="https://www.github.com/drilonrecica" 
-							target="_blank" 
+						<a
+							href="https://www.github.com/drilonrecica"
+							target="_blank"
 							rel="noopener noreferrer"
 							class="glass-card p-6 flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform duration-300 group"
 						>
-							<div class="p-3 rounded-full bg-white/5 text-white group-hover:bg-white/10 transition-colors">
-								<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+							<div
+								class="p-3 rounded-full bg-white/5 text-white group-hover:bg-white/10 transition-colors"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										fill-rule="evenodd"
+										d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+										clip-rule="evenodd"></path></svg
+								>
 							</div>
-							<span class="text-sm font-medium text-slate-300">GitHub</span>
+							<span class="text-sm font-medium text-slate-300"
+								>GitHub</span
+							>
 						</a>
 
 						{/* Stack Overflow */}
-						<a 
-							href="https://stackoverflow.com/users/3392276" 
-							target="_blank" 
+						<a
+							href="https://stackoverflow.com/users/3392276"
+							target="_blank"
 							rel="noopener noreferrer"
 							class="glass-card p-6 flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform duration-300 group"
 						>
-							<div class="p-3 rounded-full bg-orange-500/10 text-orange-400 group-hover:bg-orange-500/20 transition-colors">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+							<div
+								class="p-3 rounded-full bg-orange-500/10 text-orange-400 group-hover:bg-orange-500/20 transition-colors"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+									></path></svg
+								>
 							</div>
-							<span class="text-sm font-medium text-slate-300">StackOverflow</span>
+							<span class="text-sm font-medium text-slate-300"
+								>StackOverflow</span
+							>
 						</a>
 
 						{/* Twitter / X */}
-						<a 
-							href="https://twitter.com/drilonre" 
-							target="_blank" 
+						<a
+							href="https://twitter.com/drilonre"
+							target="_blank"
 							rel="noopener noreferrer"
 							class="glass-card p-6 flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform duration-300 group"
 						>
-							<div class="p-3 rounded-full bg-slate-800 text-white group-hover:bg-slate-700 transition-colors">
-								<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+							<div
+								class="p-3 rounded-full bg-slate-800 text-white group-hover:bg-slate-700 transition-colors"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+									></path></svg
+								>
 							</div>
-							<span class="text-sm font-medium text-slate-300">X (Twitter)</span>
+							<span class="text-sm font-medium text-slate-300"
+								>X (Twitter)</span
+							>
 						</a>
 
 						{/* LinkedIn */}
-						<a 
-							href="https://www.linkedin.com/in/drilonrecica" 
-							target="_blank" 
+						<a
+							href="https://www.linkedin.com/in/drilonrecica"
+							target="_blank"
 							rel="noopener noreferrer"
 							class="glass-card p-6 flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform duration-300 group"
 						>
-							<div class="p-3 rounded-full bg-blue-600/10 text-blue-500 group-hover:bg-blue-600/20 transition-colors">
-								<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+							<div
+								class="p-3 rounded-full bg-blue-600/10 text-blue-500 group-hover:bg-blue-600/20 transition-colors"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+									></path></svg
+								>
 							</div>
-							<span class="text-sm font-medium text-slate-300">LinkedIn</span>
+							<span class="text-sm font-medium text-slate-300"
+								>LinkedIn</span
+							>
 						</a>
 
 						{/* Email */}
-						<a 
-							href="mailto:drilonrecica.dev@gmail.com" 
+						<a
+							href="mailto:drilonrecica.dev@gmail.com"
 							class="glass-card p-6 flex flex-col items-center gap-3 hover:-translate-y-2 transition-transform duration-300 group"
 						>
-							<div class="p-3 rounded-full bg-red-500/10 text-red-400 group-hover:bg-red-500/20 transition-colors">
-								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+							<div
+								class="p-3 rounded-full bg-red-500/10 text-red-400 group-hover:bg-red-500/20 transition-colors"
+							>
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+									></path></svg
+								>
 							</div>
-							<span class="text-sm font-medium text-slate-300">Email Me</span>
+							<span class="text-sm font-medium text-slate-300"
+								>Email Me</span
+							>
 						</a>
-
 					</div>
 
 					<div class="text-center">
 						<p class="text-slate-600 text-sm">
-							© {new Date().getFullYear()} Drilon Recica. All rights reserved.
+							© {new Date().getFullYear()} Drilon Recica. All rights
+							reserved.
 						</p>
 					</div>
 				</Stagger>
 			</div>
 		</section>
-
 	</main>
 </Layout>
