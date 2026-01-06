@@ -16,11 +16,30 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO -->
 		<title>{title}</title>
+		<meta name="description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
+		<meta name="keywords" content="Android, Flutter, Kotlin, Dart, Mobile Developer, Software Engineer, Drilon Recica, Crss-platform" />
+		<meta name="author" content="Drilon Reçica" />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
+		<meta property="og:image" content={new URL('/og-image.png', Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
+		<meta property="twitter:image" content={new URL('/og-image.png', Astro.url)} />
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<slot />
