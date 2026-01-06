@@ -83,3 +83,7 @@ Ensure your repository settings are correct:
 -   **Reduced Motion**: `global.css` automatically disables intensive animations if the user's OS requests reduced motion.
 -   **Responsive**: Fully fluid layout from 320px to 4k.
 -   **SEO**: Full Open Graph and Twitter Card support.
+
+## Credits
+
+This project was built using **Google Antigravity** and the **Gemini 3 Pro Model**.
