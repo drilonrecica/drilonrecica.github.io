@@ -84,8 +84,9 @@ export const experience: Employer[] = [
 			{
 				name: "easyCredit / Fymio",
 				period: "2015 – 2020",
-				summary: "Finance app with complex business logic and strict security requirements.",
-				url: "https://appadvice.com/app/fymio-die-smarte-finanzapp/1113006823",
+				summary:
+					"Finance app with complex business logic and strict security requirements. Withdrawn from the app stores on 31 March 2020, after growing more slowly than its owner had planned for.",
+				url: "https://appstor.io/app/fymio",
 			},
 			{
 				name: "Ergo Direkt",
