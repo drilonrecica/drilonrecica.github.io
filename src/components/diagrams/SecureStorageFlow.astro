@@ -1,0 +1,40 @@
+---
+---
+
+<svg viewBox="0 0 640 230" class="dg" role="img" aria-labelledby="ss-title ss-desc">
+	<title id="ss-title">How secure-storage-android stores a value</title>
+	<desc id="ss-desc">
+		The app hands a value to SecurePreferences. The library encrypts it with a key that is generated and kept inside
+		the Android Keystore, then writes only the encrypted value to SharedPreferences. The key never leaves the
+		Keystore.
+	</desc>
+	<defs>
+		<marker id="ss-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+			<path d="M1 1l8 4-8 4" class="dg-flow"></path>
+		</marker>
+	</defs>
+
+	<rect x="16" y="44" width="130" height="40" class="dg-node"></rect>
+	<text x="81" y="68" text-anchor="middle" class="dg-label">Your app</text>
+
+	<path d="M146 64 H228" class="dg-flow" marker-end="url(#ss-arrow)"></path>
+	<text x="187" y="56" text-anchor="middle" class="dg-soft">setValue()</text>
+
+	<rect x="230" y="44" width="170" height="40" class="dg-node"></rect>
+	<text x="315" y="68" text-anchor="middle" class="dg-label">SecurePreferences</text>
+
+	<path d="M400 64 H482" class="dg-flow" marker-end="url(#ss-arrow)"></path>
+	<text x="441" y="56" text-anchor="middle" class="dg-soft">ciphertext</text>
+
+	<rect x="484" y="44" width="140" height="40" class="dg-node"></rect>
+	<text x="554" y="68" text-anchor="middle" class="dg-label">SharedPreferences</text>
+
+	<path d="M315 84 V146" class="dg-markup" marker-end="url(#ss-arrow)"></path>
+	<text x="325" y="120" class="dg-soft">encrypt / decrypt</text>
+
+	<rect x="196" y="140" width="238" height="70" class="dg-zone"></rect>
+	<rect x="230" y="156" width="170" height="40" class="dg-node"></rect>
+	<text x="315" y="180" text-anchor="middle" class="dg-label">Android Keystore</text>
+	<text x="444" y="172" class="dg-soft">key is generated here</text>
+	<text x="444" y="186" class="dg-soft">and never leaves</text>
+</svg>

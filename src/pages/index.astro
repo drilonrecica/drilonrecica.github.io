@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import SheetSection from '../components/SheetSection.astro';
 import WorkCard from '../components/WorkCard.astro';
@@ -8,6 +9,7 @@ import LegacyToModular from '../components/diagrams/LegacyToModular.astro';
 import { profile } from '../data/profile';
 import { stackGroups } from '../data/experience';
 import { getWork } from '../data/work';
+import portrait from '../assets/portrait.jpg';
 
 const work = await getWork();
 
@@ -66,7 +68,7 @@ const principles = [
 
 	{
 		work.length > 0 && (
-			<SheetSection id="work" title="Selected work" note="Three projects in detail: the problem, what I did and what changed.">
+			<SheetSection id="work" title="Selected work" note="Three projects in detail: the challenge, what I did and what changed.">
 				<div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
 					{work.map((entry) => <WorkCard entry={entry} />)}
 				</div>
@@ -112,13 +114,15 @@ const principles = [
 				</p>
 				<p class="note">I work in {profile.languages.join(', ')}.</p>
 			</div>
-			{
-				profile.photo && (
-					<figure class="framed m-0 w-44 self-start p-2">
-						<img src={profile.photo} alt={`Portrait of ${profile.name}`} width="320" height="400" class="block w-full" loading="lazy" />
-					</figure>
-				)
-			}
+			<figure class="framed m-0 w-40 self-start p-2 max-sm:order-first sm:w-52">
+				<Image
+					src={portrait}
+					alt={`Portrait of ${profile.name}`}
+					widths={[208, 416]}
+					sizes="208px"
+					class="block w-full"
+				/>
+			</figure>
 		</div>
 	</SheetSection>
 

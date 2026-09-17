@@ -1,0 +1,35 @@
+---
+---
+
+<svg viewBox="0 0 640 250" class="dg" role="img" aria-labelledby="qs-title qs-desc">
+	<title id="qs-title">Qisara system overview</title>
+	<desc id="qs-desc">
+		One Flutter codebase produces the iOS and Android apps. Both talk over HTTPS to an API written in Deno and
+		TypeScript, which runs on a VPS and is deployed with Coolify. Subscriptions are handled through RevenueCat.
+	</desc>
+	<defs>
+		<marker id="qs-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+			<path d="M1 1l8 4-8 4" class="dg-flow"></path>
+		</marker>
+	</defs>
+
+	<rect x="16" y="28" width="230" height="130" class="dg-zone"></rect>
+	<text x="26" y="20" class="dg-soft">Flutter, one codebase</text>
+	<rect x="36" y="50" width="190" height="34" class="dg-node"></rect>
+	<text x="131" y="71" text-anchor="middle" class="dg-label">iOS app</text>
+	<rect x="36" y="104" width="190" height="34" class="dg-node"></rect>
+	<text x="131" y="125" text-anchor="middle" class="dg-label">Android app</text>
+
+	<path d="M246 93 H392" class="dg-flow" marker-end="url(#qs-arrow)"></path>
+	<text x="319" y="84" text-anchor="middle" class="dg-soft">HTTPS</text>
+
+	<rect x="394" y="28" width="230" height="130" class="dg-zone"></rect>
+	<text x="404" y="20" class="dg-soft">VPS, deployed with Coolify</text>
+	<rect x="414" y="70" width="190" height="46" class="dg-node"></rect>
+	<text x="509" y="90" text-anchor="middle" class="dg-label">API</text>
+	<text x="509" y="106" text-anchor="middle" class="dg-soft">Deno + TypeScript</text>
+
+	<path d="M131 158 V196" class="dg-flow" marker-end="url(#qs-arrow)"></path>
+	<rect x="36" y="198" width="190" height="34" class="dg-node"></rect>
+	<text x="131" y="219" text-anchor="middle" class="dg-label">RevenueCat: subscriptions</text>
+</svg>

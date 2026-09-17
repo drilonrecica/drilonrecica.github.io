@@ -1,40 +1,39 @@
 ---
 title: "Modernizing Wohin Du Willst for Deutsche Bahn"
-client: "Deutsche Bahn (DB Regio), via AppDev GmbH"
+client: "DB Regio (Deutsche Bahn), via AppDev GmbH"
 role: "Senior Android Developer"
 period: "Nov 2023 – Present"
 platform: "Android"
 stack: ["Kotlin", "Jetpack Compose", "Coroutines", "Flow", "MVVM"]
 links:
+  - label: "wohin-du-willst.de"
+    href: "https://wohin-du-willst.de/"
   - label: "Wohin Du Willst on Google Play"
     href: "https://play.google.com/store/apps/details?id=de.dbregio.wohinduwillst"
-summary: "Moving a public transport app from MVP and RxJava to MVVM with Coroutines and Flow, while reworking the UI to meet WCAG."
+summary: "Moving the Android app behind rural mobility in Germany onto a modern architecture and an accessible UI, while it keeps shipping."
 order: 1
-draft: true
 ---
 
 ## Context
 
-Wohin Du Willst is Deutsche Bahn's regional mobility app. I joined the Android team in November 2023, working in a cross-disciplinary agile team with iOS and backend engineers.
+Wohin Du Willst is DB Regio's mobility app for rural Germany. It plans a trip in two steps and combines bus, train, shared taxi and ride-sharing in one place, for regions where the next connection is not always obvious.
 
-{/* INTERVIEW: What does the app do for a rider in one sentence? Team size? How many users or installs can we state publicly? */}
+I joined the Android team in November 2023, working in a cross-disciplinary agile team with iOS and backend colleagues.
 
-## Problem
+## Challenge
 
-The codebase was built on MVP with RxJava.
+The app has served riders for years, and its foundations come from an earlier generation of Android development: MVP with RxJava. Those were sound choices when they were made. The platform has since moved on to Kotlin Coroutines, Flow and Jetpack Compose, and keeping a long-lived app current means moving with it.
 
-{/* INTERVIEW: What did that cost the team day to day? Build times, bugs, onboarding, inability to adopt Compose? What triggered the decision to migrate? What was wrong with accessibility before the rework? */}
+That move has to happen in a product people use to plan real journeys, so it cannot pause the roadmap. Alongside it, the app needed to meet today's accessibility expectations for a public service.
 
 ## Approach
 
-I played a key role in migrating the architecture from MVP/RxJava to MVVM with Coroutines and Flow, in improving accessibility and UI quality to WCAG standards, and in splitting the app into modules.
+A rewrite would have stopped delivery, so the app is migrated instead: from MVP and RxJava to MVVM with Coroutines and Flow one area at a time. My focus is the migration and refactoring work, alongside maintenance, while feature development continues in parallel, so releases never stop.
 
-{/* INTERVIEW: How was the migration sequenced while features kept shipping? Which decisions were yours? How were old and new code bridged? How was accessibility tested (TalkBack, audits, users)? What was modularized first and why? */}
+Splitting the app into modules gives each migrated part a clear boundary and keeps dependencies pointing in one direction, which makes every later change, including library updates, easier and safer.
+
+Accessibility is treated as part of the architecture rather than a finishing touch: a rework of the UI against WCAG.
 
 ## Outcome
 
-{/* INTERVIEW: Any numbers we may publish: build time, crash rate, accessibility audit result, share of code migrated, release cadence. If none, what changed qualitatively for the team and for riders? */}
-
-## Reflection
-
-{/* INTERVIEW: What would you do differently? What did this project teach you? */}
+The work is ongoing. The app is moving, piece by piece, onto an architecture that is straightforward to maintain and extend, its UI has been reworked to WCAG, and features have kept shipping throughout.

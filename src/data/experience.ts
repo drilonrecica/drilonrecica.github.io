@@ -72,7 +72,7 @@ export const experience: Employer[] = [
 		],
 	},
 	{
-		company: "Adrsys GmbH & Co. KG",
+		company: "adorsys GmbH & Co. KG",
 		role: "Senior Android Developer",
 		period: "2015 – 2020",
 		start: 2015,
@@ -94,9 +94,10 @@ export const experience: Employer[] = [
 				url: "https://play.google.com/store/apps/details?id=de.ergo.app",
 			},
 			{
-				name: "Open-source Android security library",
+				name: "secure-storage-android",
 				period: "2015 – 2020",
-				summary: "Built and maintained alongside client work.",
+				summary: "Open-source library for storing tokens and credentials encrypted on Android. 375 GitHub stars.",
+				url: "https://github.com/adorsys/secure-storage-android",
 				caseStudy: "security-library",
 			},
 		],

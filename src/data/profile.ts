@@ -9,8 +9,6 @@ export const profile = {
 	title: "Senior Mobile Engineer",
 	email: "drilonrecica.dev@gmail.com",
 	cvPdf: "/Drilon_Recica_CV.pdf",
-	/** Path under `public/`, e.g. "/drilon-recica.jpg". The About photo is omitted until this is set. */
-	photo: undefined as string | undefined,
 	description:
 		"Senior mobile engineer working with Android, Flutter and backend systems since 2012. I modernize large production apps and build products from zero.",
 	headline: "I modernize mobile apps that millions of people rely on.",

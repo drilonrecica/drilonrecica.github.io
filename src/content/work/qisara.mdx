@@ -1,5 +1,5 @@
 ---
-title: "Qisara, from idea to launch"
+title: "Qisara, from idea to both app stores in six months"
 client: "DeenLabs GmbH"
 role: "Tech Lead & Senior Software Engineer"
 period: "2023 – 2024"
@@ -8,31 +8,37 @@ stack: ["Flutter", "Dart", "Deno", "TypeScript", "Coolify", "RevenueCat"]
 links:
   - label: "qisara.com"
     href: "https://qisara.com/"
-summary: "Full technical ownership of a new mobile product: the Flutter app, a Deno backend and the infrastructure it runs on."
+summary: "Full technical ownership of a children's storytelling product: the apps, the backend and the infrastructure they run on."
 order: 2
-draft: true
 ---
+
+import Figure from '../../components/Figure.astro';
+import QisaraSystem from '../../components/diagrams/QisaraSystem.astro';
 
 ## Context
 
-As an early member of the startup DeenLabs, I led the ideation, architecture and end-to-end implementation of Qisara, a mobile app product.
+Qisara creates personalized Islamic bedtime stories for children. A parent sets up a profile with the child's name, age, interests and language, and the app generates stories around it, with small games that reinforce each story's lesson. It has no ads and supports more than 19 languages.
 
-{/* INTERVIEW: What is Qisara, in one sentence a stranger would understand? Who is it for? Team size and your co-founders' roles? */}
+I joined DeenLabs as an early member of the startup and led the product technically from the first idea: architecture, implementation, and everything it runs on.
 
-## Problem
+## Challenge
 
-{/* INTERVIEW: What constraints shaped the build: budget, timeline, team of one? Why Flutter, why Deno, why self-hosting on a VPS with Coolify instead of a managed cloud? */}
+The product needed an iOS app, an Android app, a backend and somewhere to run it, and as an early-stage startup we wanted it in families' hands quickly without lowering the quality bar. With the whole stack in my hands, every technology choice had to answer one question: what lets me move fastest and still trust the result?
 
 ## Approach
 
-I designed and built the backend with Deno and TypeScript, set up the infrastructure on a VPS using Coolify, and developed the Flutter app from scratch. I defined the overall application architecture and implemented the core features: navigation, localization, payments and persistence.
+For the apps I chose Flutter. I already knew it well, and one codebase for both platforms roughly halves the work of reaching iOS and Android.
 
-{/* INTERVIEW: What does the architecture look like (we will draw it)? Which decision are you proudest of? What was hardest: payments, localization, store review? */}
+My background is mobile first, so I chose the backend stack with care. I decided to stay in the JavaScript ecosystem and weighed Node.js against Deno. I chose Deno for two reasons: TypeScript is strict and built in rather than bolted on, and its security model is deny-by-default, so the runtime only gets the permissions it is explicitly given. A platform that refuses to do unsafe things by accident is worth a lot when you own the whole system.
+
+Everything runs on a VPS that I set up with Coolify, which kept hosting simple and under our own control.
+
+<Figure number={1} caption="the whole system, from the apps to the server.">
+	<QisaraSystem />
+</Figure>
+
+Inside the app I defined the architecture and built the core features: navigation, localization, payments and persistence.
 
 ## Outcome
 
-{/* INTERVIEW: Did it launch on both stores? Time from first commit to launch? Users, revenue, ratings, anything publishable? What is its status today? */}
-
-## Reflection
-
-{/* INTERVIEW: What would you do differently on the next 0-to-1 product? */}
+After about six months of focused work, the backend and both apps were finished, and Qisara launched on the App Store and Google Play. It is still online today and has several thousand downloads.

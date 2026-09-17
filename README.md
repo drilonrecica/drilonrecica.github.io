@@ -1,89 +1,64 @@
-# Drilon Recica - Developer Portfolio
+# Drilon Reçica - Portfolio
 
-A high-performance, accessible, and futuristic portfolio website built for a Senior Android & Flutter Engineer.
+Personal site of a senior mobile engineer: a landing page, three case studies and a printable CV, designed as a set of technical drawings.
 
 ## Tech Stack
 
-This project uses a modern, lightweight, and performant stack:
-
--   **Framework**: [Astro](https://astro.build/) (v5) - Zero-JS by default, islands architecture.
--   **UI Library**: [React](https://react.dev/) - Used for interactive components (Navbar, Animations).
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4 Alpha) - Utility-first styling with a custom design system.
--   **Animations**: [Framer Motion](https://www.framer.com/motion/) - Complex orchestrations and entering transitions.
+-   **Framework**: [Astro](https://astro.build/) (v6) - static output, no UI framework. The only shipped JavaScript is Astro's view-transition router plus a few lines for the theme toggle and mobile menu.
+-   **Content**: MDX content collection for case studies, typed data files for everything else.
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4) with design tokens as CSS custom properties; light and dark themes.
+-   **Fonts**: IBM Plex Sans and IBM Plex Mono, self-hosted via Fontsource.
 -   **Deployment**: GitHub Actions + GitHub Pages.
 
 ## Project Structure
 
 ```bash
 /src
-  /components
-    /motion        # Framer Motion layout wrappers (Reveal, Stagger)
-    Navbar.tsx     # React hydrated interaction
+  /assets            # Images processed by Astro (portrait)
+  /components        # Nav, ThemeToggle, TitleBlock, SheetSection, Timeline, WorkCard, Figure, Icon
+    /diagrams        # Inline SVG diagrams (hero and case studies)
+  /content/work      # Case studies (MDX)
+  /data
+    profile.ts       # Name, headline, bio, links, proof facts, education
+    experience.ts    # Employers, projects, dates, tools - feeds the home page AND /cv
+    work.ts          # Case-study query (drafts are dev-only)
   /layouts
-    Layout.astro   # Main HTML shell, SEO, global styles
+    Layout.astro     # HTML shell, SEO, JSON-LD, theme bootstrap
   /pages
-    index.astro    # The single-page application entry point
+    index.astro      # Home
+    work/[slug].astro
+    cv.astro         # Web CV with print stylesheet
+    404.astro
   /styles
-    global.css     # Tailwind directives, custom utilities (glass-card, scan-line)
-/public            # Static assets (CV, favicons, OG images)
+    global.css       # Tokens, base styles, components, diagram classes, print rules
+  content.config.ts  # Schema for the work collection
+/public              # CV PDF, favicons, OG image, robots.txt
+/docs                # Design spec for the redesign
 ```
 
 ## Getting Started
 
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/drilonrecica/drilonrecica.github.io.git
-    cd drilonrecica.github.io
-    ```
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npx astro check    # type-check
+npm run build      # production build into dist/
+```
 
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+## Updating Content
 
-3.  **Run Development Server**:
-    ```bash
-    npm run dev
-    ```
-    The site will be available at `http://localhost:4321`.
-
-## Customization
-
-### Updating Content
-All content is statically defined in `src/pages/index.astro`. You can update:
--   **Hero Text**: Modify the `<h1>` and description.
--   **Experience Cards**: Edit the card props and content directly in the HTML.
--   **Expertise Grid**: Add or remove grid items.
--   **Links**: Update `href` attributes for CV, LinkedIn, etc.
-
-### Updating Assets
--   **CV**: Replace `public/Drilon_Recica_CV.pdf`.
--   **OG Image**: Replace `public/og-image.png`.
--   **Favicons**: Update files in `public/`.
+-   **Roles, dates, projects, tools**: edit `src/data/experience.ts`. The home timeline and `/cv` both read from it, so they cannot drift apart.
+-   **Headline, bio, links, proof facts**: edit `src/data/profile.ts`.
+-   **Case studies**: add or edit an `.mdx` file in `src/content/work/`. Set `draft: true` to keep one out of production builds while you write; drafts still show in `npm run dev`.
+-   **CV PDF**: replace `public/Drilon_Recica_CV.pdf`.
+-   **OG image**: replace `public/og-image.png` (1200x630).
 
 ## Deployment
 
-The project is configured to deploy automatically to **GitHub Pages** via **GitHub Actions**.
+Pushing to `master` deploys to GitHub Pages through `.github/workflows/deploy.yml`. In the repository settings, **Pages > Source** must be set to **GitHub Actions**.
 
-### Workflow
-The workflow is defined in `.github/workflows/deploy.yml`:
-1.  Triggers on push to `master`.
-2.  Sets up Node 20.
-3.  Installs dependencies (`npm ci`).
-4.  Builds the site (`npm run build`).
-5.  Uploads the `dist/` artifact to GitHub Pages.
+## Quality bar
 
-### Important
-Ensure your repository settings are correct:
-1.  Go to **Settings** > **Pages**.
-2.  Set **Source** to **GitHub Actions** (NOT "Deploy from a branch").
-
-## Performance & Accessibility highlights
--   **Lighthouse**: Target score of 100/100 across board.
--   **Reduced Motion**: `global.css` automatically disables intensive animations if the user's OS requests reduced motion.
--   **Responsive**: Fully fluid layout from 320px to 4k.
--   **SEO**: Full Open Graph and Twitter Card support.
-
-## Credits
-
-This project was built using **Google Antigravity** and the **Gemini 3 Pro Model**.
+-   Lighthouse: 100 accessibility, 100 best practices, 100 SEO.
+-   WCAG AA contrast in both themes, visible keyboard focus, skip link, reduced-motion support.
+-   Responsive from 320px up; `/cv` prints cleanly to A4.

@@ -1,35 +1,47 @@
 ---
-title: "An open-source Android security library"
-client: "Open source, built at Adrsys GmbH & Co. KG"
+title: "secure-storage-android: encrypted storage before Android had one"
+client: "Open source, built at adorsys GmbH & Co. KG"
 role: "Author and maintainer"
 period: "2015 – 2020"
-platform: "Android"
-stack: ["Kotlin", "Java"]
-summary: "A security library built while shipping fintech and insurance apps, and maintained in the open."
+platform: "Android 4.3 and later"
+stack: ["Java", "Kotlin", "Android Keystore"]
+links:
+  - label: "adorsys/secure-storage-android on GitHub"
+    href: "https://github.com/adorsys/secure-storage-android"
+summary: "An open-source library for storing tokens and credentials safely on Android. 375 stars, 56 forks and millions of downloads."
 order: 3
-draft: true
 ---
+
+import Figure from '../../components/Figure.astro';
+import SecureStorageFlow from '../../components/diagrams/SecureStorageFlow.astro';
 
 ## Context
 
-While building Android apps in the fintech and insurance domains at Adrsys, including easyCredit / Fymio and Ergo Direkt, I built and maintained an open-source Android security library.
+At adorsys I built Android apps for banks and insurers, including easyCredit / Fymio and Ergo Direkt. Apps like these hold login tokens and other credentials on the device, and those have to be stored safely.
 
-{/* INTERVIEW: Library name and repository URL? What does it do: root detection, tamper checks, secure storage, certificate pinning? */}
+## Challenge
 
-## Problem
-
-{/* INTERVIEW: What security requirement in the client apps led to it? Why build instead of using an existing library? Why open source it? */}
+In the early years of Android there was no real answer to that. SharedPreferences stored values as plain text, and the platform offered no ready-made way to keep a token encrypted. Every team that cared had to work out the cryptography for itself, and getting cryptography slightly wrong is easy.
 
 ## Approach
 
-{/* INTERVIEW: How is the API designed? What was technically tricky? How was it tested across devices and OS versions? */}
+With help from a few teammates, I built a library that makes the safe path the short one. It generates a key inside the Android Keystore, encrypts each value with it, and writes only the encrypted result to SharedPreferences. On devices with a Trusted Execution Environment, the key is never exposed outside secure hardware, so the stored data stays protected even if the device is compromised.
+
+<Figure number={1} caption="the key stays in the Keystore; only ciphertext reaches disk.">
+	<SecureStorageFlow />
+</Figure>
+
+For the app developer it is one line to store a value and one to read it back:
+
+```kotlin
+SecurePreferences.setValue(context, "token", accessToken)
+val token = SecurePreferences.getStringValue(context, "token", null)
+```
+
+It works from Android 4.3, using asymmetric keys for wide device coverage, with symmetric keys available from Android 6.0. We released it as open source under Apache 2.0, because the problem was not specific to our clients.
 
 ## Outcome
 
-{/* INTERVIEW: Stars, downloads, apps using it, external contributors? Is it still maintained? */}
+The library reached millions of downloads, 375 stars and 56 forks on GitHub. The working students I mentored at adorsys contributed to it as well.
 
-## Reflection
-
-In the same years I mentored four working students, supporting their professional and academic development.
-
-{/* INTERVIEW: Did the students contribute to the library? What did maintaining open source teach you? */}
+Years later Android shipped its own encrypted SharedPreferences, which superseded the library, and it is no longer maintained. I count that as the right ending: it covered a real gap for as long as the gap existed.
