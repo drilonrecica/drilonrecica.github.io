@@ -4,7 +4,7 @@ Personal site of a senior mobile engineer: a landing page, three case studies an
 
 ## Tech Stack
 
--   **Framework**: [Astro](https://astro.build/) (v6) - static output, no UI framework. The only shipped JavaScript is Astro's view-transition router plus a few lines for the theme toggle and mobile menu.
+-   **Framework**: [Astro](https://astro.build/) (v7) - static output, no UI framework. The only shipped JavaScript is Astro's view-transition router plus a few lines for the theme toggle and mobile menu.
 -   **Content**: MDX content collection for case studies, typed data files for everything else.
 -   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4) with design tokens as CSS custom properties; light and dark themes.
 -   **Fonts**: IBM Plex Sans and IBM Plex Mono, self-hosted via Fontsource.
