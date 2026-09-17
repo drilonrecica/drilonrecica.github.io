@@ -1,0 +1,36 @@
+---
+import { profile } from '../data/profile';
+
+interface Props {
+	sheet: string;
+}
+
+const { sheet } = Astro.props;
+const revision = new Date().toISOString().slice(0, 7).replace('-', '.');
+
+const cells = [
+	{ label: 'Drawn by', value: 'D. Reçica' },
+	{ label: 'Sheet', value: sheet },
+	{ label: 'Revision', value: revision },
+	{ label: 'Scale', value: '1:1' },
+];
+---
+
+<!-- Footer styled as the title block found in the corner of a technical drawing. -->
+<footer class="mt-24 border-t border-rule print:hidden">
+	<div class="sheet py-8">
+		<dl class="grid grid-cols-2 gap-px border border-rule bg-rule sm:grid-cols-4">
+			{
+				cells.map((cell) => (
+					<div class="bg-paper px-4 py-3">
+						<dt class="note">{cell.label}</dt>
+						<dd class="font-mono text-sm">{cell.value}</dd>
+					</div>
+				))
+			}
+		</dl>
+		<p class="note mt-4">
+			© {new Date().getFullYear()} {profile.name}. Built with Astro, no tracking.
+		</p>
+	</div>
+</footer>

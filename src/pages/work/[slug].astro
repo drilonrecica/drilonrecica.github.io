@@ -1,0 +1,98 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { profile } from '../../data/profile';
+import { getWork } from '../../data/work';
+
+export async function getStaticPaths() {
+	const work = await getWork();
+	return work.map((entry, index) => ({
+		params: { slug: entry.id },
+		props: {
+			entry,
+			sheet: `Work ${index + 1}/${work.length}`,
+			previous: work[index - 1],
+			next: work[index + 1],
+		},
+	}));
+}
+
+const { entry, sheet, previous, next } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+
+const spec = [
+	{ label: 'Client', value: data.client },
+	{ label: 'Role', value: data.role },
+	{ label: 'Period', value: data.period },
+	{ label: 'Team', value: data.team },
+	{ label: 'Platform', value: data.platform },
+	{ label: 'Stack', value: data.stack.join(', ') },
+].filter((row) => row.value);
+---
+
+<Layout title={`${data.title} | ${profile.name}`} description={data.summary} sheet={sheet}>
+	<article class="sheet py-12 md:py-20">
+		<a href="/#work" class="note link">Back to selected work</a>
+		<h1 class="mt-6 max-w-[22ch] text-4xl sm:text-5xl">{data.title}</h1>
+		<p class="mt-5 max-w-[60ch] text-lg text-ink-soft">{data.summary}</p>
+
+		<div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
+			<div class="prose-sheet">
+				<Content />
+			</div>
+
+			<!-- Specification block, like the parts list beside a drawing. -->
+			<aside class="framed self-start p-5 lg:order-last max-lg:order-first" aria-label="Project details">
+				<dl class="space-y-4">
+					{
+						spec.map((row) => (
+							<div>
+								<dt class="note">{row.label}</dt>
+								<dd class="text-[0.9375rem]">{row.value}</dd>
+							</div>
+						))
+					}
+				</dl>
+				{
+					data.links.length > 0 && (
+						<ul class="mt-5 space-y-2 border-t border-rule pt-4">
+							{data.links.map((link) => (
+								<li>
+									<a href={link.href} target="_blank" rel="noopener noreferrer" class="link inline-flex items-center gap-1.5 text-[0.9375rem]">
+										{link.label} <Icon name="external" size={14} />
+										<span class="sr-only">(opens in a new tab)</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					)
+				}
+			</aside>
+		</div>
+
+		<nav class="mt-20 grid gap-6 border-t border-rule pt-8 sm:grid-cols-2" aria-label="More case studies">
+			<div>
+				{
+					previous && (
+						<>
+							<p class="note">Previous</p>
+							<a href={`/work/${previous.id}`} class="link text-lg">{previous.data.title}</a>
+						</>
+					)
+				}
+			</div>
+			<div class="sm:text-right">
+				{
+					next && (
+						<>
+							<p class="note">Next</p>
+							<a href={`/work/${next.id}`} class="link text-lg">{next.data.title}</a>
+						</>
+					)
+				}
+			</div>
+		</nav>
+	</article>
+</Layout>

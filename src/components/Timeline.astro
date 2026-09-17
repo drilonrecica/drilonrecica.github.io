@@ -1,0 +1,94 @@
+---
+import { experience } from '../data/experience';
+import Icon from './Icon.astro';
+
+interface Props {
+	/** Slugs of published case studies; projects only link to these. */
+	published: string[];
+}
+
+const { published } = Astro.props;
+---
+
+<ol class="timeline">
+	{
+		experience.map((employer) => (
+			<li class="entry">
+				<!-- Dimension line: the period is measured in the margin. -->
+				<div class="period note" aria-hidden="true">
+					<span>{employer.end ?? 'Now'}</span>
+					<span class="extent" />
+					<span>{employer.start}</span>
+				</div>
+				<div>
+					<h3 class="text-xl">{employer.role}</h3>
+					<p class="mt-1 text-ink-soft">
+						{employer.company}
+						<span class="sr-only">, {employer.period}</span>
+					</p>
+					<p class="mt-4 max-w-[68ch]">{employer.summary}</p>
+
+					<ul class="mt-6 border-t border-rule">
+						{employer.projects.map((project) => {
+							const href =
+								project.caseStudy && published.includes(project.caseStudy)
+									? `/work/${project.caseStudy}`
+									: project.url;
+							const external = href === project.url;
+							return (
+								<li class="grid gap-x-6 gap-y-1 border-b border-rule py-3 sm:grid-cols-[minmax(0,1fr)_11rem]">
+									<div>
+										{href ? (
+											<a
+												href={href}
+												class="link inline-flex items-center gap-1.5 font-medium"
+												{...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+											>
+												{project.name}
+												{external && <Icon name="external" size={14} />}
+												{external && <span class="sr-only">(opens in a new tab)</span>}
+											</a>
+										) : (
+											<span class="font-medium">{project.name}</span>
+										)}
+										<p class="text-[0.9375rem] text-ink-soft">{project.summary}</p>
+									</div>
+									<p class="note sm:text-right">{project.period}</p>
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	.timeline {
+		display: grid;
+		gap: 4rem;
+	}
+
+	.entry {
+		display: grid;
+		grid-template-columns: 3.5rem minmax(0, 1fr);
+		gap: 1.25rem;
+	}
+
+	.period {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	/* Vertical dimension line with end ticks. */
+	.extent {
+		flex: 1;
+		width: 9px;
+		min-height: 3rem;
+		border-block: 1px solid var(--line);
+		background: linear-gradient(var(--line), var(--line)) center / 1px 100% no-repeat;
+	}
+</style>

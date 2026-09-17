@@ -1,0 +1,105 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+	{ name: 'Work', href: '/#work' },
+	{ name: 'Experience', href: '/#experience' },
+	{ name: 'About', href: '/#about' },
+	{ name: 'CV', href: '/cv' },
+	{ name: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-rule bg-paper/90 backdrop-blur-sm print:hidden">
+	<nav class="sheet flex h-14 items-center justify-between" aria-label="Main">
+		<a href="/" class="font-medium no-underline">Drilon Reçica</a>
+
+		<div class="flex items-center gap-1">
+			<ul id="nav-links" class="nav-links">
+				{
+					links.map((link) => (
+						<li>
+							<a href={link.href} class="block px-3 py-2 text-[0.9375rem] text-ink-soft no-underline hover:text-ink">
+								{link.name}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<ThemeToggle />
+			<button
+				type="button"
+				id="nav-toggle"
+				class="p-2 md:hidden"
+				aria-expanded="false"
+				aria-controls="nav-links"
+			>
+				<span class="sr-only">Menu</span>
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+					<path d="M4 7h16M4 12h16M4 17h16"></path>
+				</svg>
+			</button>
+		</div>
+	</nav>
+</header>
+
+<style>
+	.nav-links {
+		display: none;
+	}
+
+	@media (min-width: 48rem) {
+		.nav-links {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 47.999rem) {
+		.nav-links[data-open] {
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			padding: 0.5rem 1.25rem 1rem;
+			background: var(--paper);
+			border-bottom: 1px solid var(--rule);
+		}
+	}
+</style>
+
+<script>
+	function setupNav() {
+		const toggle = document.getElementById('nav-toggle');
+		const list = document.getElementById('nav-links');
+		if (!toggle || !list) return;
+
+		const setOpen = (open: boolean) => {
+			list.toggleAttribute('data-open', open);
+			toggle.setAttribute('aria-expanded', String(open));
+		};
+
+		toggle.addEventListener('click', () => setOpen(!list.hasAttribute('data-open')));
+		list.addEventListener('click', (event) => {
+			if ((event.target as HTMLElement).closest('a')) setOpen(false);
+		});
+		// The document outlives client-side navigations, so drop the previous page's listener.
+		escapeListener?.abort();
+		escapeListener = new AbortController();
+		document.addEventListener(
+			'keydown',
+			(event) => {
+				if (event.key === 'Escape' && list.hasAttribute('data-open')) {
+					setOpen(false);
+					toggle.focus();
+				}
+			},
+			{ signal: escapeListener.signal },
+		);
+	}
+
+	let escapeListener: AbortController | undefined;
+
+	document.addEventListener('astro:page-load', setupNav);
+</script>

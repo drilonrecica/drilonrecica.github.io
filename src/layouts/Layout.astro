@@ -1,51 +1,94 @@
 ---
 import '../styles/global.css';
 
-// Supports weights 100-900
-import '@fontsource/inter';
-import '@fontsource/jetbrains-mono';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import { profile } from '../data/profile';
 
 interface Props {
 	title: string;
+	description?: string;
+	/** Shown in the footer title block, e.g. "Sheet 1". */
+	sheet?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = profile.description, sheet = 'Home' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og-image.png', Astro.site);
+
+const person = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: profile.name,
+	jobTitle: profile.title,
+	url: Astro.site?.href,
+	email: `mailto:${profile.email}`,
+	knowsLanguage: profile.languages,
+	sameAs: profile.links.map((link) => link.href),
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="generator" content={Astro.generator} />
-		
-		<!-- SEO -->
+
 		<title>{title}</title>
-		<meta name="description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
-		<meta name="keywords" content="Android, Flutter, Kotlin, Dart, Mobile Developer, Software Engineer, Drilon Recica, Cross-platform" />
-		<meta name="author" content="Drilon Reçica" />
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<meta name="description" content={description} />
+		<meta name="author" content={profile.name} />
+		<link rel="canonical" href={canonical} />
 
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
-		<meta property="og:image" content={new URL('/og-image.png', Astro.url)} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content="Senior Android Developer & Flutter Engineer specializing in modern mobile architecture, legacy refactoring, and scalable applications." />
-		<meta property="twitter:image" content={new URL('/og-image.png', Astro.url)} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
+
+		<!-- Apply a stored theme before first paint; re-apply after client-side navigation. -->
+		<script is:inline>
+			const applyTheme = (doc) => {
+				try {
+					const stored = localStorage.getItem('theme');
+					if (stored === 'light' || stored === 'dark') doc.documentElement.dataset.theme = stored;
+				} catch {}
+			};
+			applyTheme(document);
+			document.addEventListener('astro:before-swap', (event) => applyTheme(event.newDocument));
+		</script>
+		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<slot />
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+		>
+			Skip to content
+		</a>
+		<Nav />
+		<main id="main" class="flex-1">
+			<slot />
+		</main>
+		<TitleBlock sheet={sheet} />
 	</body>
 </html>
