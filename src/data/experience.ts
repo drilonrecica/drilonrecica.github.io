@@ -86,7 +86,6 @@ export const experience: Employer[] = [
 				period: "2015 – 2020",
 				summary:
 					"Finance app with complex business logic and strict security requirements. Fymio ceased operations on 31 March 2020; its team announced that, despite intensive joint efforts, the product had not reached significant market relevance.",
-				url: "https://appstor.io/app/fymio",
 			},
 			{
 				name: "Ergo Direkt",
