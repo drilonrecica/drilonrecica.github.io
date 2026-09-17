@@ -34,7 +34,7 @@ export const experience: Employer[] = [
 			{
 				name: "Deutsche Bahn – Wohin Du Willst",
 				period: "Nov 2023 – Present",
-				summary: "Architecture migration, WCAG accessibility rework and modularization.",
+				summary: "Architecture migration, a cleaner model layer and a WCAG accessibility rework.",
 				url: "https://play.google.com/store/apps/details?id=de.dbregio.wohinduwillst",
 				caseStudy: "deutsche-bahn",
 			},

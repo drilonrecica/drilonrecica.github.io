@@ -30,7 +30,9 @@ That move has to happen in a product people use to plan real journeys, so it can
 
 A rewrite would have stopped delivery, so the app is migrated instead: from MVP and RxJava to MVVM with Coroutines and Flow one area at a time. My focus is the migration and refactoring work, alongside maintenance, while feature development continues in parallel, so releases never stop.
 
-Splitting the app into modules gives each migrated part a clear boundary and keeps dependencies pointing in one direction, which makes every later change, including library updates, easier and safer.
+The app stays a single module, because that is what makes most sense for this project; the structure comes from clear layers inside it, not from splitting it up.
+
+The model layer is part of the same effort. Large all-purpose model classes are giving way, where it makes sense, to polymorphic model classes that express each case explicitly, and to dedicated mapper classes that translate between the types of each layer. Each class ends up with one job, which makes the code easier to read, test and change.
 
 Accessibility is treated as part of the architecture rather than a finishing touch: a rework of the UI against WCAG.
 
