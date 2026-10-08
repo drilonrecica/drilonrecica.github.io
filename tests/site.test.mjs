@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { page, css, stripAtRule } from './dist.mjs';
 
 test('dark only: no theme toggle and no stored-theme script', () => {
@@ -36,11 +36,11 @@ test('scroll-driven animation only exists behind @supports, so content is never 
 test('home sections are System windows with dual labels', () => {
 	const html = page('/');
 	const tags = [...html.matchAll(/class="window-bar tag"[^>]*>([^<]+)</g)].map((m) => m[1].trim());
-	for (const tag of ['Shadow army', 'Quest log', 'Tools &amp; labs', 'Hunter record', 'Passive skills', 'Player']) {
+	for (const tag of ['Shadow army', 'Quest log', 'Tools &amp; labs', 'Player']) {
 		assert.ok(tags.includes(tag), `missing [ ${tag} ] window, found: ${tags.join(', ')}`);
 	}
 	assert.match(html, /class="window-bar tag border-l-\[3px\] border-l-plume"[^>]*><span class="text-plume-text" aria-hidden="true">! <\/span>System message</);
-	for (const heading of ['Open source', 'From the archive', 'More things I&#39;ve built', 'Experience', 'How I work', 'About', 'Contact']) {
+	for (const heading of ['Open source', 'From the archive', 'More things I&#39;ve built', 'About', 'Contact']) {
 		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
 	}
 });
@@ -54,7 +54,7 @@ test('hero is a STATUS window with a factual level and no rank', () => {
 	assert.match(html, />AppDev GmbH</);
 	assert.match(html, /<span[^>]*>Senior Mobile (&amp;|&) Product Engineer<\/span>/);
 	assert.doesNotMatch(html, />Rank</);
-	assert.match(html, /class="window-bar tag"[^>]*>Stats</);
+	assert.doesNotMatch(html, /class="window-bar tag"[^>]*>Stats</);
 	assert.doesNotMatch(html, /ltm-title/);
 });
 
@@ -78,33 +78,15 @@ test('contact is a System message with an Accept mailto', () => {
 	assert.match(html, /<a href="mailto:drilonrecica\.dev@gmail\.com" class="btn btn-primary[^"]*">Accept/);
 });
 
-for (const slug of ['deutsche-bahn', 'qisara', 'security-library']) {
-	test(`/work/${slug} is a quest report`, () => {
-		const html = page(`/work/${slug}`);
-		assert.match(html, /class="window-bar tag"[^>]*>Quest info</);
-		assert.match(html, /class="mark mark-(active|cleared)[^"]*"/);
-		assert.match(html, /(Previous|Next) quest/);
-	});
-}
+test('/work/security-library is a quest report with no prev/next block', () => {
+	const html = page('/work/security-library');
+	assert.match(html, /class="window-bar tag"[^>]*>Quest info</);
+	assert.match(html, /class="mark mark-(active|cleared)[^"]*"/);
+	assert.doesNotMatch(html, /(Previous|Next) quest/);
+});
 
 test('figures sit in System windows', () => {
-	assert.match(page('/work/qisara'), /<figure class="window[^"]*"/);
-});
-
-test('/cv stays sober: no System labels on the CV itself', () => {
-	const html = page('/cv');
-	assert.ok(html.includes('<main') && html.includes('</main>'));
-	const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
-	assert.doesNotMatch(main, /class="(window-bar )?tag"/);
-	assert.doesNotMatch(main, /mark-(active|cleared)/);
-});
-
-test('print turns the dark palette into black on white', () => {
-	const print = css().match(/@media print\s*{\s*(?:@page\s*{[^}]*}\s*)?:root\s*{([^}]*)}/);
-	assert.ok(print, 'print block with :root overrides');
-	assert.match(print[1], /--abyss:\s*#fff/);
-	assert.match(print[1], /--snow:\s*#000/);
-	assert.match(css(), /@media print[\s\S]*\.cv h1[\s\S]*?font-family:\s*var\(--font-sans\)/);
+	assert.match(page('/work/security-library'), /<figure class="window[^"]*"/);
 });
 
 test('404 is a closed gate', () => {
@@ -118,16 +100,13 @@ test('plume red is a signature and an alert, used sparingly', () => {
 	const html = page('/');
 	assert.match(html, /<span class="text-plume-text"[^>]*aria-hidden="true"[^>]*>\/ <\/span>Drilon Reçica</);
 	assert.doesNotMatch(html, />ç<\/span>/);
-	// Nav slash, hero full stop, timeline "Now", contact "!" and contact border are the only
+	// Nav slash, hero full stop, contact "!" and contact border are the only
 	// red marks in the markup; corners, hover underlines and selection come from CSS.
-	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 5);
+	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 4);
 });
 
-test('the hero headline ends in a red full stop and the current role is marked Now in red', () => {
-	const html = page('/');
-	assert.match(html, /open<span class="text-plume-text">\.<\/span><\/h1>/);
-	assert.match(html, /class="text-plume-text"[^>]*>Now</);
-	assert.equal((html.match(/class="[^"]*\bextent-current\b/g) ?? []).length, 1);
+test('the hero headline ends in a red full stop', () => {
+	assert.match(page('/'), /open<span class="text-plume-text">\.<\/span><\/h1>/);
 });
 
 test('case-study section headings carry the red slash signature', () => {
@@ -135,8 +114,7 @@ test('case-study section headings carry the red slash signature', () => {
 });
 
 test('the nav marks the current page with aria-current, without JS', () => {
-	assert.match(page('/work/qisara'), /<a href="\/#work"[^>]*aria-current="page"/);
-	assert.match(page('/work/security-library'), /<a href="\/#work"[^>]*aria-current="page"/);
+		assert.match(page('/work/security-library'), /<a href="\/#work"[^>]*aria-current="page"/);
 	assert.doesNotMatch(page('/'), /aria-current/);
 });
 
@@ -156,7 +134,7 @@ test('404 is not indexed and claims no canonical URL', () => {
 });
 
 test('case studies are articles, other pages are websites', () => {
-	assert.match(page('/work/qisara'), /<meta property="og:type" content="article">/);
+	assert.match(page('/work/security-library'), /<meta property="og:type" content="article">/);
 	assert.match(page('/'), /<meta property="og:type" content="website">/);
 });
 
@@ -217,4 +195,36 @@ test('nav: Projects, Archive, Tools, About and an external recica.dev', () => {
 	for (const href of ['/#open-source', '/#work', '/#tools', '/#about']) assert.ok(nav.includes(`href="${href}"`), href);
 	assert.match(nav, /href="https:\/\/recica\.dev\/"[^>]*target="_blank"/);
 	assert.match(nav, /opens in a new tab/);
+});
+
+const redirects = [
+	['/cv', 'https://recica.dev/cv/'],
+	['/work/deutsche-bahn', 'https://recica.dev/work/wohin-du-willst/'],
+	['/work/qisara', 'https://recica.dev/work/qisara/'],
+];
+for (const [path, target] of redirects) {
+	test(`${path} forwards to ${target}`, () => {
+		const html = page(path);
+		assert.ok(html.includes(`<meta http-equiv="refresh" content="0; url=${target}">`));
+		assert.ok(html.includes(`<link rel="canonical" href="${target}">`));
+		assert.doesNotMatch(html, /noindex/);
+		assert.ok(html.includes(`href="${target}"`));
+	});
+}
+
+test('sitemap lists only the home page and the one case study', () => {
+	const xml = readFileSync(new URL('../dist/sitemap-0.xml', import.meta.url), 'utf8');
+	const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).sort();
+	assert.deepEqual(locs, ['https://drilonrecica.github.io/', 'https://drilonrecica.github.io/work/security-library/']);
+});
+
+test('the typo-ridden CV PDF is no longer published', () => {
+	assert.ok(!existsSync(new URL('../dist/Drilon_Recica_CV.pdf', import.meta.url)));
+});
+
+test('the home page carries no CV-level claims', () => {
+	const html = page('/');
+	for (const phrase of ['13+ years', 'millions of users', 'six months']) assert.ok(!html.toLowerCase().includes(phrase), phrase);
+	assert.doesNotMatch(html, /Track record|Hunter record|Passive skill/);
+	assert.match(html, /href="https:\/\/recica\.dev\/cv\/"/);
 });

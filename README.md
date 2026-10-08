@@ -20,14 +20,14 @@ Personal site of a senior mobile engineer: a landing page, three case studies an
   /content/work      # Case studies (MDX)
   /data
     profile.ts       # Name, headline, bio, links, proof facts, education
-    experience.ts    # Employers, projects, dates, tools - feeds the home page AND /cv
+    experience.ts    # Current employer (status window and structured data)
     work.ts          # Case-study query (drafts are dev-only)
   /layouts
     Layout.astro     # HTML shell, SEO, JSON-LD
   /pages
     index.astro      # Home
     work/[slug].astro
-    cv.astro         # Web CV with print stylesheet
+    cv.astro         # Redirect to recica.dev/cv/
     404.astro
   /styles
     global.css       # Tokens, base styles, components, diagram classes, print rules
@@ -48,10 +48,8 @@ npm run build && npm test   # checks the built site, the token contrast and the 
 
 ## Updating Content
 
--   **Roles, dates, projects, tools**: edit `src/data/experience.ts`. The home timeline and `/cv` both read from it, so they cannot drift apart.
 -   **Headline, bio, links, proof facts**: edit `src/data/profile.ts`.
 -   **Case studies**: add or edit an `.mdx` file in `src/content/work/`. Set `draft: true` to keep one out of production builds while you write; drafts still show in `npm run dev`.
--   **CV PDF**: replace `public/Drilon_Recica_CV.pdf`.
 -   **OG image**: replace `public/og-image.png` (1200x630).
 
 ## Deployment
@@ -62,4 +60,4 @@ Pushing to `master` deploys to GitHub Pages through `.github/workflows/deploy.ym
 
 -   Lighthouse: 100 accessibility, 100 best practices, 100 SEO.
 -   WCAG AA contrast (checked by `npm test`), visible keyboard focus, skip link, reduced-motion support.
--   Responsive from 320px up; `/cv` prints cleanly to A4.
+-   Responsive from 320px up.

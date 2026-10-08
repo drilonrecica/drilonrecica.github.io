@@ -346,59 +346,6 @@
   }
 }
 
-/* /cv prints as a plain black-on-white A4 document. */
-@media print {
-  @page {
-    size: A4;
-    margin: 14mm;
-  }
-
-  :root {
-    color-scheme: light;
-    --abyss: #fff;
-    --armor: #fff;
-    --night: #fff;
-    --deep: #999;
-    --glow: #000;
-    --glow-core: #000;
-    --snow: #000;
-    --muted: #333;
-    --gate: #000;
-    --plume: #000;
-    --plume-text: #000;
-  }
-
-  .cv h1,
-  .cv h2,
-  .cv h3 {
-    font-family: var(--font-sans);
-    letter-spacing: 0;
-  }
-
-  body {
-    background: #fff;
-    font-size: 10pt;
-    line-height: 1.45;
-  }
-
-  .window {
-    box-shadow: none;
-  }
-
-  .cv {
-    padding: 0;
-    max-width: none;
-  }
-
-  .cv .job {
-    break-inside: avoid;
-  }
-
-  .cv a {
-    text-decoration: none;
-  }
-}
-
 /* Shared vocabulary for case-study diagrams (inline SVG). */
 .dg {
   display: block;

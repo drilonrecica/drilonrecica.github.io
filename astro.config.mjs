@@ -13,5 +13,8 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [mdx(), sitemap()]
+  integrations: [mdx(), sitemap({
+    // Forwarding pages for URLs that moved to recica.dev stay out of the sitemap.
+    filter: (page) => !['/cv/', '/work/deutsche-bahn/', '/work/qisara/'].some((path) => page.endsWith(path))
+  })]
 });
