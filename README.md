@@ -1,3 +1,5 @@
+<img src="public/web-app-manifest-512x512.png" width="96" height="96" alt="Window-corner D mark">
+
 # Drilon Reçica - Portfolio
 
 Builder and open-source home of Drilon Reçica: side projects, tools and one archived case study, styled as a dark Solo Leveling "System" interface. The professional profile, case studies and CV live at [recica.dev](https://recica.dev/); old `/cv` and case-study URLs here forward there.
