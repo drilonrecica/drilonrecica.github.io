@@ -1,24 +1,19 @@
 ---
 import '../styles/global.css';
 
-import '@fontsource/ibm-plex-sans/400.css';
-import '@fontsource/ibm-plex-sans/500.css';
-import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/ibm-plex-mono/400.css';
 
 import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
-import TitleBlock from '../components/TitleBlock.astro';
+import SystemFooter from '../components/SystemFooter.astro';
 import { profile } from '../data/profile';
 
 interface Props {
 	title: string;
 	description?: string;
-	/** Shown in the footer title block, e.g. "Sheet 1". */
-	sheet?: string;
 }
 
-const { title, description = profile.description, sheet = 'Home' } = Astro.props;
+const { title, description = profile.description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og-image.png', Astro.site);
 
@@ -65,23 +60,12 @@ const person = {
 
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
 
-		<!-- Apply a stored theme before first paint; re-apply after client-side navigation. -->
-		<script is:inline>
-			const applyTheme = (doc) => {
-				try {
-					const stored = localStorage.getItem('theme');
-					if (stored === 'light' || stored === 'dark') doc.documentElement.dataset.theme = stored;
-				} catch {}
-			};
-			applyTheme(document);
-			document.addEventListener('astro:before-swap', (event) => applyTheme(event.newDocument));
-		</script>
 		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<a
 			href="#main"
-			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+			class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-glow focus:px-4 focus:py-2 focus:text-abyss"
 		>
 			Skip to content
 		</a>
@@ -89,6 +73,6 @@ const person = {
 		<main id="main" class="flex-1">
 			<slot />
 		</main>
-		<TitleBlock sheet={sheet} />
+		<SystemFooter />
 	</body>
 </html>

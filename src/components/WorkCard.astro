@@ -9,14 +9,14 @@ const { entry } = Astro.props;
 const { title, client, period, summary, stack, draft } = entry.data;
 ---
 
-<article class="framed group flex flex-col p-6">
+<article class="window group flex flex-col p-6">
 	<p class="note">{client}, {period}</p>
 	<h3 class="mt-3 text-xl">
-		<a href={`/work/${entry.id}`} class="no-underline after:absolute after:inset-0 group-hover:underline decoration-markup">
+		<a href={`/work/${entry.id}`} class="no-underline after:absolute after:inset-0 group-hover:underline decoration-glow">
 			{title}
 		</a>
 	</h3>
-	<p class="mt-3 text-ink-soft">{summary}</p>
+	<p class="mt-3 text-muted">{summary}</p>
 	<p class="note mt-auto pt-6">{stack.join(' / ')}</p>
-	{draft && <p class="note mt-2 text-markup">Draft, hidden in production</p>}
+	{draft && <p class="note mt-2 text-gate">Draft, hidden in production</p>}
 </article>

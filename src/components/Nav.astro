@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
-
 const links = [
 	{ name: 'Work', href: '/#work' },
 	{ name: 'Experience', href: '/#experience' },
@@ -10,23 +8,22 @@ const links = [
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-rule bg-paper/90 backdrop-blur-sm print:hidden">
+<header class="sticky top-0 z-40 border-b border-deep bg-abyss/90 backdrop-blur-sm print:hidden">
 	<nav class="sheet flex h-14 items-center justify-between" aria-label="Main">
-		<a href="/" class="font-medium no-underline">Drilon Reçica</a>
+		<a href="/" class="font-display font-semibold tracking-wide no-underline">Drilon Reçica</a>
 
 		<div class="flex items-center gap-1">
 			<ul id="nav-links" class="nav-links">
 				{
 					links.map((link) => (
 						<li>
-							<a href={link.href} class="block px-3 py-2 text-[0.9375rem] text-ink-soft no-underline hover:text-ink">
+							<a href={link.href} class="block px-3 py-2 text-[0.9375rem] text-muted no-underline hover:text-snow">
 								{link.name}
 							</a>
 						</li>
 					))
 				}
 			</ul>
-			<ThemeToggle />
 			<button
 				type="button"
 				id="nav-toggle"
@@ -63,8 +60,8 @@ const links = [
 			left: 0;
 			right: 0;
 			padding: 0.5rem 1.25rem 1rem;
-			background: var(--paper);
-			border-bottom: 1px solid var(--rule);
+			background: var(--abyss);
+			border-bottom: 1px solid var(--deep);
 		}
 	}
 </style>

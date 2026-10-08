@@ -3,11 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import { profile } from '../data/profile';
 ---
 
-<Layout title={`Page not found | ${profile.name}`} sheet="404">
+<Layout title={`Page not found | ${profile.name}`}>
 	<section class="sheet py-24 md:py-32">
 		<p class="note">Error 404</p>
 		<h1 class="mt-4 text-4xl sm:text-5xl">This sheet is not in the drawing set.</h1>
-		<p class="mt-5 max-w-[55ch] text-lg text-ink-soft">
+		<p class="mt-5 max-w-[55ch] text-lg text-muted">
 			The page you followed a link to does not exist, or it has moved.
 		</p>
 		<a href="/" class="btn btn-primary mt-8">Go to the home page</a>

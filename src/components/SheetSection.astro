@@ -9,7 +9,7 @@ interface Props {
 const { id, title, note } = Astro.props;
 ---
 
-<section id={id} aria-labelledby={`${id}-title`} class="border-t border-rule py-16 md:py-24">
+<section id={id} aria-labelledby={`${id}-title`} class="border-t border-deep py-16 md:py-24">
 	<div class="sheet grid gap-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
 		<header>
 			<h2 id={`${id}-title`} class="text-2xl">{title}</h2>

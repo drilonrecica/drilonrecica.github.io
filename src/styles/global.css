@@ -1,54 +1,49 @@
 @import "tailwindcss";
 
-/* Blueprint tokens: cool vellum + navy ink (light), cyanotype + pale linework (dark). */
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/chakra-petch-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/chakra-petch-latin-700-normal.woff2") format("woff2");
+}
+
+/* System tokens shared with igris (../igris/site/style.css). Gate violet is this site's own accent. */
 :root {
-  color-scheme: light;
-  --paper: #eef2f6;
-  --paper-raised: #f7f9fb;
-  --ink: #0f2a4a;
-  --ink-soft: #3d5673;
-  --line: #2b5c9e;
-  --rule: #b9c9db;
-  --grid: rgba(43, 92, 158, 0.09);
-  --markup: #b3261e;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper: #0c2340;
-    --paper-raised: #11305a;
-    --ink: #e6effa;
-    --ink-soft: #a9c0dc;
-    --line: #8db4e8;
-    --rule: #2a4a75;
-    --grid: rgba(141, 180, 232, 0.08);
-    --markup: #ffb454;
-  }
-}
-
-:root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #0c2340;
-  --paper-raised: #11305a;
-  --ink: #e6effa;
-  --ink-soft: #a9c0dc;
-  --line: #8db4e8;
-  --rule: #2a4a75;
-  --grid: rgba(141, 180, 232, 0.08);
-  --markup: #ffb454;
+  --abyss: #05070f;
+  --armor: #0a1124;
+  --night: #0b1e46;
+  --deep: #123a7a;
+  --glow: #3cc8ff;
+  --glow-core: #b8f0ff;
+  --snow: #eaf4ff;
+  --muted: #9db0d3;
+  --gate: #a78bfa;
 }
 
 @theme inline {
-  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  /* Named UI fonts rather than system-ui, which maps to a monospace font on some Linux setups. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Chakra Petch", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --color-paper: var(--paper);
-  --color-paper-raised: var(--paper-raised);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-line: var(--line);
-  --color-rule: var(--rule);
-  --color-markup: var(--markup);
+  --color-abyss: var(--abyss);
+  --color-armor: var(--armor);
+  --color-night: var(--night);
+  --color-deep: var(--deep);
+  --color-glow: var(--glow);
+  --color-glow-core: var(--glow-core);
+  --color-snow: var(--snow);
+  --color-muted: var(--muted);
+  --color-gate: var(--gate);
 }
 
 @layer base {
@@ -58,32 +53,35 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
-    background-image:
-      linear-gradient(to right, var(--grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-    background-size: 24px 24px;
+    @apply bg-abyss text-snow font-sans antialiased;
+    /* Faint light from a gate above the page. */
+    background-image: linear-gradient(180deg, rgb(11 30 70 / 0.6), transparent 40rem);
+    background-repeat: no-repeat;
     font-size: 1.0625rem;
     line-height: 1.65;
   }
 
   ::selection {
-    background: var(--markup);
-    color: var(--paper);
+    background: var(--gate);
+    color: var(--abyss);
   }
 
   :focus-visible {
-    outline: 2px solid var(--markup);
+    outline: 2px solid var(--glow);
     outline-offset: 3px;
   }
 
   h1,
   h2,
   h3 {
-    @apply font-medium text-ink;
-    letter-spacing: -0.015em;
+    @apply font-display font-bold text-snow;
+    letter-spacing: -0.01em;
     line-height: 1.15;
     text-wrap: balance;
+  }
+
+  h3 {
+    @apply font-semibold;
   }
 
   p {
@@ -96,67 +94,114 @@
 }
 
 @layer components {
-  /* Page frame: margin column for annotations + measure-limited content. */
   .sheet {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
   .note {
-    @apply font-mono text-[0.8125rem] leading-snug text-ink-soft;
+    @apply font-mono text-[0.8125rem] leading-snug text-muted;
+  }
+
+  /* System label, rendered as [ LABEL ]; the brackets are hidden from screen readers. */
+  .tag {
+    @apply font-display text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-glow;
+  }
+
+  .tag::before {
+    content: "[ " / "";
+  }
+
+  .tag::after {
+    content: " ]" / "";
+  }
+
+  /* Quest status: violet while a quest runs, System blue once it is cleared. */
+  .mark {
+    @apply font-display text-[0.75rem] font-semibold uppercase tracking-[0.16em];
+  }
+
+  .mark-active {
+    color: var(--gate);
+  }
+
+  .mark-cleared {
+    color: var(--glow);
+  }
+
+  .arise {
+    @apply font-display text-[0.75rem] font-semibold uppercase text-gate;
+    letter-spacing: 0.2em;
   }
 
   .link {
-    @apply underline decoration-markup decoration-1 hover:decoration-2;
+    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-2;
   }
 
   .btn {
-    @apply inline-flex items-center gap-2 border border-ink px-5 py-2.5 text-base font-medium no-underline;
+    @apply inline-flex items-center gap-2 border border-glow/50 px-5 py-2.5 font-display text-base font-semibold text-snow no-underline transition-colors;
   }
 
   .btn:hover {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--night);
+    border-color: var(--glow);
   }
 
   .btn-primary {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--glow);
+    border-color: var(--glow);
+    color: var(--abyss);
   }
 
   .btn-primary:hover {
-    background: var(--markup);
-    border-color: var(--markup);
+    background: var(--glow-core);
+    border-color: var(--glow-core);
+    color: var(--abyss);
   }
 
-  /* Registration marks: corner ticks on framed blocks. */
-  .framed {
+  /* System window: the one recurring surface. Corner brackets mark it as System UI. */
+  .window {
     position: relative;
-    border: 1px solid var(--rule);
-    background: var(--paper-raised);
+    border: 1px solid var(--deep);
+    background: var(--armor);
+    box-shadow:
+      inset 0 1px 0 rgb(60 200 255 / 0.35),
+      0 0 32px -16px rgb(60 200 255 / 0.5);
   }
 
-  .framed::before,
-  .framed::after {
+  .window::before,
+  .window::after {
     content: "";
     position: absolute;
-    width: 9px;
-    height: 9px;
-    border: 0 solid var(--line);
+    width: 12px;
+    height: 12px;
+    border: 0 solid var(--glow);
     pointer-events: none;
   }
 
-  .framed::before {
+  .window::before {
     top: -1px;
     left: -1px;
     border-top-width: 2px;
     border-left-width: 2px;
   }
 
-  .framed::after {
+  .window::after {
     bottom: -1px;
     right: -1px;
     border-bottom-width: 2px;
     border-right-width: 2px;
+  }
+
+  .window-bar {
+    @apply border-b border-deep px-5 py-2.5 sm:px-6;
+    background: linear-gradient(90deg, rgb(60 200 255 / 0.08), transparent 60%);
+  }
+
+  /* Inner surface for cards that sit inside a window. */
+  .panel {
+    position: relative;
+    border: 1px solid var(--deep);
+    background: rgb(5 7 15 / 0.6);
   }
 
   /* Long-form case-study text. */
@@ -172,7 +217,7 @@
     @apply text-2xl;
     margin-top: 2.5em;
     padding-top: 1em;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid var(--deep);
   }
 
   .prose-sheet > h2:first-child {
@@ -186,7 +231,8 @@
     overflow-x: auto;
     font-size: 0.8125rem;
     line-height: 1.6;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--deep);
+    background: var(--abyss);
   }
 
   .prose-sheet ul {
@@ -199,11 +245,11 @@
   }
 
   .prose-sheet a {
-    @apply underline decoration-markup decoration-1 hover:decoration-2;
+    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-2;
   }
 }
 
-/* The single orchestrated moment: diagram strokes draw in on load. */
+/* Kept for diagrams/LegacyToModular.astro until Task 4 removes it. */
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
@@ -213,6 +259,65 @@
 @keyframes appear {
   to {
     opacity: 1;
+  }
+}
+
+@keyframes materialise {
+  from {
+    clip-path: inset(-2px -2px 100% -2px);
+  }
+  to {
+    clip-path: inset(-2px);
+  }
+}
+
+@keyframes scan {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes arise {
+  from {
+    opacity: 0;
+    letter-spacing: 0.6em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* Motion only marks a change, and only for people who have not asked for less. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+
+    .arise {
+      animation: arise linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 45%;
+    }
   }
 }
 
@@ -228,28 +333,34 @@
   }
 }
 
-/* /cv prints as a plain A4 document regardless of the active theme. */
+/* /cv prints as a plain black-on-white A4 document. */
 @media print {
   @page {
     size: A4;
     margin: 14mm;
   }
 
-  :root,
-  :root[data-theme="dark"],
-  :root:not([data-theme="light"]) {
-    --paper: #fff;
-    --paper-raised: #fff;
-    --ink: #000;
-    --ink-soft: #333;
-    --rule: #999;
-    --markup: #000;
+  :root {
+    color-scheme: light;
+    --abyss: #fff;
+    --armor: #fff;
+    --night: #fff;
+    --deep: #999;
+    --glow: #000;
+    --glow-core: #000;
+    --snow: #000;
+    --muted: #333;
+    --gate: #000;
   }
 
   body {
-    background-image: none;
+    background: #fff;
     font-size: 10pt;
     line-height: 1.45;
+  }
+
+  .window {
+    box-shadow: none;
   }
 
   .cv {
@@ -276,35 +387,35 @@
 }
 
 .dg-node {
-  fill: var(--paper-raised);
-  stroke: var(--line);
+  fill: var(--armor);
+  stroke: var(--glow);
   stroke-width: 1;
 }
 
 .dg-zone {
   fill: none;
-  stroke: var(--ink-soft);
+  stroke: var(--muted);
   stroke-width: 0.75;
   stroke-dasharray: 4 3;
 }
 
 .dg-flow {
   fill: none;
-  stroke: var(--line);
+  stroke: var(--glow);
   stroke-width: 1.25;
 }
 
 .dg-markup {
   fill: none;
-  stroke: var(--markup);
+  stroke: var(--gate);
   stroke-width: 1.5;
 }
 
 .dg-label {
-  fill: var(--ink);
+  fill: var(--snow);
 }
 
 .dg-soft {
-  fill: var(--ink-soft);
+  fill: var(--muted);
   font-size: 10px;
 }

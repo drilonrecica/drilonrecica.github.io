@@ -5,12 +5,12 @@ import { profile } from '../data/profile';
 import { experience, stackGroups } from '../data/experience';
 ---
 
-<Layout title={`CV | ${profile.name}`} description={`Curriculum vitae of ${profile.name}, ${profile.title}.`} sheet="CV">
+<Layout title={`CV | ${profile.name}`} description={`Curriculum vitae of ${profile.name}, ${profile.title}.`}>
 	<article class="sheet cv py-12 md:py-20">
-		<header class="flex flex-wrap items-end justify-between gap-6 border-b border-ink pb-6">
+		<header class="flex flex-wrap items-end justify-between gap-6 border-b border-glow pb-6">
 			<div>
 				<h1 class="text-4xl sm:text-5xl">{profile.name}</h1>
-				<p class="mt-2 text-xl text-ink-soft">{profile.title}</p>
+				<p class="mt-2 text-xl text-muted">{profile.title}</p>
 			</div>
 			<div class="note space-y-1 sm:text-right">
 				<p><a href={`mailto:${profile.email}`} class="link">{profile.email}</a></p>
@@ -45,7 +45,7 @@ import { experience, stackGroups } from '../data/experience';
 								{employer.projects.map((project) => (
 									<li>
 										<span class="font-medium">{project.name}</span>
-										<span class="text-ink-soft"> ({project.period}). {project.summary}</span>
+										<span class="text-muted"> ({project.period}). {project.summary}</span>
 									</li>
 								))}
 							</ul>

@@ -22,13 +22,13 @@ const { published } = Astro.props;
 				</div>
 				<div>
 					<h3 class="text-xl">{employer.role}</h3>
-					<p class="mt-1 text-ink-soft">
+					<p class="mt-1 text-muted">
 						{employer.company}
 						<span class="sr-only">, {employer.period}</span>
 					</p>
 					<p class="mt-4 max-w-[68ch]">{employer.summary}</p>
 
-					<ul class="mt-6 border-t border-rule">
+					<ul class="mt-6 border-t border-deep">
 						{employer.projects.map((project) => {
 							const href =
 								project.caseStudy && published.includes(project.caseStudy)
@@ -36,7 +36,7 @@ const { published } = Astro.props;
 									: project.url;
 							const external = href === project.url;
 							return (
-								<li class="grid gap-x-6 gap-y-1 border-b border-rule py-3 sm:grid-cols-[minmax(0,1fr)_11rem]">
+								<li class="grid gap-x-6 gap-y-1 border-b border-deep py-3 sm:grid-cols-[minmax(0,1fr)_11rem]">
 									<div>
 										{href ? (
 											<a
@@ -51,7 +51,7 @@ const { published } = Astro.props;
 										) : (
 											<span class="font-medium">{project.name}</span>
 										)}
-										<p class="text-[0.9375rem] text-ink-soft">{project.summary}</p>
+										<p class="text-[0.9375rem] text-muted">{project.summary}</p>
 									</div>
 									<p class="note sm:text-right">{project.period}</p>
 								</li>
@@ -88,7 +88,7 @@ const { published } = Astro.props;
 		flex: 1;
 		width: 9px;
 		min-height: 3rem;
-		border-block: 1px solid var(--line);
-		background: linear-gradient(var(--line), var(--line)) center / 1px 100% no-repeat;
+		border-block: 1px solid var(--glow);
+		background: linear-gradient(var(--glow), var(--glow)) center / 1px 100% no-repeat;
 	}
 </style>
