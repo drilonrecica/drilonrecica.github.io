@@ -16,7 +16,7 @@ Personal site of a senior mobile engineer: a landing page, three case studies an
 /src
   /assets            # Images processed by Astro (portrait)
   /components        # Nav, SystemWindow, StatusWindow, SystemFooter, Timeline, WorkCard, Figure, Icon
-    /diagrams        # Inline SVG diagrams (hero and case studies)
+    /diagrams        # Inline SVG diagrams (case studies)
   /content/work      # Case studies (MDX)
   /data
     profile.ts       # Name, headline, bio, links, proof facts, education

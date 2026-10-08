@@ -251,10 +251,10 @@
 
 @keyframes materialise {
   from {
-    clip-path: inset(-2px -2px 100% -2px);
+    clip-path: inset(-24px -24px 100% -24px);
   }
   to {
-    clip-path: inset(-2px);
+    clip-path: inset(-24px);
   }
 }
 
@@ -338,6 +338,13 @@
     --snow: #000;
     --muted: #333;
     --gate: #000;
+  }
+
+  .cv h1,
+  .cv h2,
+  .cv h3 {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
   }
 
   body {

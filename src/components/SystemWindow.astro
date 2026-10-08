@@ -7,15 +7,17 @@ interface Props {
 	title: string;
 	/** Margin annotation under the heading. */
 	note?: string;
+	/** Prepends a visual "!" that assistive tech skips. */
+	alert?: boolean;
 }
 
-const { id, tag, title, note } = Astro.props;
+const { id, tag, title, note, alert } = Astro.props;
 ---
 
 <section id={id} aria-labelledby={`${id}-title`} class="py-10 md:py-14">
 	<div class="sheet">
 		<div class="window reveal">
-			<p class="window-bar tag">{tag}</p>
+			<p class="window-bar tag">{alert && <span aria-hidden="true">! </span>}{tag}</p>
 			<div class="grid gap-8 p-5 sm:p-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
 				<header>
 					<h2 id={`${id}-title`} class="text-2xl">{title}</h2>

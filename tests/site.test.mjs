@@ -36,9 +36,10 @@ test('scroll-driven animation only exists behind @supports, so content is never 
 test('home sections are System windows with dual labels', () => {
 	const html = page('/');
 	const tags = [...html.matchAll(/class="window-bar tag"[^>]*>([^<]+)</g)].map((m) => m[1].trim());
-	for (const tag of ['Quest log', 'Shadow army', 'Hunter record', 'Passive skills', 'Player', '! System message']) {
+	for (const tag of ['Quest log', 'Shadow army', 'Hunter record', 'Passive skills', 'Player']) {
 		assert.ok(tags.includes(tag), `missing [ ${tag} ] window, found: ${tags.join(', ')}`);
 	}
+	assert.match(html, /class="window-bar tag"[^>]*><span aria-hidden="true">! <\/span>System message</);
 	for (const heading of ['Selected work', 'Open source', 'Experience', 'How I work', 'About', 'Contact']) {
 		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
 	}
@@ -92,6 +93,7 @@ test('figures sit in System windows', () => {
 
 test('/cv stays sober: no System labels on the CV itself', () => {
 	const html = page('/cv');
+	assert.ok(html.includes('<main') && html.includes('</main>'));
 	const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
 	assert.doesNotMatch(main, /class="(window-bar )?tag"/);
 	assert.doesNotMatch(main, /mark-(active|cleared)/);
@@ -102,10 +104,11 @@ test('print turns the dark palette into black on white', () => {
 	assert.ok(print, 'print block with :root overrides');
 	assert.match(print[1], /--abyss:\s*#fff/);
 	assert.match(print[1], /--snow:\s*#000/);
+	assert.match(css(), /@media print[\s\S]*\.cv h1[\s\S]*?font-family:\s*var\(--font-sans\)/);
 });
 
 test('404 is a closed gate', () => {
 	const html = page('/404');
-	assert.match(html, /class="window-bar tag"[^>]*>! Gate closed</);
+	assert.match(html, /class="window-bar tag"[^>]*><span aria-hidden="true">! <\/span>Gate closed</);
 	assert.match(html, /This dungeon doesn(&#39;|')t exist\./);
 });
