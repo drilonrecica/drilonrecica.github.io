@@ -7,11 +7,15 @@ interface Props {
 const { number, caption } = Astro.props;
 ---
 
-<figure class="window mx-0 my-8 p-4 sm:p-6">
-	<div class="overflow-x-auto">
-		<div class="min-w-[32rem]">
-			<slot />
+<figure class="window mx-0 my-8">
+	<!-- The caption below repeats the figure number for assistive tech. -->
+	<p class="window-bar tag" aria-hidden="true">Fig. {number}</p>
+	<div class="p-4 sm:p-6">
+		<div class="overflow-x-auto">
+			<div class="min-w-[32rem]">
+				<slot />
+			</div>
 		</div>
+		<figcaption class="note mt-3">Fig. {number}: {caption}</figcaption>
 	</div>
-	<figcaption class="note mt-3">Fig. {number}: {caption}</figcaption>
 </figure>

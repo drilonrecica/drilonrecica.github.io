@@ -76,3 +76,16 @@ test('contact is a System message with an Accept mailto', () => {
 	assert.match(html, /A new quest has arrived\./);
 	assert.match(html, /<a href="mailto:drilonrecica\.dev@gmail\.com" class="btn btn-primary[^"]*">Accept/);
 });
+
+for (const slug of ['deutsche-bahn', 'qisara', 'security-library']) {
+	test(`/work/${slug} is a quest report`, () => {
+		const html = page(`/work/${slug}`);
+		assert.match(html, /class="window-bar tag"[^>]*>Quest info</);
+		assert.match(html, /class="mark mark-(active|cleared)[^"]*"/);
+		assert.match(html, /(Previous|Next) quest/);
+	});
+}
+
+test('figures sit in System windows', () => {
+	assert.match(page('/work/qisara'), /<figure class="window[^"]*"/);
+});
