@@ -66,9 +66,10 @@
     line-height: 1.65;
   }
 
+  /* Selecting text is a System reaction: plume red, white text (4.75:1). */
   ::selection {
-    background: var(--gate);
-    color: var(--abyss);
+    background: var(--plume);
+    color: #fff;
   }
 
   :focus-visible {
@@ -139,7 +140,7 @@
   }
 
   .link {
-    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-2;
+    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-plume hover:decoration-2;
   }
 
   .btn {
@@ -190,7 +191,9 @@
     border-left-width: 2px;
   }
 
+  /* The plume: one red corner on every window, like the red plume on igris's helm. */
   .window::after {
+    border-color: var(--plume);
     bottom: -1px;
     right: -1px;
     border-bottom-width: 2px;
@@ -262,7 +265,7 @@
   }
 
   .prose-sheet a {
-    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-2;
+    @apply text-glow underline decoration-1 hover:text-glow-core hover:decoration-plume hover:decoration-2;
   }
 }
 

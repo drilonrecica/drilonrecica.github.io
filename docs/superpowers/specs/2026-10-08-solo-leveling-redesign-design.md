@@ -91,15 +91,22 @@ The audience is unchanged: clients and employers equally. Rules carried over: no
 - The Level "count-up" is a scan-line wipe; the number stays real text.
 - "Arise." is scroll-linked (plays as the igris card enters the viewport) so it needs no JavaScript.
 
-## Plume red accent (added 2026-10-08)
-- **Meaning:** red is the System's alert and Drilon's signature, as in igris ("red appears once per mark") and Solo Leveling (`[!] WARNING`, red gates). It appears at most once or twice per screen.
+## Plume red accent (added 2026-10-08, strengthened the same day)
+- **Roles:**
+  - Cyan is the working System colour: frames, labels, buttons, focus rings, and links at rest.
+  - Violet is Drilon's own colour: ACTIVE quests and "Arise.".
+  - Red is the plume, as on igris's helm: the signature, one mark per window, interaction feedback, System reactions and alerts.
 - **Tokens:**
-  - `--plume #e3172b` is igris's red, for marks only: it is 3.95:1 on armor, which is enough for UI marks but not for small text.
-  - `--plume-text #ff5a66` is for glyphs and letters, at 6.17:1 on armor.
+  - `--plume #e3172b` is igris's red, for lines. It is 3.95:1 on armor, which is fine for marks.
+  - `--plume-text #ff5a66` is for glyphs, at 6.17:1.
   - Both print as black.
 - **Placements:**
-  - The `!` in `[ ! SYSTEM MESSAGE ]` (contact) and `[ ! GATE CLOSED ]` (404).
-  - A 3px plume left border on those two title bars.
-  - The 404 window as a red gate (plume brackets and glow, `.window-alert`).
-  - The `ç` in "Drilon Reçica" in the nav.
-- **Never on** quest marks, buttons, links, focus rings, selection or body text, where red would read as an error.
+  - The signature: a red `/` before "Drilon Reçica" in the nav, aria-hidden.
+  - The bottom-right corner bracket of every window.
+  - Hover underlines on nav links, text links and case-study card titles.
+  - The current nav item (`aria-current="page"`, server-rendered for `/cv` and the case studies).
+  - The hero's load scan line.
+  - Text selection: plume background with white text, 4.75:1.
+  - The `!` and a 3px left border on the alert title bars (`[ ! SYSTEM MESSAGE ]`, `[ ! GATE CLOSED ]`).
+  - The 404 window as a red gate, with both corners and the glow in red.
+- **Never** a fill, and never on body text, quest marks, buttons or focus rings, where red would read as an error.

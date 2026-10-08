@@ -48,3 +48,8 @@ for (const [fg, bg] of marks) {
 		assert.ok(ratio >= 3, `${fg} on ${bg} is ${ratio.toFixed(2)}:1`);
 	});
 }
+
+test('white selection text on plume meets WCAG AA (4.5:1)', () => {
+	const ratio = contrast('#ffffff', tokens.plume);
+	assert.ok(ratio >= 4.5, `white on plume is ${ratio.toFixed(2)}:1`);
+});

@@ -116,7 +116,21 @@ test('404 is a closed gate', () => {
 
 test('plume red is a signature and an alert, used sparingly', () => {
 	const html = page('/');
-	assert.match(html, />Drilon Re<span class="text-plume-text"[^>]*>ç<\/span>ica</);
-	// Nav ç, contact "!" and contact border: red appears nowhere else on the home page.
+	assert.match(html, /<span class="text-plume-text"[^>]*aria-hidden="true"[^>]*>\/ <\/span>Drilon Reçica</);
+	assert.doesNotMatch(html, />ç<\/span>/);
+	// Nav slash, contact "!" and contact border are the only red marks in the markup;
+	// corners, hover underlines and selection come from CSS.
 	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 3);
+});
+
+test('the nav marks the current page with aria-current, without JS', () => {
+	assert.match(page('/cv'), /<a href="\/cv"[^>]*aria-current="page"/);
+	assert.match(page('/work/qisara'), /<a href="\/#work"[^>]*aria-current="page"/);
+	assert.doesNotMatch(page('/'), /aria-current/);
+});
+
+test('every window carries a red plume corner, and selection is red', () => {
+	const all = css();
+	assert.match(all, /\.window:{1,2}after\s*{[^}]*border-color:\s*var\(--plume\)/);
+	assert.match(all, /::selection\s*{[^}]*background(-color)?:\s*var\(--plume\)/);
 });
