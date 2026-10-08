@@ -43,8 +43,8 @@ npm install
 npm run dev        # http://localhost:4321
 npx astro check    # type-check
 npm run build      # production build into dist/
-```
 npm run build && npm test   # checks the built site, the token contrast and the System helpers
+```
 
 ## Updating Content
 
@@ -60,6 +60,6 @@ Pushing to `master` deploys to GitHub Pages through `.github/workflows/deploy.ym
 
 ## Quality bar
 
--   Lighthouse: 95+ in performance, accessibility, best practices and SEO.
+-   Lighthouse: 100 accessibility, 100 best practices, 100 SEO.
 -   WCAG AA contrast (checked by `npm test`), visible keyboard focus, skip link, reduced-motion support.
 -   Responsive from 320px up; `/cv` prints cleanly to A4.
