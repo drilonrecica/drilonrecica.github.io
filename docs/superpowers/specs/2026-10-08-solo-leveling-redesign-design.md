@@ -113,3 +113,12 @@ The audience is unchanged: clients and employers equally. Rules carried over: no
   - The `!` and a 3px left border on the alert title bars (`[ ! SYSTEM MESSAGE ]`, `[ ! GATE CLOSED ]`).
   - The 404 window as a red gate, with both corners and the glow in red.
 - **Never** a fill, and never on body text, quest marks, buttons or focus rings, where red would read as an error.
+
+## Site purpose after the split (2026-10-08)
+
+- **recica.dev** is the professional site: CV and case studies.
+- **drilonrecica.github.io** is the builder and open-source home: side projects, tools and one archived case study. Its home title is "Drilon Reçica | Open source & side projects".
+- The title is "Senior Mobile & Product Engineer" on both sites.
+- Old URLs (`/cv`, `/work/deutsche-bahn`, `/work/qisara`) forward to recica.dev.
+- Facts about roles and experience follow recica.dev. This site's structured data points at the Person entity `https://recica.dev/#drilon`.
+- The sections described above that belonged to the CV (stats, timeline, how I work, print styles) were removed from this site.

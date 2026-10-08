@@ -228,3 +228,7 @@ test('the home page carries no CV-level claims', () => {
 	assert.doesNotMatch(html, /Track record|Hunter record|Passive skill/);
 	assert.match(html, /href="https:\/\/recica\.dev\/cv\/"/);
 });
+
+test('home title names the open-source and side-project purpose', () => {
+	assert.match(page('/'), /<title>Drilon Reçica \| Open source &amp; side projects<\/title>/);
+});

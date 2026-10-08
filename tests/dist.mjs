@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 
 const dist = new URL('../dist/', import.meta.url);
 
-/** Built HTML for a route such as '/', '/cv' or '/404'. Run `npm run build` first. */
+/** Built HTML for a route such as '/', '/work/security-library' or '/404'. Run `npm run build` first. */
 export function page(path) {
 	const file = path === '/' ? 'index.html' : path === '/404' ? '404.html' : `${path.replace(/^\//, '')}/index.html`;
 	return readFileSync(new URL(file, dist), 'utf8');

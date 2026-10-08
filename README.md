@@ -1,11 +1,11 @@
 # Drilon Reçica - Portfolio
 
-Personal site of a senior mobile engineer: a landing page, three case studies and a printable CV, styled as a dark Solo Leveling "System" interface.
+Builder and open-source home of Drilon Reçica: side projects, tools and one archived case study, styled as a dark Solo Leveling "System" interface. The professional profile, case studies and CV live at [recica.dev](https://recica.dev/); old `/cv` and case-study URLs here forward there.
 
 ## Tech Stack
 
--   **Framework**: [Astro](https://astro.build/) (v7) - static output, no UI framework. The only shipped JavaScript is Astro's view-transition router plus a few lines for the mobile menu and the CV print button.
--   **Content**: MDX content collection for case studies, typed data files for everything else.
+-   **Framework**: [Astro](https://astro.build/) (v7) - static output, no UI framework. The only shipped JavaScript is Astro's view-transition router plus a few lines for the mobile menu.
+-   **Content**: MDX content collection for the archived case study, typed data files for everything else.
 -   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4) with design tokens as CSS custom properties; one dark "System" palette shared with igris.
 -   **Fonts**: Chakra Petch (self-hosted, OFL, in `public/fonts`) for headings and System labels; IBM Plex Mono via Fontsource; system sans for body text.
 -   **Deployment**: GitHub Actions + GitHub Pages.
@@ -15,24 +15,26 @@ Personal site of a senior mobile engineer: a landing page, three case studies an
 ```bash
 /src
   /assets            # Images processed by Astro (portrait)
-  /components        # Nav, SystemWindow, StatusWindow, SystemFooter, Timeline, WorkCard, Figure, Icon
+  /components        # Nav, SystemWindow, StatusWindow, SystemFooter, WorkCard, Figure, Icon
     /diagrams        # Inline SVG diagrams (case studies)
   /content/work      # Case studies (MDX)
   /data
-    profile.ts       # Name, headline, bio, links, proof facts, education
+    profile.ts       # Name, headline, intro, summary, links
     experience.ts    # Current employer (status window and structured data)
     work.ts          # Case-study query (drafts are dev-only)
   /layouts
     Layout.astro     # HTML shell, SEO, JSON-LD
   /pages
     index.astro      # Home
-    work/[slug].astro
+    work/[slug].astro  # Archived case study (/work/security-library)
     cv.astro         # Redirect to recica.dev/cv/
+    work/deutsche-bahn.astro  # Redirect to recica.dev
+    work/qisara.astro         # Redirect to recica.dev
     404.astro
   /styles
-    global.css       # Tokens, base styles, components, diagram classes, print rules
+    global.css       # Tokens, base styles, components, diagram classes
   content.config.ts  # Schema for the work collection
-/public              # CV PDF, favicons, OG image, robots.txt
+/public              # Favicons, OG image, robots.txt
 /docs                # Design spec for the redesign
 ```
 
@@ -48,9 +50,10 @@ npm run build && npm test   # checks the built site, the token contrast and the 
 
 ## Updating Content
 
--   **Headline, bio, links, proof facts**: edit `src/data/profile.ts`.
+-   **Headline, intro, summary, links**: edit `src/data/profile.ts`.
+-   **Home sections**: the sections (hero, Shadow army, Quest log, Tools & labs, About, Contact) are in `src/pages/index.astro`; projects and tools are in `src/data/projects.ts`.
 -   **Case studies**: add or edit an `.mdx` file in `src/content/work/`. Set `draft: true` to keep one out of production builds while you write; drafts still show in `npm run dev`.
--   **OG image**: replace `public/og-image.png` (1200x630).
+-   **OG image**: replace `public/og-image.png` (1200x630). It shows the headline and the Status window.
 
 ## Deployment
 

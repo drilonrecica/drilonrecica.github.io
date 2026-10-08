@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const source = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
-// The first top-level :root block holds the tokens; the print block later overrides them.
+// The first top-level :root block holds the tokens.
 const root = source.match(/:root\s*{([^}]*)}/)[1];
 const tokens = Object.fromEntries([...root.matchAll(/--([\w-]+):\s*(#[0-9a-fA-F]{6})\b/g)].map((m) => [m[1], m[2]]));
 

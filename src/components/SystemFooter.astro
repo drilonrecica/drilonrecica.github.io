@@ -4,7 +4,7 @@ import { profile } from '../data/profile';
 const build = new Date().toISOString().slice(0, 10);
 ---
 
-<footer class="mt-24 border-t border-deep print:hidden">
+<footer class="mt-24 border-t border-deep">
 	<div class="sheet flex flex-wrap items-center justify-between gap-x-8 gap-y-2 py-8">
 		<p class="tag">System · Build {build}</p>
 		<p class="note">© {new Date().getFullYear()} {profile.name}. Built with Astro, no tracking.</p>
