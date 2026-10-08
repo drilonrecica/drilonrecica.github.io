@@ -145,3 +145,37 @@ test('every window carries a red plume corner, and selection is red', () => {
 	assert.match(all, /\.window:{1,2}after\s*{[^}]*border-color:\s*var\(--plume\)/);
 	assert.match(all, /::selection\s*{[^}]*background(-color)?:\s*var\(--plume\)/);
 });
+
+const jsonLd = (html) => JSON.parse(html.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+
+test('404 is not indexed and claims no canonical URL', () => {
+	const html = page('/404');
+	assert.match(html, /<meta name="robots" content="noindex">/);
+	assert.doesNotMatch(html, /rel="canonical"/);
+	assert.doesNotMatch(html, /og:url/);
+});
+
+test('case studies are articles, other pages are websites', () => {
+	assert.match(page('/work/qisara'), /<meta property="og:type" content="article">/);
+	assert.match(page('/'), /<meta property="og:type" content="website">/);
+});
+
+test('structured data: a profile page about the one person recica.dev also describes', () => {
+	const data = jsonLd(page('/'));
+	assert.equal(data['@type'], 'ProfilePage');
+	assert.equal(data.url, 'https://drilonrecica.github.io/');
+	const person = data.mainEntity;
+	assert.equal(person['@type'], 'Person');
+	assert.equal(person['@id'], 'https://recica.dev/#drilon');
+	assert.equal(person.name, 'Drilon Reçica');
+	assert.ok(person.alternateName.includes('Drilon Recica'));
+	assert.equal(person.worksFor.name, 'AppDev GmbH');
+	assert.ok(person.knowsAbout.includes('Android'));
+	assert.ok(person.sameAs.includes('https://recica.dev/'));
+	assert.ok(person.sameAs.includes('https://x.com/drilonre'));
+	assert.ok(!person.sameAs.some((url) => url.includes('twitter.com')));
+	// The portrait URL must point at a file that is actually published.
+	const image = new URL(person.image);
+	assert.equal(image.origin, 'https://drilonrecica.github.io');
+	assert.ok(existsSync(new URL(`../dist${image.pathname}`, import.meta.url)), `${image.pathname} is not in dist`);
+});

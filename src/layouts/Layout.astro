@@ -7,25 +7,42 @@ import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import SystemFooter from '../components/SystemFooter.astro';
 import { profile } from '../data/profile';
+import { experience } from '../data/experience';
+import portrait from '../assets/portrait.jpg';
 
 interface Props {
 	title: string;
 	description?: string;
+	/** Open Graph type: case studies are articles. */
+	type?: 'website' | 'article';
+	/** Keep the page out of search results (404); it then claims no canonical URL. */
+	noindex?: boolean;
 }
 
-const { title, description = profile.description } = Astro.props;
+const { title, description = profile.description, type = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og-image.png', Astro.site);
 
-const person = {
+// This site is a profile page about the same person recica.dev describes, so it reuses that
+// entity's @id instead of declaring a second, competing Person.
+const structuredData = {
 	'@context': 'https://schema.org',
-	'@type': 'Person',
-	name: profile.name,
-	jobTitle: profile.title,
+	'@type': 'ProfilePage',
 	url: Astro.site?.href,
-	email: `mailto:${profile.email}`,
-	knowsLanguage: profile.languages,
-	sameAs: profile.links.map((link) => link.href),
+	mainEntity: {
+		'@type': 'Person',
+		'@id': `${profile.home}#drilon`,
+		name: profile.name,
+		alternateName: [profile.alternateName],
+		jobTitle: profile.title,
+		url: profile.home,
+		image: new URL(portrait.src, Astro.site).href,
+		email: `mailto:${profile.email}`,
+		worksFor: { '@type': 'Organization', name: experience[0].company },
+		knowsAbout: profile.knowsAbout,
+		knowsLanguage: profile.languages,
+		sameAs: [profile.home, ...profile.links.map((link) => link.href)],
+	},
 };
 ---
 
@@ -45,10 +62,10 @@ const person = {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="author" content={profile.name} />
-		<link rel="canonical" href={canonical} />
+		{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonical} />
+		<meta property="og:type" content={type} />
+		{!noindex && <meta property="og:url" content={canonical} />}
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImage} />
@@ -58,7 +75,7 @@ const person = {
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
 
-		<script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
 
 		<ClientRouter />
 	</head>

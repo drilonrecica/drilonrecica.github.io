@@ -29,7 +29,7 @@ const spec = [
 ].filter((row) => row.value);
 ---
 
-<Layout title={`${data.title} | ${profile.name}`} description={data.summary}>
+<Layout title={`${data.title} | ${profile.name}`} description={data.summary} type="article">
 	<article class="sheet py-12 md:py-20">
 		<a href="/#work" class="note link"><span aria-hidden="true">◂ </span>Back to selected work</a>
 		<p class={`mark mark-${status} mt-8`}>

@@ -7,6 +7,12 @@ export interface ProfileLink {
 export const profile = {
 	name: "Drilon Reçica",
 	title: "Senior Mobile Engineer",
+	/** Flagship personal site; its structured data owns the canonical Person entity (`${home}#drilon`). */
+	home: "https://recica.dev/",
+	/** Spelling without the cedilla, as people often type it into search. */
+	alternateName: "Drilon Recica",
+	/** Topics shown on this site (experience, case studies, principles), for structured data. */
+	knowsAbout: ["Android", "Kotlin", "Jetpack Compose", "Flutter", "Mobile app architecture", "Accessibility"],
 	/** First year building for Android; the status window's Level counts from here. */
 	androidSince: 2012,
 	email: "drilonrecica.dev@gmail.com",
@@ -29,7 +35,7 @@ export const profile = {
 		{ label: "GitHub", href: "https://github.com/drilonrecica", icon: "github" },
 		{ label: "LinkedIn", href: "https://www.linkedin.com/in/drilonrecica", icon: "linkedin" },
 		{ label: "Stack Overflow", href: "https://stackoverflow.com/users/3392276", icon: "stackoverflow" },
-		{ label: "X", href: "https://twitter.com/drilonre", icon: "x" },
+		{ label: "X", href: "https://x.com/drilonre", icon: "x" },
 	] satisfies ProfileLink[],
 	education: [
 		{ period: "2012 – 2014", place: "University for Business & Technology", title: "Computer Sciences" },
