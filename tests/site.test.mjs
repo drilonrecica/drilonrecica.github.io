@@ -89,3 +89,23 @@ for (const slug of ['deutsche-bahn', 'qisara', 'security-library']) {
 test('figures sit in System windows', () => {
 	assert.match(page('/work/qisara'), /<figure class="window[^"]*"/);
 });
+
+test('/cv stays sober: no System labels on the CV itself', () => {
+	const html = page('/cv');
+	const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+	assert.doesNotMatch(main, /class="(window-bar )?tag"/);
+	assert.doesNotMatch(main, /mark-(active|cleared)/);
+});
+
+test('print turns the dark palette into black on white', () => {
+	const print = css().match(/@media print\s*{\s*(?:@page\s*{[^}]*}\s*)?:root\s*{([^}]*)}/);
+	assert.ok(print, 'print block with :root overrides');
+	assert.match(print[1], /--abyss:\s*#fff/);
+	assert.match(print[1], /--snow:\s*#000/);
+});
+
+test('404 is a closed gate', () => {
+	const html = page('/404');
+	assert.match(html, /class="window-bar tag"[^>]*>! Gate closed</);
+	assert.match(html, /This dungeon doesn(&#39;|')t exist\./);
+});

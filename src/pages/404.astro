@@ -5,11 +5,16 @@ import { profile } from '../data/profile';
 
 <Layout title={`Page not found | ${profile.name}`}>
 	<section class="sheet py-24 md:py-32">
-		<p class="note">Error 404</p>
-		<h1 class="mt-4 text-4xl sm:text-5xl">This sheet is not in the drawing set.</h1>
-		<p class="mt-5 max-w-[55ch] text-lg text-muted">
-			The page you followed a link to does not exist, or it has moved.
-		</p>
-		<a href="/" class="btn btn-primary mt-8">Go to the home page</a>
+		<div class="window max-w-2xl">
+			<p class="window-bar tag">! Gate closed</p>
+			<div class="p-6 sm:p-8">
+				<p class="note">Error 404</p>
+				<h1 class="mt-4 text-4xl sm:text-5xl">This dungeon doesn't exist.</h1>
+				<p class="mt-5 max-w-[55ch] text-lg text-muted">
+					The page you followed a link to does not exist, or it has moved.
+				</p>
+				<a href="/" class="btn btn-primary mt-8">Return to the home page</a>
+			</div>
+		</div>
 	</section>
 </Layout>
