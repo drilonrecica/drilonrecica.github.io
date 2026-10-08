@@ -198,9 +198,9 @@ test('nav: Projects, Archive, Tools, About and an external recica.dev', () => {
 });
 
 const redirects = [
-	['/cv', 'https://recica.dev/cv/'],
-	['/work/deutsche-bahn', 'https://recica.dev/work/wohin-du-willst/'],
-	['/work/qisara', 'https://recica.dev/work/qisara/'],
+	['/cv', 'https://recica.dev/cv'],
+	['/work/deutsche-bahn', 'https://recica.dev/work/wohin-du-willst'],
+	['/work/qisara', 'https://recica.dev/work/qisara'],
 ];
 for (const [path, target] of redirects) {
 	test(`${path} forwards to ${target}`, () => {
@@ -226,7 +226,7 @@ test('the home page carries no CV-level claims', () => {
 	const html = page('/');
 	for (const phrase of ['13+ years', 'millions of users', 'six months']) assert.ok(!html.toLowerCase().includes(phrase), phrase);
 	assert.doesNotMatch(html, /Track record|Hunter record|Passive skill/);
-	assert.match(html, /href="https:\/\/recica\.dev\/cv\/"/);
+	assert.doesNotMatch(html, /recica\.dev\/cv\//);
 });
 
 test('home title names the open-source and side-project purpose', () => {

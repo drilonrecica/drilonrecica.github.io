@@ -10,7 +10,7 @@ import { getWork } from '../data/work';
 import { openSource, builtElsewhere } from '../data/projects';
 import portrait from '../assets/portrait.jpg';
 
-const work = (await getWork()).filter((entry) => entry.id === 'security-library');
+const work = (await getWork());
 const github = profile.links.find((link) => link.icon === 'github')!;
 ---
 
@@ -153,12 +153,6 @@ const github = profile.links.find((link) => link.icon === 'github')!;
 					</li>
 				))
 			}
-			<li>
-				<a href={`${profile.home}cv/`} target="_blank" rel="noopener noreferrer" class="link inline-flex items-center gap-2">
-					CV <Icon name="external" />
-					<span class="sr-only">(opens in a new tab)</span>
-				</a>
-			</li>
 		</ul>
 	</SystemWindow>
 
