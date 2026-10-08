@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import SheetSection from '../components/SheetSection.astro';
+import SystemWindow from '../components/SystemWindow.astro';
 import WorkCard from '../components/WorkCard.astro';
 import Timeline from '../components/Timeline.astro';
 import Icon from '../components/Icon.astro';
@@ -69,15 +69,15 @@ const principles = [
 
 	{
 		work.length > 0 && (
-			<SheetSection id="work" title="Selected work" note="Three projects in detail: the challenge, what I did and what changed.">
+			<SystemWindow id="work" tag="Quest log" title="Selected work" note="Three projects in detail: the challenge, what I did and what changed.">
 				<div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
 					{work.map((entry) => <WorkCard entry={entry} />)}
 				</div>
-			</SheetSection>
+			</SystemWindow>
 		)
 	}
 
-	<SheetSection id="open-source" title="Open source" note="Side projects, built in the open.">
+	<SystemWindow id="open-source" tag="Shadow army" title="Open source" note="Side projects, built in the open.">
 		<ul class="border-t border-deep">
 			{
 				openSource.map((project) => (
@@ -104,13 +104,13 @@ const principles = [
 				))
 			}
 		</ul>
-	</SheetSection>
+	</SystemWindow>
 
-	<SheetSection id="experience" title="Experience" note="Three employers since 2015. Client projects are listed under each.">
+	<SystemWindow id="experience" tag="Hunter record" title="Experience" note="Three employers since 2015. Client projects are listed under each.">
 		<Timeline published={work.map((entry) => entry.id)} />
-	</SheetSection>
+	</SystemWindow>
 
-	<SheetSection id="approach" title="How I work" note="Four convictions, each one earned on a real project.">
+	<SystemWindow id="approach" tag="Passive skills" title="How I work" note="Four convictions, each one earned on a real project.">
 		<div class="grid gap-x-10 gap-y-10 sm:grid-cols-2">
 			{
 				principles.map((principle) => (
@@ -133,9 +133,9 @@ const principles = [
 				))
 			}
 		</dl>
-	</SheetSection>
+	</SystemWindow>
 
-	<SheetSection id="about" title="About">
+	<SystemWindow id="about" tag="Player" title="About">
 		<div class="grid gap-8 sm:grid-cols-[minmax(0,1fr)_auto]">
 			<div class="max-w-[62ch] space-y-4">
 				<p>{profile.summary}</p>
@@ -154,9 +154,9 @@ const principles = [
 				/>
 			</figure>
 		</div>
-	</SheetSection>
+	</SystemWindow>
 
-	<SheetSection id="contact" title="Contact" note="Email is the fastest way to reach me.">
+	<SystemWindow id="contact" tag="! System message" title="Contact" note="Email is the fastest way to reach me.">
 		<p class="text-2xl sm:text-3xl">
 			<a href={`mailto:${profile.email}`} class="link break-all">{profile.email}</a>
 		</p>
@@ -177,5 +177,5 @@ const principles = [
 				</a>
 			</li>
 		</ul>
-	</SheetSection>
+	</SystemWindow>
 </Layout>

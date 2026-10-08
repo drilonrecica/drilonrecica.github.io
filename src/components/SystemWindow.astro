@@ -1,0 +1,30 @@
+---
+interface Props {
+	id: string;
+	/** System label for the title bar, e.g. "Quest log"; shown as [ QUEST LOG ]. */
+	tag: string;
+	/** Plain heading that carries the meaning for every visitor. */
+	title: string;
+	/** Margin annotation under the heading. */
+	note?: string;
+}
+
+const { id, tag, title, note } = Astro.props;
+---
+
+<section id={id} aria-labelledby={`${id}-title`} class="py-10 md:py-14">
+	<div class="sheet">
+		<div class="window reveal">
+			<p class="window-bar tag">{tag}</p>
+			<div class="grid gap-8 p-5 sm:p-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
+				<header>
+					<h2 id={`${id}-title`} class="text-2xl">{title}</h2>
+					{note && <p class="note mt-3 max-w-[22ch]">{note}</p>}
+				</header>
+				<div>
+					<slot />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

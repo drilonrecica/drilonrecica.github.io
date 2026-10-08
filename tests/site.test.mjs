@@ -32,3 +32,14 @@ test('scroll-driven animation only exists behind @supports, so content is never 
 	assert.match(all, /animation-timeline/);
 	assert.doesNotMatch(stripAtRule(all, '@supports'), /animation-timeline/);
 });
+
+test('home sections are System windows with dual labels', () => {
+	const html = page('/');
+	const tags = [...html.matchAll(/class="window-bar tag"[^>]*>([^<]+)</g)].map((m) => m[1].trim());
+	for (const tag of ['Quest log', 'Shadow army', 'Hunter record', 'Passive skills', 'Player', '! System message']) {
+		assert.ok(tags.includes(tag), `missing [ ${tag} ] window, found: ${tags.join(', ')}`);
+	}
+	for (const heading of ['Selected work', 'Open source', 'Experience', 'How I work', 'About', 'Contact']) {
+		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
+	}
+});
