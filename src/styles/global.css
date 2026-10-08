@@ -240,6 +240,12 @@
     border-top: 1px solid var(--deep);
   }
 
+  /* Case-study sections carry the nav's red slash signature. */
+  .prose-sheet h2::before {
+    content: "/ " / "";
+    color: var(--plume-text);
+  }
+
   .prose-sheet > h2:first-child {
     margin-top: 0;
     padding-top: 0;

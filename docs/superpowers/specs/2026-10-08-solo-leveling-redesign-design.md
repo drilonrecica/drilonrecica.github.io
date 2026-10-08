@@ -106,6 +106,9 @@ The audience is unchanged: clients and employers equally. Rules carried over: no
   - Hover underlines on nav links, text links and case-study card titles.
   - The current nav item (`aria-current="page"`, server-rendered for `/cv` and the case studies).
   - The hero's load scan line.
+  - The hero headline's final full stop.
+  - "Now" on the experience timeline: the current role's label and the top of its track.
+  - A red `/` before each case-study section heading (CSS `::before`, hidden from screen readers).
   - Text selection: plume background with white text, 4.75:1.
   - The `!` and a 3px left border on the alert title bars (`[ ! SYSTEM MESSAGE ]`, `[ ! GATE CLOSED ]`).
   - The 404 window as a red gate, with both corners and the glow in red.

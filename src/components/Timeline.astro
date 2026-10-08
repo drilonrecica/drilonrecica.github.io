@@ -16,8 +16,8 @@ const { published } = Astro.props;
 			<li class="entry">
 				<!-- The period runs down a glowing track in the margin. -->
 				<div class="period tag" aria-hidden="true">
-					<span>{employer.end ?? 'Now'}</span>
-					<span class="extent" />
+					<span class:list={[employer.end === null && 'text-plume-text']}>{employer.end ?? 'Now'}</span>
+					<span class:list={['extent', employer.end === null && 'extent-current']} />
 					<span>{employer.start}</span>
 				</div>
 				<div>
@@ -95,5 +95,11 @@ const { published } = Astro.props;
 	.period::before,
 	.period::after {
 		content: none;
+	}
+
+	/* The current role's track starts in plume red: you are here. */
+	.extent-current {
+		background: linear-gradient(var(--plume) 0 1rem, var(--glow) 1rem, rgb(60 200 255 / 0.1));
+		box-shadow: 0 0 8px rgb(227 23 43 / 0.45);
 	}
 </style>

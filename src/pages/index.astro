@@ -37,7 +37,9 @@ const principles = [
 <Layout title={`${profile.name} | ${profile.title}`}>
 	<section class="sheet grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
 		<div>
-			<h1 class="text-4xl sm:text-5xl lg:text-[3.5rem]">{profile.headline}</h1>
+			<h1 class="text-4xl sm:text-5xl lg:text-[3.5rem]">
+				{profile.headline.replace(/\.$/, '')}{profile.headline.endsWith('.') && <span class="text-plume-text">.</span>}
+			</h1>
 			<p class="mt-6 max-w-[58ch] text-lg text-muted">{profile.intro}</p>
 			<div class="mt-8 flex flex-wrap gap-3">
 				{work.length > 0 && <a href="#work" class="btn btn-primary">Read case studies</a>}

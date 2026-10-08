@@ -118,9 +118,20 @@ test('plume red is a signature and an alert, used sparingly', () => {
 	const html = page('/');
 	assert.match(html, /<span class="text-plume-text"[^>]*aria-hidden="true"[^>]*>\/ <\/span>Drilon Reçica</);
 	assert.doesNotMatch(html, />ç<\/span>/);
-	// Nav slash, contact "!" and contact border are the only red marks in the markup;
-	// corners, hover underlines and selection come from CSS.
-	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 3);
+	// Nav slash, hero full stop, timeline "Now", contact "!" and contact border are the only
+	// red marks in the markup; corners, hover underlines and selection come from CSS.
+	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 5);
+});
+
+test('the hero headline ends in a red full stop and the current role is marked Now in red', () => {
+	const html = page('/');
+	assert.match(html, /rely on<span class="text-plume-text">\.<\/span><\/h1>/);
+	assert.match(html, /class="text-plume-text"[^>]*>Now</);
+	assert.equal((html.match(/class="[^"]*\bextent-current\b/g) ?? []).length, 1);
+});
+
+test('case-study section headings carry the red slash signature', () => {
+	assert.match(css(), /\.prose-sheet h2:{1,2}before\s*{[^}]*content:\s*"\/ "\s*\/\s*""[^}]*var\(--plume-text\)|\.prose-sheet h2:{1,2}before\s*{[^}]*var\(--plume-text\)[^}]*content:\s*"\/ "\s*\/\s*""/);
 });
 
 test('the nav marks the current page with aria-current, without JS', () => {
