@@ -43,3 +43,15 @@ test('home sections are System windows with dual labels', () => {
 		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
 	}
 });
+
+test('hero is a STATUS window with a factual level and no rank', () => {
+	const html = page('/');
+	const level = new Date().getFullYear() - 2012;
+	assert.match(html, /class="window-bar tag"[^>]*>Status</);
+	assert.match(html, new RegExp(`>${level}</span>`));
+	assert.match(html, /years building for Android, since 2012/);
+	assert.match(html, />AppDev GmbH</);
+	assert.doesNotMatch(html, />Rank</);
+	assert.match(html, /class="window-bar tag"[^>]*>Stats</);
+	assert.doesNotMatch(html, /ltm-title/);
+});

@@ -5,7 +5,7 @@ import SystemWindow from '../components/SystemWindow.astro';
 import WorkCard from '../components/WorkCard.astro';
 import Timeline from '../components/Timeline.astro';
 import Icon from '../components/Icon.astro';
-import LegacyToModular from '../components/diagrams/LegacyToModular.astro';
+import StatusWindow from '../components/StatusWindow.astro';
 import { profile } from '../data/profile';
 import { stackGroups } from '../data/experience';
 import { getWork } from '../data/work';
@@ -35,10 +35,9 @@ const principles = [
 ---
 
 <Layout title={`${profile.name} | ${profile.title}`}>
-	<section class="sheet grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+	<section class="sheet grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
 		<div>
-			<p class="note">{profile.name}, {profile.title.toLowerCase()}</p>
-			<h1 class="mt-4 text-4xl sm:text-5xl lg:text-[3.5rem]">{profile.headline}</h1>
+			<h1 class="text-4xl sm:text-5xl lg:text-[3.5rem]">{profile.headline}</h1>
 			<p class="mt-6 max-w-[58ch] text-lg text-muted">{profile.intro}</p>
 			<div class="mt-8 flex flex-wrap gap-3">
 				{work.length > 0 && <a href="#work" class="btn btn-primary">Read case studies</a>}
@@ -48,23 +47,23 @@ const principles = [
 				</a>
 			</div>
 		</div>
-		<div class="window p-4 sm:p-6">
-			<LegacyToModular />
-			<p class="note mt-3">Fig. 1: the change I make to codebases, drawn as a dependency graph.</p>
-		</div>
+		<StatusWindow />
 	</section>
 
-	<section aria-label="Track record" class="border-t border-deep">
-		<dl class="sheet grid grid-cols-2 gap-px bg-deep px-0! lg:grid-cols-4">
-			{
-				profile.proof.map((fact) => (
-					<div class="flex flex-col-reverse justify-end bg-abyss px-5 py-8 sm:px-8">
-						<dt class="note mt-2">{fact.label}</dt>
-						<dd class="text-3xl font-medium">{fact.value}</dd>
-					</div>
-				))
-			}
-		</dl>
+	<section aria-label="Track record" class="sheet">
+		<div class="window reveal">
+			<p class="window-bar tag">Stats</p>
+			<dl class="grid grid-cols-2 gap-px bg-deep lg:grid-cols-4">
+				{
+					profile.proof.map((fact) => (
+						<div class="flex flex-col-reverse justify-end bg-armor px-5 py-6 sm:px-6">
+							<dt class="note mt-2">{fact.label}</dt>
+							<dd class="font-display text-3xl font-bold text-glow-core">{fact.value}</dd>
+						</div>
+					))
+				}
+			</dl>
+		</div>
 	</section>
 
 	{

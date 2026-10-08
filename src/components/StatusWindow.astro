@@ -1,0 +1,60 @@
+---
+import { profile } from '../data/profile';
+import { experience } from '../data/experience';
+import { levelSince } from '../lib/system';
+
+const rows = [
+	{ label: 'Name', value: profile.name },
+	{ label: 'Class', value: profile.title },
+	{
+		label: 'Level',
+		value: String(levelSince(profile.androidSince)),
+		hint: `years building for Android, since ${profile.androidSince}`,
+	},
+	{ label: 'Guild', value: experience[0].company },
+];
+---
+
+<div class="window status">
+	<span class="scan" aria-hidden="true"></span>
+	<p class="window-bar tag">Status</p>
+	<dl class="divide-y divide-deep px-5 sm:px-6">
+		{
+			rows.map((row) => (
+				<div class="grid grid-cols-[4.5rem_minmax(0,1fr)] items-baseline gap-4 py-3">
+					<dt class="tag text-muted">{row.label}</dt>
+					<dd>
+						{/* Value on one line: tests match `>14</span>`, so no whitespace inside the span. */}
+						<span class={row.hint ? 'font-display text-4xl font-bold text-glow-core' : 'font-display text-lg font-semibold'}>{row.value}</span>
+						{row.hint && <span class="note mt-1 block">{row.hint}</span>}
+					</dd>
+				</div>
+			))
+		}
+	</dl>
+</div>
+
+<style>
+	.scan {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100%;
+		height: 2px;
+		background: var(--glow);
+		box-shadow: 0 0 12px var(--glow);
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	/* The window materialises once on load: it unrolls downwards behind a scan line. */
+	@media (prefers-reduced-motion: no-preference) {
+		.status {
+			animation: materialise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		}
+
+		.scan {
+			animation: scan 0.8s ease-out both;
+		}
+	}
+</style>

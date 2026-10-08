@@ -7,6 +7,8 @@ export interface ProfileLink {
 export const profile = {
 	name: "Drilon Reçica",
 	title: "Senior Mobile Engineer",
+	/** First year building for Android; the status window's Level counts from here. */
+	androidSince: 2012,
 	email: "drilonrecica.dev@gmail.com",
 	cvPdf: "/Drilon_Recica_CV.pdf",
 	description:

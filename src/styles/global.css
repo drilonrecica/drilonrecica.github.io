@@ -249,19 +249,6 @@
   }
 }
 
-/* Kept for diagrams/LegacyToModular.astro until Task 4 removes it. */
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes appear {
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes materialise {
   from {
     clip-path: inset(-2px -2px 100% -2px);
