@@ -85,3 +85,8 @@ The audience is unchanged: clients and employers equally. Rules carried over: no
 - Lighthouse (chrome-devtools MCP) of 95 or higher on `/` and one case study.
 - Print preview of `/cv`: black on white, clean A4.
 - Content audit: no new facts introduced. Level matches 2012, and ACTIVE/CLEARED matches the periods.
+
+## Adjustments made while planning
+- `LegacyToModular` is retired rather than moved into the DB case study: that case study says the app stays a single module, so a modularisation diagram there would contradict it and depict a named client's code as a tangle.
+- The Level "count-up" is a scan-line wipe; the number stays real text.
+- "Arise." is scroll-linked (plays as the igris card enters the viewport) so it needs no JavaScript.
