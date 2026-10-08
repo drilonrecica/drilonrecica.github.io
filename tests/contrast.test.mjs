@@ -26,6 +26,7 @@ const pairs = [
 	['glow', 'abyss'], ['glow', 'armor'],
 	['glow-core', 'armor'],
 	['gate', 'abyss'], ['gate', 'armor'],
+	['plume-text', 'abyss'], ['plume-text', 'armor'],
 	['abyss', 'glow'], ['abyss', 'glow-core'],
 ];
 
@@ -34,5 +35,16 @@ for (const [fg, bg] of pairs) {
 		assert.ok(tokens[fg] && tokens[bg], `missing token --${fg} or --${bg}`);
 		const ratio = contrast(tokens[fg], tokens[bg]);
 		assert.ok(ratio >= 4.5, `${fg} on ${bg} is ${ratio.toFixed(2)}:1`);
+	});
+}
+
+// [mark, background]: non-text marks (borders, brackets) need 3:1 (WCAG 1.4.11).
+const marks = [['plume', 'abyss'], ['plume', 'armor']];
+
+for (const [fg, bg] of marks) {
+	test(`${fg} marks on ${bg} meet 3:1`, () => {
+		assert.ok(tokens[fg] && tokens[bg], `missing token --${fg} or --${bg}`);
+		const ratio = contrast(tokens[fg], tokens[bg]);
+		assert.ok(ratio >= 3, `${fg} on ${bg} is ${ratio.toFixed(2)}:1`);
 	});
 }

@@ -7,7 +7,7 @@ interface Props {
 	title: string;
 	/** Margin annotation under the heading. */
 	note?: string;
-	/** Prepends a visual "!" that assistive tech skips. */
+	/** Marks the window as a System alert: a plume-red "!" (skipped by assistive tech) and left border. */
 	alert?: boolean;
 }
 
@@ -17,7 +17,9 @@ const { id, tag, title, note, alert } = Astro.props;
 <section id={id} aria-labelledby={`${id}-title`} class="py-10 md:py-14">
 	<div class="sheet">
 		<div class="window reveal">
-			<p class="window-bar tag">{alert && <span aria-hidden="true">! </span>}{tag}</p>
+			<p class:list={['window-bar tag', alert && 'border-l-[3px] border-l-plume']}>
+				{alert && <span class="text-plume-text" aria-hidden="true">! </span>}{tag}
+			</p>
 			<div class="grid gap-8 p-5 sm:p-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-12">
 				<header>
 					<h2 id={`${id}-title`} class="text-2xl">{title}</h2>

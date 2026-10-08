@@ -90,3 +90,16 @@ The audience is unchanged: clients and employers equally. Rules carried over: no
 - `LegacyToModular` is retired rather than moved into the DB case study: that case study says the app stays a single module, so a modularisation diagram there would contradict it and depict a named client's code as a tangle.
 - The Level "count-up" is a scan-line wipe; the number stays real text.
 - "Arise." is scroll-linked (plays as the igris card enters the viewport) so it needs no JavaScript.
+
+## Plume red accent (added 2026-10-08)
+- **Meaning:** red is the System's alert and Drilon's signature, as in igris ("red appears once per mark") and Solo Leveling (`[!] WARNING`, red gates). It appears at most once or twice per screen.
+- **Tokens:**
+  - `--plume #e3172b` is igris's red, for marks only: it is 3.95:1 on armor, which is enough for UI marks but not for small text.
+  - `--plume-text #ff5a66` is for glyphs and letters, at 6.17:1 on armor.
+  - Both print as black.
+- **Placements:**
+  - The `!` in `[ ! SYSTEM MESSAGE ]` (contact) and `[ ! GATE CLOSED ]` (404).
+  - A 3px plume left border on those two title bars.
+  - The 404 window as a red gate (plume brackets and glow, `.window-alert`).
+  - The `ç` in "Drilon Reçica" in the nav.
+- **Never on** quest marks, buttons, links, focus rings, selection or body text, where red would read as an error.

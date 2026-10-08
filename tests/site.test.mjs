@@ -39,7 +39,7 @@ test('home sections are System windows with dual labels', () => {
 	for (const tag of ['Quest log', 'Shadow army', 'Hunter record', 'Passive skills', 'Player']) {
 		assert.ok(tags.includes(tag), `missing [ ${tag} ] window, found: ${tags.join(', ')}`);
 	}
-	assert.match(html, /class="window-bar tag"[^>]*><span aria-hidden="true">! <\/span>System message</);
+	assert.match(html, /class="window-bar tag border-l-\[3px\] border-l-plume"[^>]*><span class="text-plume-text" aria-hidden="true">! <\/span>System message</);
 	for (const heading of ['Selected work', 'Open source', 'Experience', 'How I work', 'About', 'Contact']) {
 		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
 	}
@@ -109,6 +109,14 @@ test('print turns the dark palette into black on white', () => {
 
 test('404 is a closed gate', () => {
 	const html = page('/404');
-	assert.match(html, /class="window-bar tag"[^>]*><span aria-hidden="true">! <\/span>Gate closed</);
+	assert.match(html, /class="window window-alert[^"]*"/);
+	assert.match(html, /class="window-bar tag border-l-\[3px\] border-l-plume"[^>]*><span class="text-plume-text" aria-hidden="true">! <\/span>Gate closed</);
 	assert.match(html, /This dungeon doesn(&#39;|')t exist\./);
+});
+
+test('plume red is a signature and an alert, used sparingly', () => {
+	const html = page('/');
+	assert.match(html, />Drilon Re<span class="text-plume-text"[^>]*>ç<\/span>ica</);
+	// Nav ç, contact "!" and contact border: red appears nowhere else on the home page.
+	assert.equal((html.match(/\b(text|border-l)-plume(-text)?\b/g) ?? []).length, 3);
 });
