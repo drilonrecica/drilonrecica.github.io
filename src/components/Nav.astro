@@ -1,16 +1,18 @@
 ---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
 const links = [
-	{ name: 'Work', href: '/#work' },
-	{ name: 'Experience', href: '/#experience' },
+	{ name: 'Projects', href: '/#open-source' },
+	{ name: 'Archive', href: '/#work' },
+	{ name: 'Tools', href: '/#tools' },
 	{ name: 'About', href: '/#about' },
-	{ name: 'CV', href: '/cv' },
-	{ name: 'Contact', href: '/#contact' },
 ];
+const external = { name: 'recica.dev', href: profile.home };
 
-// Server-rendered current page: /cv, and "Work" on case studies. Home sections are hash links with no current state.
+// Server-rendered current page: "Archive" on case studies. Home sections are hash links with no current state.
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (link: (typeof links)[number]) =>
-	link.href === path || (link.name === 'Work' && path.startsWith('/work/'));
+	link.href === path || (link.name === 'Archive' && path.startsWith('/work/'));
 ---
 
 <header class="sticky top-0 z-40 border-b border-deep bg-abyss/90 backdrop-blur-sm print:hidden">
@@ -35,6 +37,17 @@ const isCurrent = (link: (typeof links)[number]) =>
 						</li>
 					))
 				}
+				<li>
+					<a
+						href={external.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-1.5 px-3 py-2 text-[0.9375rem] text-muted no-underline decoration-plume decoration-2 underline-offset-[6px] hover:text-snow hover:underline"
+					>
+						{external.name} <Icon name="external" />
+						<span class="sr-only">(opens in a new tab)</span>
+					</a>
+				</li>
 			</ul>
 			<button
 				type="button"

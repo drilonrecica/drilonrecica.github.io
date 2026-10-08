@@ -6,7 +6,7 @@ export interface ProfileLink {
 
 export const profile = {
 	name: "Drilon Reçica",
-	title: "Senior Mobile Engineer",
+	title: "Senior Mobile & Product Engineer",
 	/** Flagship personal site; its structured data owns the canonical Person entity (`${home}#drilon`). */
 	home: "https://recica.dev/",
 	/** Spelling without the cedilla, as people often type it into search. */
@@ -18,12 +18,12 @@ export const profile = {
 	email: "drilonrecica.dev@gmail.com",
 	cvPdf: "/Drilon_Recica_CV.pdf",
 	description:
-		"Senior mobile engineer working with Android, Flutter and backend systems since 2012. I modernize large production apps and build products from zero.",
-	headline: "I modernize mobile apps that millions of people rely on.",
+		"Open source, side projects and experiments by Drilon Reçica, Senior Mobile & Product Engineer. Professional profile and CV at recica.dev.",
+	headline: "I build things in the open.",
 	intro:
-		"Senior mobile engineer, building for Android since 2012. I move large production apps from legacy architecture to modern Kotlin without stopping delivery, and I have taken a product from idea to launch across app, backend and infrastructure.",
+		"Open source, side projects and experiments by a Senior Mobile & Product Engineer who has been building for Android since 2012. For my professional profile, case studies and CV, visit recica.dev.",
 	summary:
-		"Senior mobile and software engineer with 13+ years of professional experience, focused on Android, Flutter and modern backend systems. Started Android development in 2012 and grew alongside the platform, adapting to new architectures, tooling and engineering standards as the ecosystem evolved.",
+		"I am a senior mobile and product engineer, building for Android since 2012 and working across Android, Flutter and backend systems. This site is where my side projects and open-source work live. My professional background, case studies and CV are on recica.dev.",
 	languages: ["German", "English", "Albanian"],
 	proof: [
 		{ value: "2012", label: "Building for Android since" },

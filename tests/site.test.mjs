@@ -36,11 +36,11 @@ test('scroll-driven animation only exists behind @supports, so content is never 
 test('home sections are System windows with dual labels', () => {
 	const html = page('/');
 	const tags = [...html.matchAll(/class="window-bar tag"[^>]*>([^<]+)</g)].map((m) => m[1].trim());
-	for (const tag of ['Quest log', 'Shadow army', 'Hunter record', 'Passive skills', 'Player']) {
+	for (const tag of ['Shadow army', 'Quest log', 'Tools &amp; labs', 'Hunter record', 'Passive skills', 'Player']) {
 		assert.ok(tags.includes(tag), `missing [ ${tag} ] window, found: ${tags.join(', ')}`);
 	}
 	assert.match(html, /class="window-bar tag border-l-\[3px\] border-l-plume"[^>]*><span class="text-plume-text" aria-hidden="true">! <\/span>System message</);
-	for (const heading of ['Selected work', 'Open source', 'Experience', 'How I work', 'About', 'Contact']) {
+	for (const heading of ['Open source', 'From the archive', 'More things I&#39;ve built', 'Experience', 'How I work', 'About', 'Contact']) {
 		assert.match(html, new RegExp(`<h2[^>]*>${heading}</h2>`));
 	}
 });
@@ -52,6 +52,7 @@ test('hero is a STATUS window with a factual level and no rank', () => {
 	assert.match(html, new RegExp(`>${level}</span>`));
 	assert.match(html, /years building for Android, since 2012/);
 	assert.match(html, />AppDev GmbH</);
+	assert.match(html, /<span[^>]*>Senior Mobile (&amp;|&) Product Engineer<\/span>/);
 	assert.doesNotMatch(html, />Rank</);
 	assert.match(html, /class="window-bar tag"[^>]*>Stats</);
 	assert.doesNotMatch(html, /ltm-title/);
@@ -60,9 +61,8 @@ test('hero is a STATUS window with a factual level and no rank', () => {
 test('quest cards carry a status mark derived from their period', () => {
 	const html = page('/');
 	const marks = [...html.matchAll(/class="mark mark-(active|cleared)"/g)].map((m) => m[1]);
-	assert.equal(marks.length, 3, 'one mark per published case study');
-	// Deutsche Bahn ("Nov 2023 – Present") is the only running quest today.
-	assert.equal(marks.filter((m) => m === 'active').length, 1);
+	assert.equal(marks.length, 1, 'only the security library quest stays on the home page');
+	assert.deepEqual(marks, ['cleared']);
 });
 
 test('igris carries the Arise flourish, hidden from screen readers', () => {
@@ -125,7 +125,7 @@ test('plume red is a signature and an alert, used sparingly', () => {
 
 test('the hero headline ends in a red full stop and the current role is marked Now in red', () => {
 	const html = page('/');
-	assert.match(html, /rely on<span class="text-plume-text">\.<\/span><\/h1>/);
+	assert.match(html, /open<span class="text-plume-text">\.<\/span><\/h1>/);
 	assert.match(html, /class="text-plume-text"[^>]*>Now</);
 	assert.equal((html.match(/class="[^"]*\bextent-current\b/g) ?? []).length, 1);
 });
@@ -135,8 +135,8 @@ test('case-study section headings carry the red slash signature', () => {
 });
 
 test('the nav marks the current page with aria-current, without JS', () => {
-	assert.match(page('/cv'), /<a href="\/cv"[^>]*aria-current="page"/);
 	assert.match(page('/work/qisara'), /<a href="\/#work"[^>]*aria-current="page"/);
+	assert.match(page('/work/security-library'), /<a href="\/#work"[^>]*aria-current="page"/);
 	assert.doesNotMatch(page('/'), /aria-current/);
 });
 
@@ -169,6 +169,7 @@ test('structured data: a profile page about the one person recica.dev also descr
 	assert.equal(person['@id'], 'https://recica.dev/#drilon');
 	assert.equal(person.name, 'Drilon Reçica');
 	assert.ok(person.alternateName.includes('Drilon Recica'));
+	assert.equal(person.jobTitle, 'Senior Mobile & Product Engineer');
 	assert.equal(person.worksFor.name, 'AppDev GmbH');
 	assert.ok(person.knowsAbout.includes('Android'));
 	assert.ok(person.sameAs.includes('https://recica.dev/'));
@@ -178,4 +179,42 @@ test('structured data: a profile page about the one person recica.dev also descr
 	const image = new URL(person.image);
 	assert.equal(image.origin, 'https://drilonrecica.github.io');
 	assert.ok(existsSync(new URL(`../dist${image.pathname}`, import.meta.url)), `${image.pathname} is not in dist`);
+});
+
+test('hero h1 reads "I build things in the open" with a red full stop', () => {
+	assert.match(page('/'), /<h1[^>]*>\s*I build things in the open<span class="text-plume-text">\.<\/span>\s*<\/h1>/);
+});
+
+test('home links to recica.dev at least three times, safely', () => {
+	const html = page('/');
+	const links = [...html.matchAll(/<a [^>]*href="https:\/\/recica\.dev\/"[^>]*>/g)].map((m) => m[0]);
+	assert.ok(links.length >= 3, `found ${links.length}`);
+	for (const tag of links) assert.match(tag, /target="_blank"[^>]*rel="noopener noreferrer"|rel="noopener noreferrer"[^>]*target="_blank"/);
+});
+
+test('each shadow army project lists at least two highlights', () => {
+	const html = page('/');
+	const lists = [...html.matchAll(/<ul class="highlights[^"]*"[^>]*>([\s\S]*?)<\/ul>/g)];
+	assert.equal(lists.length, 3);
+	for (const list of lists) assert.ok((list[1].match(/<li/g) ?? []).length >= 2);
+});
+
+test('tools and labs are linked as external sites', () => {
+	const html = page('/');
+	assert.match(html, /href="https:\/\/tools\.recica\.dev\/"/);
+	assert.match(html, /href="https:\/\/labs\.recica\.dev\/"/);
+});
+
+test('home sections come in the new order', () => {
+	const html = page('/');
+	const order = ['id="open-source"', 'id="work"', 'id="tools"', 'id="about"', 'id="contact"'].map((id) => html.indexOf(`<section ${id}`) === -1 ? html.indexOf(id) : html.indexOf(`<section ${id}`));
+	assert.ok(order.every((i) => i > 0));
+	assert.deepEqual([...order].sort((a, b) => a - b), order);
+});
+
+test('nav: Projects, Archive, Tools, About and an external recica.dev', () => {
+	const nav = page('/').match(/<nav[\s\S]*?<\/nav>/)[0];
+	for (const href of ['/#open-source', '/#work', '/#tools', '/#about']) assert.ok(nav.includes(`href="${href}"`), href);
+	assert.match(nav, /href="https:\/\/recica\.dev\/"[^>]*target="_blank"/);
+	assert.match(nav, /opens in a new tab/);
 });
