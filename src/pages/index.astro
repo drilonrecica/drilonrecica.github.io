@@ -77,13 +77,14 @@ const principles = [
 	}
 
 	<SystemWindow id="open-source" tag="Shadow army" title="Open source" note="Side projects, built in the open.">
-		<ul class="border-t border-deep">
+		<ul class="grid gap-4">
 			{
 				openSource.map((project) => (
-					<li class="border-b border-deep py-6">
+					<li class="panel p-5 sm:p-6">
 						<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
 							<h3 class="text-lg">{project.name}</h3>
 							{project.status && <span class="note">{project.status}</span>}
+							{project.arise && <span class="arise ml-auto" aria-hidden="true">Arise.</span>}
 						</div>
 						<p class="mt-2 max-w-[68ch] text-muted">{project.summary}</p>
 						<div class="mt-3 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
@@ -114,14 +115,16 @@ const principles = [
 			{
 				principles.map((principle) => (
 					<div>
-						<h3 class="text-lg">{principle.title}</h3>
+						<p class="tag text-muted">Passive skill</p>
+						<h3 class="mt-2 text-lg">{principle.title}</h3>
 						<p class="mt-2 text-muted">{principle.body}</p>
 					</div>
 				))
 			}
 		</div>
 
-		<h3 class="mt-16 text-lg">Tools I use</h3>
+		<p class="tag mt-16">Skills</p>
+		<h3 class="mt-2 text-lg">Tools I use</h3>
 		<dl class="mt-4 border-t border-deep">
 			{
 				stackGroups.map((group) => (
@@ -143,7 +146,7 @@ const principles = [
 				</p>
 				<p class="note">I work in {profile.languages.join(', ')}.</p>
 			</div>
-			<figure class="window m-0 w-40 self-start p-2 max-sm:order-first sm:w-52">
+			<figure class="panel m-0 w-40 self-start p-2 max-sm:order-first sm:w-52">
 				<Image
 					src={portrait}
 					alt={`Portrait of ${profile.name}`}
@@ -156,9 +159,12 @@ const principles = [
 	</SystemWindow>
 
 	<SystemWindow id="contact" tag="! System message" title="Contact" note="Email is the fastest way to reach me.">
-		<p class="text-2xl sm:text-3xl">
+		<p class="font-display text-xl font-semibold text-glow-core">A new quest has arrived.</p>
+		<p class="mt-2 text-muted">Projects, roles or questions: write to me directly.</p>
+		<p class="mt-6 text-2xl sm:text-3xl">
 			<a href={`mailto:${profile.email}`} class="link break-all">{profile.email}</a>
 		</p>
+		<a href={`mailto:${profile.email}`} class="btn btn-primary mt-6">Accept<span class="sr-only"> and write an email</span></a>
 		<ul class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
 			{
 				profile.links.map((link) => (

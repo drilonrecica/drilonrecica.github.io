@@ -14,8 +14,8 @@ const { published } = Astro.props;
 	{
 		experience.map((employer) => (
 			<li class="entry">
-				<!-- Dimension line: the period is measured in the margin. -->
-				<div class="period note" aria-hidden="true">
+				<!-- The period runs down a glowing track in the margin. -->
+				<div class="period tag" aria-hidden="true">
 					<span>{employer.end ?? 'Now'}</span>
 					<span class="extent" />
 					<span>{employer.start}</span>
@@ -83,12 +83,17 @@ const { published } = Astro.props;
 		gap: 0.5rem;
 	}
 
-	/* Vertical dimension line with end ticks. */
+	/* A glowing track between start and end year. */
 	.extent {
 		flex: 1;
-		width: 9px;
+		width: 2px;
 		min-height: 3rem;
-		border-block: 1px solid var(--glow);
-		background: linear-gradient(var(--glow), var(--glow)) center / 1px 100% no-repeat;
+		background: linear-gradient(var(--glow), rgb(60 200 255 / 0.1));
+		box-shadow: 0 0 8px rgb(60 200 255 / 0.5);
+	}
+
+	.period::before,
+	.period::after {
+		content: none;
 	}
 </style>

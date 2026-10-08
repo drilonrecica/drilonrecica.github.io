@@ -4,6 +4,8 @@ export interface OpenSourceProject {
 	stack: string[];
 	/** Short maturity label. Version numbers are left out because they go stale. */
 	status?: string;
+	/** Plays the "Arise." flourish: igris is the shadow this site's owner raised. */
+	arise?: boolean;
 	links: { label: string; href: string; icon: "github" | "external" }[];
 }
 
@@ -15,6 +17,7 @@ export const openSource: OpenSourceProject[] = [
 			"Runs a markdown project plan one task at a time, each in a fresh Claude Code session started with the model the plan assigns. Deterministic, strictly sequential, and it waits for you whenever a task needs a decision.",
 		stack: ["Go", "CLI", "tmux", "herdr"],
 		status: "Released",
+		arise: true,
 		links: [
 			{ label: "GitHub", href: "https://github.com/drilonrecica/igris", icon: "github" },
 			{ label: "Website", href: "https://drilonrecica.github.io/igris/", icon: "external" },

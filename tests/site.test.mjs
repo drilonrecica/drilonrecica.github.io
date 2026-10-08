@@ -55,3 +55,24 @@ test('hero is a STATUS window with a factual level and no rank', () => {
 	assert.match(html, /class="window-bar tag"[^>]*>Stats</);
 	assert.doesNotMatch(html, /ltm-title/);
 });
+
+test('quest cards carry a status mark derived from their period', () => {
+	const html = page('/');
+	const marks = [...html.matchAll(/class="mark mark-(active|cleared)"/g)].map((m) => m[1]);
+	assert.equal(marks.length, 3, 'one mark per published case study');
+	// Deutsche Bahn ("Nov 2023 – Present") is the only running quest today.
+	assert.equal(marks.filter((m) => m === 'active').length, 1);
+});
+
+test('igris carries the Arise flourish, hidden from screen readers', () => {
+	const html = page('/');
+	const arise = [...html.matchAll(/<span[^>]*class="arise[^"]*"[^>]*>/g)];
+	assert.equal(arise.length, 1);
+	assert.match(arise[0][0], /aria-hidden="true"/);
+});
+
+test('contact is a System message with an Accept mailto', () => {
+	const html = page('/');
+	assert.match(html, /A new quest has arrived\./);
+	assert.match(html, /<a href="mailto:drilonrecica\.dev@gmail\.com" class="btn btn-primary[^"]*">Accept/);
+});
